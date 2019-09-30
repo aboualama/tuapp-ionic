@@ -1,0 +1,24 @@
+{
+	"auth": {
+		"tuapp27bd4071": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
+	"api": {
+		"tuapp": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"securityType": "AMAZON_COGNITO_USER_POOLS"
+			}
+		}
+	},
+	"storage": {
+		"s36b732c60": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}

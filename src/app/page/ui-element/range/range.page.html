@@ -1,0 +1,51 @@
+<ion-header class="parallax-obj parallax-translate-obj">
+  <div class="page-hd">
+    <ion-back-button mode="ios" text="" icon="ios-arrow-round-back"></ion-back-button>
+    <p class="title-mn">Range</p>
+  </div>
+</ion-header>
+
+<ion-content common-parallax [scrollEvents]="true">
+  <div class="page-ct bg-white">
+
+    <div class="gap-1"></div>
+
+    <small class="">Newly built components with separate css and own html structure.</small>
+
+    <div class="gap-2"></div>
+
+    <div class="list">
+      <div class="item">
+        <ion-range color="danger" pin="true"></ion-range>
+      </div>
+
+      <div class="item">
+        <ion-range min="-200" max="200" color="secondary">
+          <ion-label slot="start">-200</ion-label>
+          <ion-label slot="end">200</ion-label>
+        </ion-range>
+      </div>
+
+      <div class="item">
+        <ion-range min="20" max="80" step="2">
+          <ion-icon size="small" slot="start" name="sunny"></ion-icon>
+          <ion-icon slot="end" name="sunny"></ion-icon>
+        </ion-range>
+      </div>
+
+      <div class="item">
+        <ion-range min="1000" max="2000" step="100" snaps="true" color="secondary"></ion-range>
+      </div>
+
+      <div class="item">
+        <ion-range min="1000" max="2000" step="100" snaps="true" ticks="false" color="secondary"></ion-range>
+      </div>
+
+      <div class="item">
+        <ion-range dualKnobs="true" min="21" max="72" step="3" snaps="true"></ion-range>
+      </div>
+    </div>
+
+    <div class="gap-3"></div>
+  </div>
+</ion-content>

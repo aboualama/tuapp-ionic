@@ -1,0 +1,50 @@
+.top-page{
+  position: relative;
+  margin-top: -110px;
+  .cover{
+    height: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-15deg);
+    &:after{
+      content: "";
+      display: block;
+      height: 100%;
+      width: 200%;
+      position: absolute;
+      z-index: 1;
+      background: rgba(0,0,0,0.2);
+    }
+    .bg-img{
+      width: 140%;
+      height: 100%;
+      position: absolute;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    img{
+      width: 100%;
+      height: unset;
+      transform: rotate(15deg);
+    }
+  }
+  .txt-slogan{
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 10%;
+    img{
+      height: 50px;
+    }
+  }
+  button{
+    z-index: 10;
+    position: absolute;
+    bottom: -25px;
+    right: 70px;
+    transform: rotate(15deg);
+  }
+}

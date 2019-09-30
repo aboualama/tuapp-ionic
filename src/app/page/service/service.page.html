@@ -1,0 +1,43 @@
+<ion-header text-center>
+  <ion-toolbar color="primary"> 
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Service Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center>  
+ 
+ 
+
+<ion-grid>  
+  <ion-item text-center color="dark">
+    <ion-label>List Of Services</ion-label>
+  </ion-item>   
+ 
+  <ion-card   *ngFor="let service of services; let i = index">      
+    <ion-item-sliding  color="light">
+    
+      <ion-item>
+        <ion-label>
+
+        <h3 text-capitalize>Title: {{ service.title }}</h3>
+        </ion-label>
+        <ion-button slot="end" (click)="removeService(service , i)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+        <ion-button slot="end" (click)="selectService(service.id)" color="success">select</ion-button>
+      </ion-item>  
+       
+      <ion-item-option text-capitalize color="success" (click)="ShowService(service , i)" >
+          Price: {{ service.price }} EU
+      </ion-item-option> 
+  
+    </ion-item-sliding>  
+  </ion-card>   
+</ion-grid>
+
+ 
+
+
+
+</ion-content>

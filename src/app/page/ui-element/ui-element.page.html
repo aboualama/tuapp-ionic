@@ -1,0 +1,30 @@
+
+<ion-header class="parallax-obj parallax-translate-obj">
+  <div class="page-hd">
+    <ion-menu-button mode="ios"></ion-menu-button>
+    <p class="title-mn">Ui Element</p>
+  </div>
+</ion-header>
+
+<ion-content common-parallax [scrollEvents]="true">
+  <div class="page-ct bg-white">
+
+    <div class="gap-1"></div>
+
+    <small class="">Newly built components with separate css and own html structure.</small>
+
+    <div class="gap-2"></div>
+
+    <div class="divider-6 bg-gradient"></div>
+
+    <div class="gap-3"></div>
+
+    <div class="list">
+      <button class="block clear item" *ngFor="let item of list_page" [routerLink]="[item.path]">
+        <label>{{item.name}}</label>
+      </button>
+    </div>
+
+    <div class="gap-3"></div>
+  </div>
+</ion-content>

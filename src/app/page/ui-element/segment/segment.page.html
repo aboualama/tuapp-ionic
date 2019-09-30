@@ -1,0 +1,120 @@
+<ion-header class="parallax-obj parallax-translate-obj">
+  <div class="page-hd">
+    <ion-back-button mode="ios" text="" icon="ios-arrow-round-back"></ion-back-button>
+    <p class="title-mn">Segment</p>
+  </div>
+</ion-header>
+
+<ion-content common-parallax [scrollEvents]="true">
+  <div class="page-ct bg-white">
+
+    <div class="gap-1"></div>
+
+    <small class="">Newly built components with separate css and own html structure.</small>
+
+    <div class="gap-2"></div>
+
+
+    <!-- Default Segment -->
+    <ion-segment mode="ios" color="primary" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="friends">
+        <ion-label>Friends</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="enemies">
+        <ion-label>Enemies</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div class="gap-2"></div>
+
+    <!-- Disabled Segment -->
+    <ion-segment mode="ios" color="secondary" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="sunny" checked>
+        <ion-label>Sunny</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="rainy">
+        <ion-label>Rainy</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div class="gap-2"></div>
+
+    <!-- Segment with anchors -->
+    <ion-segment mode="ios" color="tertiary" (ionChange)="segmentChanged($event)">
+      <ion-segment-button href="#dogs" value="dogs">
+        <ion-label>Dogs</ion-label>
+      </ion-segment-button>
+      <ion-segment-button href="#cats" value="cats">
+        <ion-label>Cats</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div class="gap-2"></div>
+
+    <!-- Scrollable Segment -->
+    <ion-segment mode="ios" color="success" scrollable>
+      <ion-segment-button>
+        <ion-icon name="home"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button checked>
+        <ion-icon name="heart"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-icon name="pin"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-icon name="star"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-icon name="call"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-icon name="globe"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-icon name="basket"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div class="gap-2"></div>
+
+    <!-- Segment with secondary color -->
+    <ion-segment mode="ios" color="warning" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="standard">
+        <ion-label>Standard</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="hybrid">
+        <ion-label>Hybrid</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="sat">
+        <ion-label>Satellite</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div class="gap-2"></div>
+
+
+    <ion-segment mode="ios" color="danger" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="camera">
+        <ion-icon name="camera"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="bookmark">
+        <ion-icon name="bookmark"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div class="gap-2"></div>
+
+    <!-- Segment with default selection -->
+    <ion-segment mode="ios" color="dark" (ionChange)="segmentChanged($event)" value="javascript">
+      <ion-segment-button value="python">
+        <ion-label>Python</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="javascript">
+        <ion-label>Javascript</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div class="gap-3"></div>
+  </div>
+</ion-content>

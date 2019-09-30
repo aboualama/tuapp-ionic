@@ -1,0 +1,40 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu type="reveal">
+
+      <div class="page page-menu">
+        
+        <div class="gap-2"></div>
+        
+        <div class="extract-prf">
+          <div class="avt-circle">
+            <img src="assets/img/avt1.jpg" alt="">
+          </div>
+          <div class="info txt-light">
+            <h2>{{username}}</h2>
+            <small>Designer</small>
+            <p>{{usermail}}</p>
+          </div>
+        </div>
+
+        <div class="gap-1"></div>
+
+        <div class="main-menu list">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <button class="block clear item txt-light pdl-30" [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon [name]="p.icon"></ion-icon>
+              {{p.title}}
+            </button>
+          </ion-menu-toggle>
+        </div>
+
+        <div class="gap-2"></div>
+
+      </div>
+
+    </ion-menu>
+
+    <ion-router-outlet main></ion-router-outlet>
+
+  </ion-split-pane>
+</ion-app>

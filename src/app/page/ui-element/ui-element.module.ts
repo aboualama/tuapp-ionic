@@ -1,0 +1,29 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+
+import { IonicModule } from '@ionic/angular';
+
+import { UiElementPage } from './ui-element.page';
+
+import { ParallaxCommonModule } from '../../common/parallax/parallax.module';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: UiElementPage
+  }
+];
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    ParallaxCommonModule,
+    RouterModule.forChild(routes)
+  ],
+  declarations: [UiElementPage]
+})
+export class UiElementPageModule {}

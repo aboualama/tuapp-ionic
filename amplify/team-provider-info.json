@@ -1,0 +1,71 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "tuapp-dev-20190815061849-authRole",
+            "UnauthRoleArn": "arn:aws:iam::468089431757:role/tuapp-dev-20190815061849-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::468089431757:role/tuapp-dev-20190815061849-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "tuapp-dev-20190815061849-deployment",
+            "UnauthRoleName": "tuapp-dev-20190815061849-unauthRole",
+            "StackName": "tuapp-dev-20190815061849",
+            "StackId": "arn:aws:cloudformation:us-east-1:468089431757:stack/tuapp-dev-20190815061849/c88257e0-bf13-11e9-937b-12a6272b4c0e"
+        }
+    },
+    "newdev": {
+        "awscloudformation": {
+            "AuthRoleName": "tuapp-newdev-20190819193307-authRole",
+            "UnauthRoleArn": "arn:aws:iam::468089431757:role/tuapp-newdev-20190819193307-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::468089431757:role/tuapp-newdev-20190819193307-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "tuapp-newdev-20190819193307-deployment",
+            "UnauthRoleName": "tuapp-newdev-20190819193307-unauthRole",
+            "StackName": "tuapp-newdev-20190819193307",
+            "StackId": "arn:aws:cloudformation:us-east-1:468089431757:stack/tuapp-newdev-20190819193307/68515b40-c2a7-11e9-ad84-0a9f1235b826"
+        },
+        "categories": {
+            "auth": {
+                "tuapp27bd4071": {
+                    "hostedUIProviderCreds": "[]"
+                }
+            }
+        }
+    },
+    "service": {
+        "awscloudformation": {
+            "AuthRoleName": "tuapp-service-20190918214029-authRole",
+            "UnauthRoleArn": "arn:aws:iam::468089431757:role/tuapp-service-20190918214029-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::468089431757:role/tuapp-service-20190918214029-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "tuapp-service-20190918214029-deployment",
+            "UnauthRoleName": "tuapp-service-20190918214029-unauthRole",
+            "StackName": "tuapp-service-20190918214029",
+            "StackId": "arn:aws:cloudformation:us-east-1:468089431757:stack/tuapp-service-20190918214029/2aca4720-da4c-11e9-812e-12f8925a37c4"
+        },
+        "categories": {
+            "auth": {
+                "tuapp27bd4071": {
+                    "hostedUIProviderCreds": "[]"
+                }
+            }
+        }
+    },
+    "test": {
+        "awscloudformation": {
+            "AuthRoleName": "tuapp-test-20190930003241-authRole",
+            "UnauthRoleArn": "arn:aws:iam::468089431757:role/tuapp-test-20190930003241-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::468089431757:role/tuapp-test-20190930003241-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "tuapp-test-20190930003241-deployment",
+            "UnauthRoleName": "tuapp-test-20190930003241-unauthRole",
+            "StackName": "tuapp-test-20190930003241",
+            "StackId": "arn:aws:cloudformation:us-east-1:468089431757:stack/tuapp-test-20190930003241/0dd64db0-e309-11e9-9183-0e36ce6a2c7c"
+        },
+        "categories": {
+            "auth": {
+                "tuapp27bd4071": {
+                    "hostedUIProviderCreds": "[]"
+                }
+            }
+        }
+    }
+}

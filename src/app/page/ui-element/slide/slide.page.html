@@ -1,0 +1,34 @@
+<ion-header class="parallax-obj parallax-translate-obj">
+  <div class="page-hd">
+    <ion-back-button mode="ios" text="" icon="ios-arrow-round-back"></ion-back-button>
+    <p class="title-mn">Slide</p>
+  </div>
+</ion-header>
+
+<ion-content common-parallax [scrollEvents]="true">
+  <div class="page-ct bg-white">
+
+    <div class="gap-1"></div>
+
+    <small class="">Newly built components with separate css and own html structure.</small>
+
+    <div class="gap-2"></div>
+
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide class="bg-gradient">
+        <h1 style="height: 350px; display: flex; align-items: center">Slide 1</h1>
+      </ion-slide>
+      <ion-slide class="bg-main">
+        <h1 style="height: 350px; display: flex; align-items: center">Slide 2</h1>
+      </ion-slide>
+      <ion-slide class="bg-secondary">
+        <h1 style="height: 350px; display: flex; align-items: center">Slide 3</h1>
+      </ion-slide>
+      <ion-slide class="bg-tertiary">
+        <h1 style="height: 350px; display: flex; align-items: center">Slide 4</h1>
+      </ion-slide>
+    </ion-slides>
+
+    <div class="gap-3"></div>
+  </div>
+</ion-content>

@@ -1,0 +1,70 @@
+type City @model {
+  id: ID!
+  name: String!  
+  branchs: [Branch] @connection(name: "BranchCitys")
+}
+ 
+ 
+type Branch @model {
+  id: ID!
+  branch: String!  
+  open_time: String!  
+  close_time: String!  
+  city: City @connection(name: "BranchCitys")
+  services: [Service] @connection(name: "BranchServices")
+}
+
+type Service @model {
+  id: ID!
+  title: String!
+  price: Float   
+  branch: Branch @connection(name: "BranchServices")
+  workers: [Worker] @connection(name: "ServiceWorks")
+  appointments: [Appointment] @connection(name: "AppointmentServices")
+}
+ 
+type Worker @model {
+  id: ID!
+  name: String!  
+  email: String!  
+  phone: String!  
+  service: Service @connection(name: "ServiceWorks") 
+  workhours: [HourWork] @connection(name: "HourWorks") 
+  appointments: [Appointment] @connection(name: "AppointmentWorks")
+}
+ 
+type HourWork @model {
+  id: ID! 
+  start_time: String!
+  end_time: String! 
+  days: MetaDay
+  worker: Worker @connection(name: "HourWorks")
+}
+type MetaDay {
+  days: Day
+} 
+enum Day {
+  MO TU WE TH FR SA SU 
+} 
+
+type Payment @model {
+  id: ID!
+  name: String!
+  client_id: Int
+  appointments: [Appointment] @connection(name: "AppointmentPayments")
+}
+ 
+type Appointment @model @auth(rules: [{allow: owner}]) {
+  id: ID! 
+  client_id: String!
+  worker: Worker @connection(name: "AppointmentWorks")
+  service: Service @connection(name: "AppointmentServices")
+  start_time: String
+  end_time: String
+  date: String
+  price: Float 
+  status: Boolean 
+  payment: Payment @connection(name: "AppointmentPayments")
+}
+  
+ 
