@@ -1,6 +1,6 @@
 projects:
   tuapp:
-    schemaPath: src\graphql\schema.json
+    schemaPath: amplify\backend\api\tuapp\build\schema.graphql
     includes:
       - src\graphql\**\*.ts
     excludes:

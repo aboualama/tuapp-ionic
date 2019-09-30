@@ -54,11 +54,11 @@ export class AppComponent  implements OnInit {
       url: '/bookedservice',
       icon: 'checkbox-outline'
     } ,   
-    {
-      title: 'City',
-      url: '/city',
-      icon: 'pin'
-    } 
+    // {
+    //   title: 'City',
+    //   url: '/city',
+    //   icon: 'pin'
+    // } 
   ];
 
   constructor(

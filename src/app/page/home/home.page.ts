@@ -18,9 +18,24 @@ export class HomePage {
       icon: 'log-in'
     },   
     {
-      title: 'City',
-      url: '/city',
-      icon: 'pin'
-    } 
+      title: 'Add Service',
+      url: '/addservice',
+      icon: 'add'
+    } ,   
+    {
+      title: 'Services',
+      url: '/service',
+      icon: 'bowtie'
+    } ,   
+    {
+      title: 'Booked Service',
+      url: '/bookedservice',
+      icon: 'checkbox-outline'
+    } ,   
+    // {
+    //   title: 'City',
+    //   url: '/city',
+    //   icon: 'pin'
+    // } 
   ];
 }
