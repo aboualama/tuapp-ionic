@@ -1,7 +1,7 @@
 <ion-header class="parallax-obj parallax-translate-obj">
   <div class="page-hd">
     <ion-menu-button class="txt-light" mode="ios"></ion-menu-button>
-    <p class="title-mn txt-light">City</p>
+    <p class="title-mn txt-light">List Of Cities</p>
   </div>
 </ion-header>
 
@@ -9,35 +9,24 @@
   <div class="page-ct pd-0">
 
     <div class="top-cover">
-      <div class="wrapper-cover thumb-h300">
+      <div class="wrapper-cover thumb-h100">
         <img class="parallax-obj parallax-up-obj parallax-blur-obj" src="assets/img/dm3.jpg" alt="">
       </div> 
     </div>
 
-    <div class="" padding>
-
-    <ion-grid>  
-  <ion-item text-center color="tertiary">
-    <ion-label>List Of Cities</ion-label>
-  </ion-item>   
- 
-  <ion-card *ngFor="let city of citys; let i = index">      
-    <ion-item-sliding  color="light">
+    <div class="ion-padding" >  
+      <ion-card *ngFor="let city of citys; let i = index">      
+        <ion-item-sliding  color="light"> 
+          <ion-item>
+            <ion-label>   
+              <h3 text-capitalize>City Name: {{ city.name }}</h3>
+            </ion-label>
+            <ion-button slot="end" (click)="removeCity(city , i)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+            <ion-button slot="end" (click)="selectCity(city.id)" color="success">select</ion-button>
+          </ion-item>    
+        </ion-item-sliding>  
+      </ion-card>     
+    </div> 
     
-      <ion-item>
-        <ion-label>  
-
-        <h3 text-capitalize>City Name: {{ city.name }}</h3>
-        </ion-label>
-        <ion-button slot="end" (click)="removeCity(city , i)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
-        <ion-button slot="end" (click)="selectCity(city.id)" color="success">select</ion-button>
-      </ion-item>   
-  
-      </ion-item-sliding>  
-    </ion-card>   
-  </ion-grid>
- 
   </div>
-    
-</div>
 </ion-content>

@@ -1,55 +1,48 @@
-<ion-header text-center>
-  <ion-toolbar color="primary"> 
-    <ion-buttons slot="start">
-        <ion-back-button defaultHref="/"></ion-back-button>
-      </ion-buttons>
-    <ion-title>Service Page</ion-title>
-  </ion-toolbar>
+<ion-header class="parallax-obj parallax-translate-obj">
+  <div class="page-hd">
+    <ion-menu-button class="txt-light" mode="ios"></ion-menu-button>
+    <p class="title-mn txt-light">Add Service</p>
+  </div>
 </ion-header>
 
-<ion-content text-center>  
-
- 
-<ion-grid>
-
-  <ion-item text-center color="dark">
-      <ion-label>Add New Service</ion-label>
-  </ion-item>  
- 
- 
-<form #form="ngForm" (ngSubmit)="createService(form)">
-  <ion-grid>
-    <ion-row justify-content-center>
-      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-        <div text-center>
-          <h3 class="test-black">Add New Service</h3>
-        </div>
-        <div padding>
-          <ion-item>
-            <ion-input name="servicetitle" type="" placeholder="Title" ngModel required color="dark"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input name="serviceprice" type="" placeholder="Price" ngModel required></ion-input>
-          </ion-item>
-        </div>
-
-          
-        <ion-item>
-          <ion-label>Branch</ion-label>
-          <ion-select placeholder="Select Branch" [(ngModel)]="selectedCodeValue" name="branchname" required>
-            <ion-select-option *ngFor="let branch of branchs" value="{{branch.id}}" >{{ branch.branch }}</ion-select-option> 
-          </ion-select>
-        </ion-item>  
-
-
-        <div padding>
-          <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Add New Service</ion-button>
-        </div>
-      </ion-col>  
-    </ion-row>
-  </ion-grid>
-</form>
-
-</ion-grid>
+<ion-content fullscreen common-parallax [scrollEvents]="true">
+  <div class="page-ct pd-0"> 
+    <div class="cover"> 
+      <div class="wrapper-cover thumb-h100">
+        <img src="assets/img/dm8.jpg" alt=""> 
+      </div>
+    </div>
   
+    <form #form="ngForm" (ngSubmit)="createService(form)">
+      <ion-grid>
+        <ion-row justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div class="ion-padding">
+              <ion-item>
+                <ion-input name="servicetitle" type="" placeholder="Title" ngModel required color="dark"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input name="serviceprice" type="" placeholder="Price" ngModel required></ion-input>
+              </ion-item>
+            </div>
+
+              
+            <ion-item>
+              <ion-label>Branch</ion-label>
+              <ion-select placeholder="Select Branch" [(ngModel)]="selectedCodeValue" name="branchname" required>
+                <ion-select-option *ngFor="let branch of branchs" value="{{branch.id}}" >{{ branch.branch }}</ion-select-option> 
+              </ion-select>
+            </ion-item>  
+
+
+            <div class="ion-padding">
+              <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Add New Service</ion-button>
+            </div>
+          </ion-col>  
+        </ion-row>
+      </ion-grid>
+    </form>  
+
+
+  </div>  
 </ion-content>
