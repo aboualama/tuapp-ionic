@@ -69,4 +69,54 @@ export class AppointmentPage implements OnInit {
   } 
   
 
+  // client_id: "2b4f023d-e9c6-43c2-a652-92452894e40b", 
+  // appointmentPaymentId: "1", 
+  // appointmentServiceId: "102ea4de-ca63-4dc4-a729-4c08315761f6", 
+  // appointmentWorkerId: "1", 
+  // date: "2019-10-04T20:04:22.162+02:00", 
+  // start_time: "2019-09-30T10:00:22.273+02:00", 
+  // end_time: "2019-09-30T11:30:22.273+02:00", 
+  // price: 115, 
+  // status: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

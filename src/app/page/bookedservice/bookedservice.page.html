@@ -10,11 +10,25 @@
     <div class="page-ct pd-0"> 
       <div class="cover"> 
         <div class="wrapper-cover thumb-h100">
-          <img src="assets/img/dm2.jpg" alt=""> 
+          <img src="assets/img/dm12.jpg" alt=""> 
         </div>
       </div>
     
  
+      <div class="ion-padding" >  
+        <ion-card *ngFor="let item of items; let i = index">      
+          <ion-item-sliding  color="light"> 
+            <ion-item>
+              <ion-label>   
+                <h3 text-capitalize>Service Name: {{ item.service.title }}</h3>
+                <h6 text-capitalize>Date: {{ item.date }}</h6>
+                <h6 text-capitalize>Start Time: {{ item.start_time }}</h6>
+              </ion-label>
+              <ion-button slot="end" (click)="removeAppointment(item , i)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+             </ion-item>    
+          </ion-item-sliding>  
+        </ion-card>     
+      </div> 
   
   
     </div>  

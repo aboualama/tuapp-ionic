@@ -55,8 +55,8 @@ export class AppComponent  implements OnInit {
       icon: 'checkbox-outline'
     } ,   
     // {
-    //   title: 'City',
-    //   url: '/city',
+    //   title: 'ui-element',
+    //   url: '/ui-element',
     //   icon: 'pin'
     // } 
   ];
