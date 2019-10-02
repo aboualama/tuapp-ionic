@@ -16,34 +16,27 @@ export class BookedservicePage implements OnInit {
   public items: any;  
 
   constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController, private router: Router) { }
- 
-
- 
+  
   async ngOnInit() { 
 
     // Get All Services Booked
-    // const allappointment = await API.graphql(graphqlOperation(Queries.listAppointments));  worker_id not found
-
-    const allappointment = await API.graphql(graphqlOperation(`{listAppointments{items{id date start_time service{title}}}}`)); 
+    const allappointment = await API.graphql(graphqlOperation(Queries.listAppointments));  
+    // const allappointment = await API.graphql(graphqlOperation(`{listAppointments{items{id date start_time service{title}}}}`)); 
     this.items = await allappointment.data.listAppointments.items ;  
     console.log(this.items); 
   }
     
 
-  // remove Service
-  // removeService = async (service: any , i: any) => {   
-  //   if (i > -1) {
-  //     this.services.splice(i, 1);
-  //     }  
-  //   const serviceId = service.id;
-  //   await API.graphql(graphqlOperation(mutations.deleteService , { input: { id : serviceId } })); 
-  //   console.log(service); 
-  // } 
+  // remove Appointment
+  removeAppointment = async (item: any , i: any) => {   
+    if (i > -1) {
+      this.items.splice(i, 1);
+      }  
+    const itemId = item.id;
+    await API.graphql(graphqlOperation(mutations.deleteAppointment , { input: { id : itemId } })); 
+    console.log(item); 
+  } 
 
-
-  // // Select Service
-  // selectService = async (myid: any) => {    
-  //   this.router.navigate(['appointment/' + myid])  
-  //   } 
+ 
 
 }

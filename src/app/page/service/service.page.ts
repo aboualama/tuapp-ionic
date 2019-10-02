@@ -16,14 +16,11 @@ import * as mutations from '../../../graphql/mutations';
 
 export class ServicePage implements OnInit { 
 
-  public services: any;
-  public branchs: any;
+  public services: any; 
 
-  constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController, private router: Router) { }
+  constructor(private modalController: ModalController, private router: Router) { }
 
- 
-
-
+  
   async ngOnInit() {
     this.getdata();
   }

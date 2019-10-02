@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { graphqlOperation, API } from 'aws-amplify';
-
-import * as Queries from '../../../graphql/queries';
+ 
 import * as mutations from '../../../graphql/mutations'; 
 
 @Component({
@@ -13,30 +12,17 @@ import * as mutations from '../../../graphql/mutations';
 })
 export class AddservicePage implements OnInit {
 
-
-  public services: any;
-  public branchs: any;
-
-  constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController, private router: Router) { }
  
-  async ngOnInit() {
-    this.getdata();
-  }
-  
-  async getdata() { 
-    // Get All Branchs to select branch when create new service
-    const allbranchs = await API.graphql(graphqlOperation(Queries.listBranchs));  
-    this.branchs = await allbranchs.data.listBranchs.items ; 
-    console.log(this.branchs);   
-  }
+  constructor(private modalController: ModalController, private router: Router) { }
+ 
+  async ngOnInit() { }
    
   // create Service
-  createService = async (form: { value: { servicetitle: any; serviceprice: any; branchname: any; }; }) => { 
+  createService = async (form: { value: { servicetitle: any; serviceprice: any;}; }) => { 
     event.preventDefault()
     const  service = {
       title : form.value.servicetitle,
-      price : form.value.serviceprice,
-      serviceBranchId :  form.value.branchname,
+      price : form.value.serviceprice, 
     };
     await API.graphql(graphqlOperation(mutations.createService , { input: service }));  
     this.router.navigate(['service'])  

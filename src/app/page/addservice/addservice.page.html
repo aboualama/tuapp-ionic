@@ -24,16 +24,7 @@
               <ion-item>
                 <ion-input name="serviceprice" type="" placeholder="Price" ngModel required></ion-input>
               </ion-item>
-            </div>
-
-              
-            <ion-item>
-              <ion-label>Branch</ion-label>
-              <ion-select placeholder="Select Branch" [(ngModel)]="selectedCodeValue" name="branchname" required>
-                <ion-select-option *ngFor="let branch of branchs" value="{{branch.id}}" >{{ branch.branch }}</ion-select-option> 
-              </ion-select>
-            </ion-item>  
-
+            </div> 
 
             <div class="ion-padding">
               <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Add New Service</ion-button>
