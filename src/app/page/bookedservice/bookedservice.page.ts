@@ -18,6 +18,7 @@ export class BookedservicePage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController, private router: Router) { }
  
 
+ 
   async ngOnInit() { 
 
     // Get All Services Booked

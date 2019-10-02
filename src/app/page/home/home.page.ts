@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Auth } from 'aws-amplify';
 
 @Component({
   selector: 'app-home',
@@ -6,17 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+
+
+ 
+  Logout = async () => {    
+    await Auth.signOut();  
+  } 
+
+
+
   public appPages = [
     {
       title: 'Home',
       url: '/home',
       icon: 'home'
-    },  
-    {
-      title: 'Login & Register',
-      url: '/login',
-      icon: 'log-in'
-    },   
+    },    
     {
       title: 'Add Service',
       url: '/addservice',
@@ -31,7 +37,12 @@ export class HomePage {
       title: 'Booked Service',
       url: '/bookedservice',
       icon: 'checkbox-outline'
-    } ,   
+    } ,    
+    {
+      title: 'Login & Register',
+      url: '/login',
+      icon: 'log-in'
+    },
     // {
     //   title: 'City',
     //   url: '/city',

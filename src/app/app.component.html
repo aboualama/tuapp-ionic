@@ -12,7 +12,7 @@
           </div>
           <div class="info txt-light">
             <h2>{{username}}</h2>
-            <small>Designer</small>
+            <small>Developer</small>
             <p>{{usermail}}</p>
           </div>
         </div>
@@ -24,11 +24,21 @@
             <button class="block clear item txt-light pdl-30" [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon [name]="p.icon"></ion-icon>
               {{p.title}}
-            </button>
+            </button> 
           </ion-menu-toggle>
+
         </div>
 
-        <div class="gap-2"></div>
+
+        
+        <div class="gap-2">
+          <ion-menu-toggle auto-hide="false">
+            <button class="block clear item txt-light pdl-30" (click)="Logout()">
+              <ion-icon name="log-out"></ion-icon>
+              Logout
+            </button> 
+          </ion-menu-toggle>
+        </div>
 
       </div>
 

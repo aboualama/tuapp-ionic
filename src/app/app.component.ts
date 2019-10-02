@@ -14,8 +14,8 @@ import { Auth } from 'aws-amplify';
 
 export class AppComponent  implements OnInit { 
  
-  public username: any;
-  public usermail: any;
+  public username = 'User Name';
+  public usermail = 'User Email';
 
   async ngOnInit() {
     let user = await Auth.currentAuthenticatedUser(); 
@@ -24,21 +24,18 @@ export class AppComponent  implements OnInit {
     this.usermail = await attributes.email;  
     console.log(attributes); 
   }
+ 
+  Logout = async () => {    
+    await Auth.signOut();  
+  } 
 
-
-
-
+   
   public appPages = [
     {
       title: 'Home',
       url: '/home',
       icon: 'home'
-    },  
-    {
-      title: 'Login & Register',
-      url: '/login',
-      icon: 'log-in'
-    },   
+    },      
     {
       title: 'Add Service',
       url: '/addservice',
@@ -53,7 +50,12 @@ export class AppComponent  implements OnInit {
       title: 'Booked Service',
       url: '/bookedservice',
       icon: 'checkbox-outline'
-    } ,   
+    } ,  
+    {
+      title: 'Login & Register',
+      url: '/login',
+      icon: 'log-in'
+    },  
     // {
     //   title: 'ui-element',
     //   url: '/ui-element',
