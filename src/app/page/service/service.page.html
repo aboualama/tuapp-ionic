@@ -12,9 +12,43 @@
         <div class="wrapper-cover thumb-h100">
           <img src="assets/img/dm9.jpg" alt=""> 
         </div>
-      </div> 
- 
-      <ion-card   *ngFor="let service of services; let i = index">      
+      </div>
+
+      <div class="card card-bg-img" *ngFor="let service of services; let i = index">
+        <div class="thumb-h200">
+          <img src="assets/img/dm1.jpg" alt="">
+        </div>
+        <div class="card-ct">
+          <div class="btn-action">
+          <!--  <button class="round-1 bg-l-opct only-icon">
+              <ion-icon name="add"></ion-icon>
+            </button>-->
+            <button class="round-1 bg-l-opct only-icon">
+              <ion-icon name="heart-empty"></ion-icon>
+            </button>
+          </div>
+          <div class="">
+            <div class="card-hd">
+              <h1>{{ service.title }}</h1>
+                <button class="clear only-icon">
+                  <ion-icon name="more"></ion-icon>
+                </button>
+            </div>
+            <div class="item pdl-0">
+             <!-- <div class="avt-circle-2">
+                <img src="assets/img/avt1.jpg" alt="">
+              </div>-->
+              <div class="txt-box">
+                <h6 class="mg-0 fs-14">Koodinh</h6>
+                <small>koodinh@gmail.com</small>
+              </div>
+              <ion-icon name="gear"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--<ion-card   *ngFor="let service of services; let i = index">
+
         <ion-item-sliding  color="light">
         
           <ion-item>
@@ -31,7 +65,7 @@
           </ion-item-option> 
       
         </ion-item-sliding>  
-      </ion-card>   
-      
+      </ion-card>   -->
+
 </div>  
 </ion-content>

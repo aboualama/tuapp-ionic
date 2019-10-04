@@ -18,12 +18,13 @@
         <ion-row justify-content-center>
           <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
             <div class="ion-padding">
-              <ion-item>
-                <ion-input name="servicetitle" type="" placeholder="Title" ngModel required color="dark"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-input name="serviceprice" type="" placeholder="Price" ngModel required></ion-input>
-              </ion-item>
+              <div class="input-wrapper">
+                <ion-input class="block round bg-grey" type="text" placeholder="Round" name="servicetitle"  ngModel required ></ion-input>
+              </div>
+
+              <div class="input-wrapper">
+              <ion-input name="serviceprice" type="" placeholder="Price" ngModel required></ion-input>
+              </div>
             </div> 
 
             <div class="ion-padding">

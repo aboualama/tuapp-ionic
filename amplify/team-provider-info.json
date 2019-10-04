@@ -67,5 +67,24 @@
                 }
             }
         }
+    },
+    "lasttu": {
+        "awscloudformation": {
+            "AuthRoleName": "tuapp-lasttu-20191004155753-authRole",
+            "UnauthRoleArn": "arn:aws:iam::468089431757:role/tuapp-lasttu-20191004155753-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::468089431757:role/tuapp-lasttu-20191004155753-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "tuapp-lasttu-20191004155753-deployment",
+            "UnauthRoleName": "tuapp-lasttu-20191004155753-unauthRole",
+            "StackName": "tuapp-lasttu-20191004155753",
+            "StackId": "arn:aws:cloudformation:eu-west-1:468089431757:stack/tuapp-lasttu-20191004155753/f5d86b90-e6ae-11e9-a7b6-0226385840dc"
+        },
+        "categories": {
+            "auth": {
+                "tuapp27bd4071": {
+                    "hostedUIProviderCreds": "[]"
+                }
+            }
+        }
     }
 }
