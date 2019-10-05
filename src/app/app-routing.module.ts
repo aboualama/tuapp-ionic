@@ -31,13 +31,17 @@ const routes: Routes = [
         path: 'appointment/:myid',
         loadChildren: './page/appointment/appointment.module#AppointmentPageModule'
     },
-  /*  {
-        path: 'city',
-        loadChildren: './page/city/city.module#CityPageModule'
-    },*/
+    /*  {
+          path: 'city',
+          loadChildren: './page/city/city.module#CityPageModule'
+      },*/
     {
         path: 'addservice',
         loadChildren: './page/addservice/addservice.module#AddservicePageModule'
+    },
+    {
+        path: 'about',
+        loadChildren: './page/about/about.module#AboutPageModule'
     },
     {
         path: 'service',

@@ -1,6 +1,6 @@
 {
     "identityPoolName": "tuapp27bd4071_identitypool_27bd4071",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "tuapp27bd4071",
     "userPoolName": "tuapp27bd4071_userpool_27bd4071",
     "autoVerifiedAttributes": [

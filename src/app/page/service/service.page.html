@@ -1,71 +1,70 @@
- 
 <ion-header class="parallax-obj parallax-translate-obj">
     <div class="page-hd">
-      <ion-menu-button class="txt-light" mode="ios"></ion-menu-button>
-      <p class="title-mn txt-light">List Of Services</p>
+        <ion-menu-button class="txt-light" mode="ios"></ion-menu-button>
+        <p class="title-mn txt-light">List Of Services</p>
     </div>
-  </ion-header>
-  
-  <ion-content fullscreen common-parallax [scrollEvents]="true">
-    <div class="page-ct pd-0"> 
-      <div class="cover"> 
-        <div class="wrapper-cover thumb-h100">
-          <img src="assets/img/dm9.jpg" alt=""> 
-        </div>
-      </div>
+</ion-header>
 
-      <div class="card card-bg-img" *ngFor="let service of services; let i = index">
-        <div class="thumb-h200">
-          <img src="assets/img/dm1.jpg" alt="">
-        </div>
-        <div class="card-ct">
-          <div class="btn-action">
-          <!--  <button class="round-1 bg-l-opct only-icon">
-              <ion-icon name="add"></ion-icon>
-            </button>-->
-            <button class="round-1 bg-l-opct only-icon">
-              <ion-icon name="heart-empty"></ion-icon>
-            </button>
-          </div>
-          <div class="">
-            <div class="card-hd">
-              <h1>{{ service.title }}</h1>
-                <button class="clear only-icon">
-                  <ion-icon name="more"></ion-icon>
-                </button>
+<ion-content fullscreen common-parallax [scrollEvents]="true">
+    <div class="page-ct pd-0">
+        <div class="cover">
+            <div class="wrapper-cover thumb-h100">
+                <img src="assets/img/dm9.jpg" alt="">
             </div>
-            <div class="item pdl-0">
-             <!-- <div class="avt-circle-2">
-                <img src="assets/img/avt1.jpg" alt="">
-              </div>-->
-              <div class="txt-box">
-                <h6 class="mg-0 fs-14">Koodinh</h6>
-                <small>koodinh@gmail.com</small>
-              </div>
-              <ion-icon name="gear"></ion-icon>
-            </div>
-          </div>
         </div>
-      </div>
-      <!--<ion-card   *ngFor="let service of services; let i = index">
 
-        <ion-item-sliding  color="light">
-        
-          <ion-item>
-            <ion-label>
+        <div class="card card-bg-img" *ngFor="let service of services; let i = index">
+            <div class="thumb-h200">
+                <img  [src]="service.image" alt="">
+            </div>
+            <div class="card-ct">
+                <div class="btn-action">
+                    <!--  <button class="round-1 bg-l-opct only-icon">
+                        <ion-icon name="add"></ion-icon>
+                      </button>-->
+                    <button class="round-1 bg-l-opct only-icon">
+                        <ion-icon name="heart-empty"></ion-icon>
+                    </button>
+                </div>
+                <div class="">
+                    <div class="card-hd">
+                        <h1>{{ service.title }}</h1>
+                        <button class="clear only-icon" (click)="removeService(service , i)">
+                            <ion-icon name="more"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="item pdl-0">
+                        <!-- <div class="avt-circle-2">
+                           <img src="assets/img/avt1.jpg" alt="">
+                         </div>-->
+                        <div class="txt-box">
+                            <h6 class="mg-0 fs-14">{{service.price}}€</h6>
+                            <small>{{service.description}}</small>
+                        </div>
+                        <ion-icon name="gear"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<ion-card   *ngFor="let service of services; let i = index">
 
-            <h3 text-capitalize>Title: {{ service.title }}</h3>
-            </ion-label>
-            <ion-button slot="end" (click)="removeService(service , i)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
-            <ion-button slot="end" (click)="selectService(service.id)" color="success">select</ion-button>
-          </ion-item>  
-          
-          <ion-item-option text-capitalize color="success" (click)="ShowService(service , i)" >
-              Price: {{ service.price }} EU
-          </ion-item-option> 
-      
-        </ion-item-sliding>  
-      </ion-card>   -->
+          <ion-item-sliding  color="light">
 
-</div>  
+            <ion-item>
+              <ion-label>
+
+              <h3 text-capitalize>Title: {{ service.title }}</h3>
+              </ion-label>
+              <ion-button slot="end" (click)="removeService(service , i)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+              <ion-button slot="end" (click)="selectService(service.id)" color="success">select</ion-button>
+            </ion-item>
+
+            <ion-item-option text-capitalize color="success" (click)="ShowService(service , i)" >
+                Price: {{ service.price }} EU
+            </ion-item-option>
+
+          </ion-item-sliding>
+        </ion-card>   -->
+
+    </div>
 </ion-content>

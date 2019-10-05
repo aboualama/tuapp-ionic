@@ -5,11 +5,16 @@ export const createService = `mutation CreateService($input: CreateServiceInput!
   createService(input: $input) {
     id
     title
+    description
     price
+    identityKey
+    image
+    duration
     appointments {
       items {
         id
         client_id
+        identityKey
         start_time
         end_time
         date
@@ -25,11 +30,16 @@ export const updateService = `mutation UpdateService($input: UpdateServiceInput!
   updateService(input: $input) {
     id
     title
+    description
     price
+    identityKey
+    image
+    duration
     appointments {
       items {
         id
         client_id
+        identityKey
         start_time
         end_time
         date
@@ -45,11 +55,16 @@ export const deleteService = `mutation DeleteService($input: DeleteServiceInput!
   deleteService(input: $input) {
     id
     title
+    description
     price
+    identityKey
+    image
+    duration
     appointments {
       items {
         id
         client_id
+        identityKey
         start_time
         end_time
         date
@@ -65,10 +80,15 @@ export const createAppointment = `mutation CreateAppointment($input: CreateAppoi
   createAppointment(input: $input) {
     id
     client_id
+    identityKey
     service {
       id
       title
+      description
       price
+      identityKey
+      image
+      duration
       appointments {
         nextToken
       }
@@ -85,10 +105,15 @@ export const updateAppointment = `mutation UpdateAppointment($input: UpdateAppoi
   updateAppointment(input: $input) {
     id
     client_id
+    identityKey
     service {
       id
       title
+      description
       price
+      identityKey
+      image
+      duration
       appointments {
         nextToken
       }
@@ -105,10 +130,15 @@ export const deleteAppointment = `mutation DeleteAppointment($input: DeleteAppoi
   deleteAppointment(input: $input) {
     id
     client_id
+    identityKey
     service {
       id
       title
+      description
       price
+      identityKey
+      image
+      duration
       appointments {
         nextToken
       }

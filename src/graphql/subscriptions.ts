@@ -5,11 +5,16 @@ export const onCreateService = `subscription OnCreateService {
   onCreateService {
     id
     title
+    description
     price
+    identityKey
+    image
+    duration
     appointments {
       items {
         id
         client_id
+        identityKey
         start_time
         end_time
         date
@@ -25,11 +30,16 @@ export const onUpdateService = `subscription OnUpdateService {
   onUpdateService {
     id
     title
+    description
     price
+    identityKey
+    image
+    duration
     appointments {
       items {
         id
         client_id
+        identityKey
         start_time
         end_time
         date
@@ -45,11 +55,16 @@ export const onDeleteService = `subscription OnDeleteService {
   onDeleteService {
     id
     title
+    description
     price
+    identityKey
+    image
+    duration
     appointments {
       items {
         id
         client_id
+        identityKey
         start_time
         end_time
         date
@@ -65,10 +80,15 @@ export const onCreateAppointment = `subscription OnCreateAppointment {
   onCreateAppointment {
     id
     client_id
+    identityKey
     service {
       id
       title
+      description
       price
+      identityKey
+      image
+      duration
       appointments {
         nextToken
       }
@@ -85,10 +105,15 @@ export const onUpdateAppointment = `subscription OnUpdateAppointment {
   onUpdateAppointment {
     id
     client_id
+    identityKey
     service {
       id
       title
+      description
       price
+      identityKey
+      image
+      duration
       appointments {
         nextToken
       }
@@ -105,10 +130,15 @@ export const onDeleteAppointment = `subscription OnDeleteAppointment {
   onDeleteAppointment {
     id
     client_id
+    identityKey
     service {
       id
       title
+      description
       price
+      identityKey
+      image
+      duration
       appointments {
         nextToken
       }
