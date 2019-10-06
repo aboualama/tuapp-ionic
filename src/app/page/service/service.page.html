@@ -1,4 +1,4 @@
-<ion-header class="parallax-obj parallax-translate-obj">
+<ion-header  class="parallax-obj parallax-translate-obj">
     <div class="page-hd">
         <ion-menu-button class="txt-light" mode="ios"></ion-menu-button>
         <p class="title-mn txt-light">List Of Services</p>
@@ -15,7 +15,7 @@
 
         <div class="card card-bg-img" *ngFor="let service of services; let i = index">
             <div class="thumb-h200">
-                <img  [src]="service.image" alt="">
+                <img  [src]="service.image || 'assets/img/dm1.jpg'" alt="">
             </div>
             <div class="card-ct">
                 <div class="btn-action">
