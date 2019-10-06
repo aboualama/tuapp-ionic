@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
         // }
     ];
     authState: any;
-    loggedIn: false;
+    loggedIn: boolean;
     // including AuthGuardService here so that it's available to listen to auth events
     authService: AuthGuardService;
     amplifyService: AmplifyService;
