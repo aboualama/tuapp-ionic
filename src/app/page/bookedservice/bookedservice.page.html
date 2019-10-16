@@ -1,36 +1,36 @@
- 
+
 <ion-header class="parallax-obj parallax-translate-obj">
     <div class="page-hd">
       <ion-menu-button class="txt-light" mode="ios"></ion-menu-button>
       <p class="title-mn txt-light">Service Booked</p>
     </div>
   </ion-header>
-  
+
   <ion-content fullscreen common-parallax [scrollEvents]="true">
-    <div class="page-ct pd-0"> 
-      <div class="cover"> 
-        <div class="wrapper-cover thumb-h100">
-          <img src="assets/img/dm12.jpg" alt=""> 
-        </div>
-      </div>
-            
-  
- 
-      <div class="ion-padding" >  
-        <ion-card *ngFor="let item of items; let i = index">      
-          <ion-item-sliding  color="light"> 
+      <div class="page-ct pd-0">
+          <div class="cover">
+              <div class="wrapper-cover thumb-h100">
+                  <img src="assets/img/dm9.jpg" alt="">
+              </div>
+          </div>
+
+
+
+      <div class="ion-padding" >
+        <ion-card *ngFor="let item of items; let i = index">
+          <ion-item-sliding  color="light">
             <ion-item>
-              <ion-label>   
-                <h3 text-capitalize>Service Name: {{ item.service.title }}</h3>
-                <h6 text-capitalize>Date: {{ item.date }}</h6>
-                <h6 text-capitalize>Start Time: {{ item.start_time }}</h6>
+              <ion-label>
+                <h3 text-capitalize>{{ item.service.title }}</h3>
+                <h6 text-capitalize>{{ normalizza(item.date) }}</h6>
+                <h6 text-capitalize>{{ normalizzaTime(item.start_time )}}</h6>
               </ion-label>
               <ion-button slot="end" (click)="removeAppointment(item , i)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
-             </ion-item>    
-          </ion-item-sliding>  
-        </ion-card>     
-      </div> 
-  
-  
-    </div>  
+             </ion-item>
+          </ion-item-sliding>
+        </ion-card>
+      </div>
+
+
+    </div>
   </ion-content>

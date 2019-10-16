@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="card card-bg-img" *ngFor="let service of services; let i = index">
+        <div class="card card-bg-img" *ngFor="let service of services; let i = index" (click)="selectService(service.id)">
             <div class="thumb-h200">
                 <img  [src]="service.image || 'assets/img/dm1.jpg'" alt="">
             </div>
@@ -56,7 +56,7 @@
               <h3 text-capitalize>Title: {{ service.title }}</h3>
               </ion-label>
               <ion-button slot="end" (click)="removeService(service , i)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
-              <ion-button slot="end" (click)="selectService(service.id)" color="success">select</ion-button>
+              <ion-button slot="end"  color="success">select</ion-button>
             </ion-item>
 
             <ion-item-option text-capitalize color="success" (click)="ShowService(service , i)" >

@@ -44,6 +44,7 @@ export class AddservicePage implements OnInit {
 
         };
         await API.graphql(graphqlOperation(mutations.createService, {input: service}));
+
         this.router.navigate(['service']);
     };
 
@@ -82,7 +83,7 @@ export class AddservicePage implements OnInit {
             console.log('promise:', data);
             this.image = data;
         });
-      
+
     }
 
     onAlbumImageSelected(event) {

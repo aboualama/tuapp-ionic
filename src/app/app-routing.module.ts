@@ -15,6 +15,10 @@ const routes: Routes = [
         path: 'login',
         loadChildren: './page/auth/auth.module#AuthPageModule'
     },
+    {
+        path: 'about',
+        loadChildren: './page/about/about.module#AboutPageModule'
+    },
     // {
     //   path: 'branch/:cityid',
     //   loadChildren: './page/branch/branch.module#BranchPageModule'

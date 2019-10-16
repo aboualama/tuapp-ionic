@@ -50,8 +50,12 @@ export class AppComponent implements OnInit {
             icon: 'bowtie'
         },
         {
-            title: 'Booked Service',
+            title: 'lista Prenotazioni',
             url: '/bookedservice',
+            icon: 'checkbox-outline'
+        }, {
+            title: 'Contatti',
+            url: '/about',
             icon: 'checkbox-outline'
         },
         {
