@@ -53,7 +53,7 @@ export class AppointmentPage implements OnInit {
       end_time : form.value.end_time,
     };
     await API.graphql(graphqlOperation(mutations.createAppointment , { input: appointment }));
-    console.log(appointment); 
+    this.router.navigate(['bookedservice'])   
   } 
   
  

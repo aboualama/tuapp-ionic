@@ -1,4 +1,16 @@
- 
+
+
+type MyApp {
+    id: ID!
+    appname: String!
+    logoapp: String!
+    splashscreen: String!
+    appidentificationkey: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+
 type Service @model {
   id: ID!
   title: String!

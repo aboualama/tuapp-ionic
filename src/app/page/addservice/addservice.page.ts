@@ -27,5 +27,5 @@ export class AddservicePage implements OnInit {
     await API.graphql(graphqlOperation(mutations.createService , { input: service }));  
     this.router.navigate(['service'])  
   } 
-} 
+}   
   
