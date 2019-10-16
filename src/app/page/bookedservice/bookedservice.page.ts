@@ -1,42 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
-import { graphqlOperation, API } from 'aws-amplify';
+import {Component, OnInit} from '@angular/core';
+import {ModalController} from '@ionic/angular';
+import {Router, ActivatedRoute} from '@angular/router';
+import {graphqlOperation, API} from 'aws-amplify';
 
 import * as Queries from '../../../graphql/queries';
-import * as mutations from '../../../graphql/mutations'; 
-
+import * as mutations from '../../../graphql/mutations';
+import * as moment from 'moment/moment';
 @Component({
-  selector: 'app-bookedservice',
-  templateUrl: './bookedservice.page.html',
-  styleUrls: ['./bookedservice.page.scss'],
+    selector: 'app-bookedservice',
+    templateUrl: './bookedservice.page.html',
+    styleUrls: ['./bookedservice.page.scss'],
 })
 export class BookedservicePage implements OnInit {
 
-  public items: any;  
+    public items: any;
+    public moment: any;
+    constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController, private router: Router) {
+        this.moment = moment();
+    }
 
-  constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController, private router: Router) { }
-  
-  async ngOnInit() { 
+    async ngOnInit() {
 
-    // Get All Services Booked
-    const allappointment = await API.graphql(graphqlOperation(Queries.listAppointments));  
-    // const allappointment = await API.graphql(graphqlOperation(`{listAppointments{items{id date start_time service{title}}}}`)); 
-    this.items = await allappointment.data.listAppointments.items ;  
-    console.log(this.items); 
-  }
-    
+        // Get All Services Booked
+        const allappointment = await API.graphql(graphqlOperation(Queries.listAppointments));
+        // const allappointment = await API.graphql(graphqlOperation(`{listAppointments{items{id date start_time service{title}}}}`));
+        this.items = await allappointment.data.listAppointments.items;
+        console.log(this.items);
+    }
 
-  // remove Appointment
-  removeAppointment = async (item: any , i: any) => {   
-    if (i > -1) {
-      this.items.splice(i, 1);
-      }  
-    const itemId = item.id;
-    await API.graphql(graphqlOperation(mutations.deleteAppointment , { input: { id : itemId } })); 
-    console.log(item); 
-  } 
 
- 
+    // remove Appointment
+    removeAppointment = async (item: any, i: any) => {
+        if (i > -1) {
+            this.items.splice(i, 1);
+        }
+        const itemId = item.id;
+        await API.graphql(graphqlOperation(mutations.deleteAppointment, {input: {id: itemId}}));
+        console.log(item);
+    };
 
+
+    normalizza(date: any) {
+
+        return moment(date).format('D/M/Y').toString();
+
+    }
+
+    normalizzaTime(data) {
+        return moment(data).format('HH:mm').toString();
+    }
 }

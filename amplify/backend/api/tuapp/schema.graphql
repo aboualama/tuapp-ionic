@@ -1,5 +1,6 @@
 
 
+<<<<<<< HEAD
 type MyApp {
     id: ID!
     appname: String!
@@ -11,17 +12,24 @@ type MyApp {
 }
 
 
+=======
+>>>>>>> ee19eaa7a181f9b4d9d71dbe38668a84132e3b59
 type Service @model {
   id: ID!
   title: String!
-  price: Float    
+  description: String
+  price: Float
+  identityKey: String
+  image: String
+  duration: Int
   appointments: [Appointment] @connection(name: "AppointmentServices")
 }
     
  
 type Appointment @model {
   id: ID! 
-  client_id: String! 
+  client_id: String!
+  identityKey: String
   service: Service @connection(name: "AppointmentServices")
   start_time: String
   end_time: String
@@ -30,4 +38,3 @@ type Appointment @model {
   status: Boolean  
 }
   
- 

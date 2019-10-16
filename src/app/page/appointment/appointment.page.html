@@ -1,4 +1,4 @@
- 
+
 <ion-header class="parallax-obj parallax-translate-obj">
   <div class="page-hd">
     <ion-menu-button class="txt-light" mode="ios"></ion-menu-button>
@@ -7,45 +7,45 @@
 </ion-header>
 
 <ion-content fullscreen common-parallax [scrollEvents]="true">
-  <div class="page-ct pd-0"> 
-    <div class="cover"> 
+  <div class="page-ct pd-0">
+    <div class="cover">
       <div class="wrapper-cover thumb-h100">
-        <img src="assets/img/dm15.jpg" alt=""> 
+        <img src="{{image}}" alt="">
       </div>
     </div>
-      
+
     <form #form="ngForm" (ngSubmit)="createAppointment(form)">
       <ion-grid>
-        <ion-row color="primary" justify-content-center>
+        <ion-row  justify-content-center>
           <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
             <div text-center>
-              <h3 class="test-black">{{ servicetitle }}</h3>
+              <h3 class="test-black">{{ servicetitle }} -{{ serviceprice }} €</h3>
             </div>
-            <div padding> 
-              <ion-input name="serviceid" type="hidden" value="{{ serviceid }}" ngModel></ion-input> 
-              <ion-input name="clientid" type="hidden" value="{{ clientid }}"></ion-input> 
-              <ion-input name="status" type="hidden" value="1" ngModel></ion-input>  
-              <ion-input name="serviceprice" type="hidden" value="{{ serviceprice }}" ngModel></ion-input> 
+            <div >
+              <ion-input name="serviceid" type="hidden" hidden="hidden" value="{{ serviceid }}" ngModel></ion-input>
+              <ion-input name="clientid" type="hidden" hidden="hidden"  value="{{ clientid }}"></ion-input>
+              <ion-input name="status" type="hidden"  hidden="hidden" value="1" ngModel></ion-input>
+              <ion-input name="serviceprice" type="hidden" hidden="hidden"  value="{{ serviceprice }}" ngModel></ion-input>
               <ion-item>
-                <ion-label position="floating">Date:</ion-label> 
-                <ion-datetime name="date" displayFormat="MM DD YY" ngModel required></ion-datetime> 
-              </ion-item> 
-              <ion-item>
-                <ion-label position="floating">Start Time:</ion-label> 
-                <ion-datetime name="start_time" displayFormat="h:mm A" minuteValues="0,15,30,45" ngModel required></ion-datetime> 
+                <ion-label position="floating">Date:</ion-label>
+                <ion-datetime name="date" displayFormat="MM DD YY" ngModel required></ion-datetime>
               </ion-item>
               <ion-item>
-                <ion-label position="floating">END Time:</ion-label> 
-                <ion-datetime name="end_time" displayFormat="h:mm A" minuteValues="0,15,30,45" ngModel required></ion-datetime> 
-              </ion-item> 
+                <ion-label position="floating">Start Time:</ion-label>
+                <ion-datetime name="start_time" displayFormat="h:mm A" minuteValues="0,15,30,45" ngModel required></ion-datetime>
+              </ion-item>
+              <!--<ion-item>
+                <ion-label position="floating">END Time:</ion-label>
+                <ion-datetime name="end_time" displayFormat="h:mm A" minuteValues="0,15,30,45" ngModel required></ion-datetime>
+              </ion-item>-->
             </div>
             <div padding>
               <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Add Appointment</ion-button>
             </div>
-          </ion-col>  
+          </ion-col>
         </ion-row>
       </ion-grid>
     </form>
-      
-  </div>  
+
+  </div>
 </ion-content>

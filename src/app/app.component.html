@@ -1,50 +1,53 @@
 <ion-app>
-  <ion-split-pane>
-    <ion-menu type="reveal">
 
-      <div class="page page-menu">
-        
-        <div class="gap-2"></div>
-        
-        <div class="extract-prf">
-          <div class="avt-circle">
-            <img src="assets/img/avt3.jpg" alt="">
-          </div>
-          <div class="info txt-light">
-            <h2>{{username}}</h2>
-            <small>Developer</small>
-            <p>{{usermail}}</p>
-          </div>
-        </div>
+    <ion-split-pane>
 
-        <div class="gap-1"></div>
+        <ion-menu [hidden]="!loggedIn" type="reveal">
 
-        <div class="main-menu list">
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <button class="block clear item txt-light pdl-30" [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon [name]="p.icon"></ion-icon>
-              {{p.title}}
-            </button> 
-          </ion-menu-toggle>
+            <div class="page page-menu">
 
-        </div>
+                <div class="gap-2"></div>
+
+                <div class="extract-prf">
+                    <div class="avt-circle">
+                        <img src="assets/img/dm13.jpg" alt="">
+                    </div>
+                    <div class="info txt-light">
+                        <h2>{{username}}</h2>
+
+                        <p>{{usermail}}</p>
+                    </div>
+                </div>
+
+                <div class="gap-1"></div>
+
+                <div class="main-menu list">
+                    <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+                        <button class="block clear item txt-light pdl-30" [routerDirection]="'root'"
+                                [routerLink]="[p.url]">
+                            <ion-icon [name]="p.icon"></ion-icon>
+                            {{p.title}}
+                        </button>
+                    </ion-menu-toggle>
+
+                </div>
 
 
-        
-        <div class="gap-2">
-          <ion-menu-toggle auto-hide="false">
-            <button class="block clear item txt-light pdl-30" (click)="Logout()">
-              <ion-icon name="log-out"></ion-icon>
-              Logout
-            </button> 
-          </ion-menu-toggle>
-        </div>
+                <div class="gap-2">
+                    <ion-menu-toggle auto-hide="false">
+                        <button class="block clear item txt-light pdl-30" (click)="Logout()">
+                            <ion-icon name="log-out"></ion-icon>
+                            Logout
+                        </button>
+                    </ion-menu-toggle>
+                </div>
 
-      </div>
+            </div>
 
-    </ion-menu>
+        </ion-menu>
 
-    <ion-router-outlet main></ion-router-outlet>
+        <ion-router-outlet main></ion-router-outlet>
 
-  </ion-split-pane>
+    </ion-split-pane>
+
 </ion-app>

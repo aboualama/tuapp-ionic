@@ -5,11 +5,16 @@ export const getService = `query GetService($id: ID!) {
   getService(id: $id) {
     id
     title
+    description
     price
+    identityKey
+    image
+    duration
     appointments {
       items {
         id
         client_id
+        identityKey
         start_time
         end_time
         date
@@ -30,7 +35,11 @@ export const listServices = `query ListServices(
     items {
       id
       title
+      description
       price
+      identityKey
+      image
+      duration
       appointments {
         nextToken
       }
@@ -43,10 +52,15 @@ export const getAppointment = `query GetAppointment($id: ID!) {
   getAppointment(id: $id) {
     id
     client_id
+    identityKey
     service {
       id
       title
+      description
       price
+      identityKey
+      image
+      duration
       appointments {
         nextToken
       }
@@ -68,10 +82,15 @@ export const listAppointments = `query ListAppointments(
     items {
       id
       client_id
+      identityKey
       service {
         id
         title
+        description
         price
+        identityKey
+        image
+        duration
       }
       start_time
       end_time
