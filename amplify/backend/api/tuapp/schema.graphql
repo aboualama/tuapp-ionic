@@ -1,40 +1,38 @@
 
 
-<<<<<<< HEAD
-type MyApp {
-    id: ID!
-    appname: String!
-    logoapp: String!
-    splashscreen: String!
-    appidentificationkey: String!
-    created_at: DateTime!
-    updated_at: DateTime!
+
+type MyApp @model {
+  id: ID!
+  appname: String!
+  logoapp: String!
+  splashscreen: String!
+  created_at: String!
+  updated_at: String! 
+  identityKey: [Service] @connection(name: "AppServices")
 }
 
 
-=======
->>>>>>> ee19eaa7a181f9b4d9d71dbe38668a84132e3b59
+
 type Service @model {
   id: ID!
   title: String!
   description: String
   price: Float
-  identityKey: String
   image: String
-  duration: Int
+  duration: Int 
+  identityKey: MyApp @connection(name: "AppServices")
   appointments: [Appointment] @connection(name: "AppointmentServices")
 }
     
  
 type Appointment @model {
   id: ID! 
-  client_id: String!
-  identityKey: String
-  service: Service @connection(name: "AppointmentServices")
+  client_id: String! 
   start_time: String
   end_time: String
   date: String
   price: Float 
   status: Boolean  
+  service: Service @connection(name: "AppointmentServices")
 }
   

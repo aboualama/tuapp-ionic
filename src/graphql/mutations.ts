@@ -1,20 +1,95 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
+export const createMyApp = `mutation CreateMyApp($input: CreateMyAppInput!) {
+  createMyApp(input: $input) {
+    id
+    appname
+    logoapp
+    splashscreen
+    created_at
+    updated_at
+    identityKey {
+      items {
+        id
+        title
+        description
+        price
+        image
+        duration
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const updateMyApp = `mutation UpdateMyApp($input: UpdateMyAppInput!) {
+  updateMyApp(input: $input) {
+    id
+    appname
+    logoapp
+    splashscreen
+    created_at
+    updated_at
+    identityKey {
+      items {
+        id
+        title
+        description
+        price
+        image
+        duration
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const deleteMyApp = `mutation DeleteMyApp($input: DeleteMyAppInput!) {
+  deleteMyApp(input: $input) {
+    id
+    appname
+    logoapp
+    splashscreen
+    created_at
+    updated_at
+    identityKey {
+      items {
+        id
+        title
+        description
+        price
+        image
+        duration
+      }
+      nextToken
+    }
+  }
+}
+`;
 export const createService = `mutation CreateService($input: CreateServiceInput!) {
   createService(input: $input) {
     id
     title
     description
     price
-    identityKey
     image
     duration
+    identityKey {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      identityKey {
+        nextToken
+      }
+    }
     appointments {
       items {
         id
         client_id
-        identityKey
         start_time
         end_time
         date
@@ -32,14 +107,23 @@ export const updateService = `mutation UpdateService($input: UpdateServiceInput!
     title
     description
     price
-    identityKey
     image
     duration
+    identityKey {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      identityKey {
+        nextToken
+      }
+    }
     appointments {
       items {
         id
         client_id
-        identityKey
         start_time
         end_time
         date
@@ -57,14 +141,23 @@ export const deleteService = `mutation DeleteService($input: DeleteServiceInput!
     title
     description
     price
-    identityKey
     image
     duration
+    identityKey {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      identityKey {
+        nextToken
+      }
+    }
     appointments {
       items {
         id
         client_id
-        identityKey
         start_time
         end_time
         date
@@ -80,24 +173,30 @@ export const createAppointment = `mutation CreateAppointment($input: CreateAppoi
   createAppointment(input: $input) {
     id
     client_id
-    identityKey
-    service {
-      id
-      title
-      description
-      price
-      identityKey
-      image
-      duration
-      appointments {
-        nextToken
-      }
-    }
     start_time
     end_time
     date
     price
     status
+    service {
+      id
+      title
+      description
+      price
+      image
+      duration
+      identityKey {
+        id
+        appname
+        logoapp
+        splashscreen
+        created_at
+        updated_at
+      }
+      appointments {
+        nextToken
+      }
+    }
   }
 }
 `;
@@ -105,24 +204,30 @@ export const updateAppointment = `mutation UpdateAppointment($input: UpdateAppoi
   updateAppointment(input: $input) {
     id
     client_id
-    identityKey
-    service {
-      id
-      title
-      description
-      price
-      identityKey
-      image
-      duration
-      appointments {
-        nextToken
-      }
-    }
     start_time
     end_time
     date
     price
     status
+    service {
+      id
+      title
+      description
+      price
+      image
+      duration
+      identityKey {
+        id
+        appname
+        logoapp
+        splashscreen
+        created_at
+        updated_at
+      }
+      appointments {
+        nextToken
+      }
+    }
   }
 }
 `;
@@ -130,24 +235,30 @@ export const deleteAppointment = `mutation DeleteAppointment($input: DeleteAppoi
   deleteAppointment(input: $input) {
     id
     client_id
-    identityKey
-    service {
-      id
-      title
-      description
-      price
-      identityKey
-      image
-      duration
-      appointments {
-        nextToken
-      }
-    }
     start_time
     end_time
     date
     price
     status
+    service {
+      id
+      title
+      description
+      price
+      image
+      duration
+      identityKey {
+        id
+        appname
+        logoapp
+        splashscreen
+        created_at
+        updated_at
+      }
+      appointments {
+        nextToken
+      }
+    }
   }
 }
 `;

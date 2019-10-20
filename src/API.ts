@@ -1,14 +1,36 @@
 /* tslint:disable */
 //  This file was automatically generated and should not be edited.
 
+export type CreateMyAppInput = {
+  id?: string | null,
+  appname: string,
+  logoapp: string,
+  splashscreen: string,
+  created_at: string,
+  updated_at: string,
+};
+
+export type UpdateMyAppInput = {
+  id: string,
+  appname?: string | null,
+  logoapp?: string | null,
+  splashscreen?: string | null,
+  created_at?: string | null,
+  updated_at?: string | null,
+};
+
+export type DeleteMyAppInput = {
+  id?: string | null,
+};
+
 export type CreateServiceInput = {
   id?: string | null,
   title: string,
   description?: string | null,
   price?: number | null,
-  identityKey?: string | null,
   image?: string | null,
   duration?: number | null,
+  serviceIdentityKeyId?: string | null,
 };
 
 export type UpdateServiceInput = {
@@ -16,9 +38,9 @@ export type UpdateServiceInput = {
   title?: string | null,
   description?: string | null,
   price?: number | null,
-  identityKey?: string | null,
   image?: string | null,
   duration?: number | null,
+  serviceIdentityKeyId?: string | null,
 };
 
 export type DeleteServiceInput = {
@@ -28,7 +50,6 @@ export type DeleteServiceInput = {
 export type CreateAppointmentInput = {
   id?: string | null,
   client_id: string,
-  identityKey?: string | null,
   start_time?: string | null,
   end_time?: string | null,
   date?: string | null,
@@ -40,7 +61,6 @@ export type CreateAppointmentInput = {
 export type UpdateAppointmentInput = {
   id: string,
   client_id?: string | null,
-  identityKey?: string | null,
   start_time?: string | null,
   end_time?: string | null,
   date?: string | null,
@@ -53,17 +73,16 @@ export type DeleteAppointmentInput = {
   id?: string | null,
 };
 
-export type ModelServiceFilterInput = {
+export type ModelMyAppFilterInput = {
   id?: ModelIDFilterInput | null,
-  title?: ModelStringFilterInput | null,
-  description?: ModelStringFilterInput | null,
-  price?: ModelFloatFilterInput | null,
-  identityKey?: ModelStringFilterInput | null,
-  image?: ModelStringFilterInput | null,
-  duration?: ModelIntFilterInput | null,
-  and?: Array< ModelServiceFilterInput | null > | null,
-  or?: Array< ModelServiceFilterInput | null > | null,
-  not?: ModelServiceFilterInput | null,
+  appname?: ModelStringFilterInput | null,
+  logoapp?: ModelStringFilterInput | null,
+  splashscreen?: ModelStringFilterInput | null,
+  created_at?: ModelStringFilterInput | null,
+  updated_at?: ModelStringFilterInput | null,
+  and?: Array< ModelMyAppFilterInput | null > | null,
+  or?: Array< ModelMyAppFilterInput | null > | null,
+  not?: ModelMyAppFilterInput | null,
 };
 
 export type ModelIDFilterInput = {
@@ -90,6 +109,18 @@ export type ModelStringFilterInput = {
   notContains?: string | null,
   between?: Array< string | null > | null,
   beginsWith?: string | null,
+};
+
+export type ModelServiceFilterInput = {
+  id?: ModelIDFilterInput | null,
+  title?: ModelStringFilterInput | null,
+  description?: ModelStringFilterInput | null,
+  price?: ModelFloatFilterInput | null,
+  image?: ModelStringFilterInput | null,
+  duration?: ModelIntFilterInput | null,
+  and?: Array< ModelServiceFilterInput | null > | null,
+  or?: Array< ModelServiceFilterInput | null > | null,
+  not?: ModelServiceFilterInput | null,
 };
 
 export type ModelFloatFilterInput = {
@@ -119,7 +150,6 @@ export type ModelIntFilterInput = {
 export type ModelAppointmentFilterInput = {
   id?: ModelIDFilterInput | null,
   client_id?: ModelStringFilterInput | null,
-  identityKey?: ModelStringFilterInput | null,
   start_time?: ModelStringFilterInput | null,
   end_time?: ModelStringFilterInput | null,
   date?: ModelStringFilterInput | null,
@@ -135,6 +165,93 @@ export type ModelBooleanFilterInput = {
   eq?: boolean | null,
 };
 
+export type CreateMyAppMutationVariables = {
+  input: CreateMyAppInput,
+};
+
+export type CreateMyAppMutation = {
+  createMyApp:  {
+    __typename: "MyApp",
+    id: string,
+    appname: string,
+    logoapp: string,
+    splashscreen: string,
+    created_at: string,
+    updated_at: string,
+    identityKey:  {
+      __typename: "ModelServiceConnection",
+      items:  Array< {
+        __typename: "Service",
+        id: string,
+        title: string,
+        description: string | null,
+        price: number | null,
+        image: string | null,
+        duration: number | null,
+      } | null > | null,
+      nextToken: string | null,
+    } | null,
+  } | null,
+};
+
+export type UpdateMyAppMutationVariables = {
+  input: UpdateMyAppInput,
+};
+
+export type UpdateMyAppMutation = {
+  updateMyApp:  {
+    __typename: "MyApp",
+    id: string,
+    appname: string,
+    logoapp: string,
+    splashscreen: string,
+    created_at: string,
+    updated_at: string,
+    identityKey:  {
+      __typename: "ModelServiceConnection",
+      items:  Array< {
+        __typename: "Service",
+        id: string,
+        title: string,
+        description: string | null,
+        price: number | null,
+        image: string | null,
+        duration: number | null,
+      } | null > | null,
+      nextToken: string | null,
+    } | null,
+  } | null,
+};
+
+export type DeleteMyAppMutationVariables = {
+  input: DeleteMyAppInput,
+};
+
+export type DeleteMyAppMutation = {
+  deleteMyApp:  {
+    __typename: "MyApp",
+    id: string,
+    appname: string,
+    logoapp: string,
+    splashscreen: string,
+    created_at: string,
+    updated_at: string,
+    identityKey:  {
+      __typename: "ModelServiceConnection",
+      items:  Array< {
+        __typename: "Service",
+        id: string,
+        title: string,
+        description: string | null,
+        price: number | null,
+        image: string | null,
+        duration: number | null,
+      } | null > | null,
+      nextToken: string | null,
+    } | null,
+  } | null,
+};
+
 export type CreateServiceMutationVariables = {
   input: CreateServiceInput,
 };
@@ -146,16 +263,27 @@ export type CreateServiceMutation = {
     title: string,
     description: string | null,
     price: number | null,
-    identityKey: string | null,
     image: string | null,
     duration: number | null,
+    identityKey:  {
+      __typename: "MyApp",
+      id: string,
+      appname: string,
+      logoapp: string,
+      splashscreen: string,
+      created_at: string,
+      updated_at: string,
+      identityKey:  {
+        __typename: "ModelServiceConnection",
+        nextToken: string | null,
+      } | null,
+    } | null,
     appointments:  {
       __typename: "ModelAppointmentConnection",
       items:  Array< {
         __typename: "Appointment",
         id: string,
         client_id: string,
-        identityKey: string | null,
         start_time: string | null,
         end_time: string | null,
         date: string | null,
@@ -178,16 +306,27 @@ export type UpdateServiceMutation = {
     title: string,
     description: string | null,
     price: number | null,
-    identityKey: string | null,
     image: string | null,
     duration: number | null,
+    identityKey:  {
+      __typename: "MyApp",
+      id: string,
+      appname: string,
+      logoapp: string,
+      splashscreen: string,
+      created_at: string,
+      updated_at: string,
+      identityKey:  {
+        __typename: "ModelServiceConnection",
+        nextToken: string | null,
+      } | null,
+    } | null,
     appointments:  {
       __typename: "ModelAppointmentConnection",
       items:  Array< {
         __typename: "Appointment",
         id: string,
         client_id: string,
-        identityKey: string | null,
         start_time: string | null,
         end_time: string | null,
         date: string | null,
@@ -210,16 +349,27 @@ export type DeleteServiceMutation = {
     title: string,
     description: string | null,
     price: number | null,
-    identityKey: string | null,
     image: string | null,
     duration: number | null,
+    identityKey:  {
+      __typename: "MyApp",
+      id: string,
+      appname: string,
+      logoapp: string,
+      splashscreen: string,
+      created_at: string,
+      updated_at: string,
+      identityKey:  {
+        __typename: "ModelServiceConnection",
+        nextToken: string | null,
+      } | null,
+    } | null,
     appointments:  {
       __typename: "ModelAppointmentConnection",
       items:  Array< {
         __typename: "Appointment",
         id: string,
         client_id: string,
-        identityKey: string | null,
         start_time: string | null,
         end_time: string | null,
         date: string | null,
@@ -240,26 +390,33 @@ export type CreateAppointmentMutation = {
     __typename: "Appointment",
     id: string,
     client_id: string,
-    identityKey: string | null,
+    start_time: string | null,
+    end_time: string | null,
+    date: string | null,
+    price: number | null,
+    status: boolean | null,
     service:  {
       __typename: "Service",
       id: string,
       title: string,
       description: string | null,
       price: number | null,
-      identityKey: string | null,
       image: string | null,
       duration: number | null,
+      identityKey:  {
+        __typename: "MyApp",
+        id: string,
+        appname: string,
+        logoapp: string,
+        splashscreen: string,
+        created_at: string,
+        updated_at: string,
+      } | null,
       appointments:  {
         __typename: "ModelAppointmentConnection",
         nextToken: string | null,
       } | null,
     } | null,
-    start_time: string | null,
-    end_time: string | null,
-    date: string | null,
-    price: number | null,
-    status: boolean | null,
   } | null,
 };
 
@@ -272,26 +429,33 @@ export type UpdateAppointmentMutation = {
     __typename: "Appointment",
     id: string,
     client_id: string,
-    identityKey: string | null,
+    start_time: string | null,
+    end_time: string | null,
+    date: string | null,
+    price: number | null,
+    status: boolean | null,
     service:  {
       __typename: "Service",
       id: string,
       title: string,
       description: string | null,
       price: number | null,
-      identityKey: string | null,
       image: string | null,
       duration: number | null,
+      identityKey:  {
+        __typename: "MyApp",
+        id: string,
+        appname: string,
+        logoapp: string,
+        splashscreen: string,
+        created_at: string,
+        updated_at: string,
+      } | null,
       appointments:  {
         __typename: "ModelAppointmentConnection",
         nextToken: string | null,
       } | null,
     } | null,
-    start_time: string | null,
-    end_time: string | null,
-    date: string | null,
-    price: number | null,
-    status: boolean | null,
   } | null,
 };
 
@@ -304,26 +468,88 @@ export type DeleteAppointmentMutation = {
     __typename: "Appointment",
     id: string,
     client_id: string,
-    identityKey: string | null,
+    start_time: string | null,
+    end_time: string | null,
+    date: string | null,
+    price: number | null,
+    status: boolean | null,
     service:  {
       __typename: "Service",
       id: string,
       title: string,
       description: string | null,
       price: number | null,
-      identityKey: string | null,
       image: string | null,
       duration: number | null,
+      identityKey:  {
+        __typename: "MyApp",
+        id: string,
+        appname: string,
+        logoapp: string,
+        splashscreen: string,
+        created_at: string,
+        updated_at: string,
+      } | null,
       appointments:  {
         __typename: "ModelAppointmentConnection",
         nextToken: string | null,
       } | null,
     } | null,
-    start_time: string | null,
-    end_time: string | null,
-    date: string | null,
-    price: number | null,
-    status: boolean | null,
+  } | null,
+};
+
+export type GetMyAppQueryVariables = {
+  id: string,
+};
+
+export type GetMyAppQuery = {
+  getMyApp:  {
+    __typename: "MyApp",
+    id: string,
+    appname: string,
+    logoapp: string,
+    splashscreen: string,
+    created_at: string,
+    updated_at: string,
+    identityKey:  {
+      __typename: "ModelServiceConnection",
+      items:  Array< {
+        __typename: "Service",
+        id: string,
+        title: string,
+        description: string | null,
+        price: number | null,
+        image: string | null,
+        duration: number | null,
+      } | null > | null,
+      nextToken: string | null,
+    } | null,
+  } | null,
+};
+
+export type ListMyAppsQueryVariables = {
+  filter?: ModelMyAppFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListMyAppsQuery = {
+  listMyApps:  {
+    __typename: "ModelMyAppConnection",
+    items:  Array< {
+      __typename: "MyApp",
+      id: string,
+      appname: string,
+      logoapp: string,
+      splashscreen: string,
+      created_at: string,
+      updated_at: string,
+      identityKey:  {
+        __typename: "ModelServiceConnection",
+        nextToken: string | null,
+      } | null,
+    } | null > | null,
+    nextToken: string | null,
   } | null,
 };
 
@@ -338,16 +564,27 @@ export type GetServiceQuery = {
     title: string,
     description: string | null,
     price: number | null,
-    identityKey: string | null,
     image: string | null,
     duration: number | null,
+    identityKey:  {
+      __typename: "MyApp",
+      id: string,
+      appname: string,
+      logoapp: string,
+      splashscreen: string,
+      created_at: string,
+      updated_at: string,
+      identityKey:  {
+        __typename: "ModelServiceConnection",
+        nextToken: string | null,
+      } | null,
+    } | null,
     appointments:  {
       __typename: "ModelAppointmentConnection",
       items:  Array< {
         __typename: "Appointment",
         id: string,
         client_id: string,
-        identityKey: string | null,
         start_time: string | null,
         end_time: string | null,
         date: string | null,
@@ -374,9 +611,17 @@ export type ListServicesQuery = {
       title: string,
       description: string | null,
       price: number | null,
-      identityKey: string | null,
       image: string | null,
       duration: number | null,
+      identityKey:  {
+        __typename: "MyApp",
+        id: string,
+        appname: string,
+        logoapp: string,
+        splashscreen: string,
+        created_at: string,
+        updated_at: string,
+      } | null,
       appointments:  {
         __typename: "ModelAppointmentConnection",
         nextToken: string | null,
@@ -395,26 +640,33 @@ export type GetAppointmentQuery = {
     __typename: "Appointment",
     id: string,
     client_id: string,
-    identityKey: string | null,
+    start_time: string | null,
+    end_time: string | null,
+    date: string | null,
+    price: number | null,
+    status: boolean | null,
     service:  {
       __typename: "Service",
       id: string,
       title: string,
       description: string | null,
       price: number | null,
-      identityKey: string | null,
       image: string | null,
       duration: number | null,
+      identityKey:  {
+        __typename: "MyApp",
+        id: string,
+        appname: string,
+        logoapp: string,
+        splashscreen: string,
+        created_at: string,
+        updated_at: string,
+      } | null,
       appointments:  {
         __typename: "ModelAppointmentConnection",
         nextToken: string | null,
       } | null,
     } | null,
-    start_time: string | null,
-    end_time: string | null,
-    date: string | null,
-    price: number | null,
-    status: boolean | null,
   } | null,
 };
 
@@ -431,24 +683,97 @@ export type ListAppointmentsQuery = {
       __typename: "Appointment",
       id: string,
       client_id: string,
-      identityKey: string | null,
+      start_time: string | null,
+      end_time: string | null,
+      date: string | null,
+      price: number | null,
+      status: boolean | null,
       service:  {
         __typename: "Service",
         id: string,
         title: string,
         description: string | null,
         price: number | null,
-        identityKey: string | null,
         image: string | null,
         duration: number | null,
       } | null,
-      start_time: string | null,
-      end_time: string | null,
-      date: string | null,
-      price: number | null,
-      status: boolean | null,
     } | null > | null,
     nextToken: string | null,
+  } | null,
+};
+
+export type OnCreateMyAppSubscription = {
+  onCreateMyApp:  {
+    __typename: "MyApp",
+    id: string,
+    appname: string,
+    logoapp: string,
+    splashscreen: string,
+    created_at: string,
+    updated_at: string,
+    identityKey:  {
+      __typename: "ModelServiceConnection",
+      items:  Array< {
+        __typename: "Service",
+        id: string,
+        title: string,
+        description: string | null,
+        price: number | null,
+        image: string | null,
+        duration: number | null,
+      } | null > | null,
+      nextToken: string | null,
+    } | null,
+  } | null,
+};
+
+export type OnUpdateMyAppSubscription = {
+  onUpdateMyApp:  {
+    __typename: "MyApp",
+    id: string,
+    appname: string,
+    logoapp: string,
+    splashscreen: string,
+    created_at: string,
+    updated_at: string,
+    identityKey:  {
+      __typename: "ModelServiceConnection",
+      items:  Array< {
+        __typename: "Service",
+        id: string,
+        title: string,
+        description: string | null,
+        price: number | null,
+        image: string | null,
+        duration: number | null,
+      } | null > | null,
+      nextToken: string | null,
+    } | null,
+  } | null,
+};
+
+export type OnDeleteMyAppSubscription = {
+  onDeleteMyApp:  {
+    __typename: "MyApp",
+    id: string,
+    appname: string,
+    logoapp: string,
+    splashscreen: string,
+    created_at: string,
+    updated_at: string,
+    identityKey:  {
+      __typename: "ModelServiceConnection",
+      items:  Array< {
+        __typename: "Service",
+        id: string,
+        title: string,
+        description: string | null,
+        price: number | null,
+        image: string | null,
+        duration: number | null,
+      } | null > | null,
+      nextToken: string | null,
+    } | null,
   } | null,
 };
 
@@ -459,16 +784,27 @@ export type OnCreateServiceSubscription = {
     title: string,
     description: string | null,
     price: number | null,
-    identityKey: string | null,
     image: string | null,
     duration: number | null,
+    identityKey:  {
+      __typename: "MyApp",
+      id: string,
+      appname: string,
+      logoapp: string,
+      splashscreen: string,
+      created_at: string,
+      updated_at: string,
+      identityKey:  {
+        __typename: "ModelServiceConnection",
+        nextToken: string | null,
+      } | null,
+    } | null,
     appointments:  {
       __typename: "ModelAppointmentConnection",
       items:  Array< {
         __typename: "Appointment",
         id: string,
         client_id: string,
-        identityKey: string | null,
         start_time: string | null,
         end_time: string | null,
         date: string | null,
@@ -487,16 +823,27 @@ export type OnUpdateServiceSubscription = {
     title: string,
     description: string | null,
     price: number | null,
-    identityKey: string | null,
     image: string | null,
     duration: number | null,
+    identityKey:  {
+      __typename: "MyApp",
+      id: string,
+      appname: string,
+      logoapp: string,
+      splashscreen: string,
+      created_at: string,
+      updated_at: string,
+      identityKey:  {
+        __typename: "ModelServiceConnection",
+        nextToken: string | null,
+      } | null,
+    } | null,
     appointments:  {
       __typename: "ModelAppointmentConnection",
       items:  Array< {
         __typename: "Appointment",
         id: string,
         client_id: string,
-        identityKey: string | null,
         start_time: string | null,
         end_time: string | null,
         date: string | null,
@@ -515,16 +862,27 @@ export type OnDeleteServiceSubscription = {
     title: string,
     description: string | null,
     price: number | null,
-    identityKey: string | null,
     image: string | null,
     duration: number | null,
+    identityKey:  {
+      __typename: "MyApp",
+      id: string,
+      appname: string,
+      logoapp: string,
+      splashscreen: string,
+      created_at: string,
+      updated_at: string,
+      identityKey:  {
+        __typename: "ModelServiceConnection",
+        nextToken: string | null,
+      } | null,
+    } | null,
     appointments:  {
       __typename: "ModelAppointmentConnection",
       items:  Array< {
         __typename: "Appointment",
         id: string,
         client_id: string,
-        identityKey: string | null,
         start_time: string | null,
         end_time: string | null,
         date: string | null,
@@ -541,26 +899,33 @@ export type OnCreateAppointmentSubscription = {
     __typename: "Appointment",
     id: string,
     client_id: string,
-    identityKey: string | null,
+    start_time: string | null,
+    end_time: string | null,
+    date: string | null,
+    price: number | null,
+    status: boolean | null,
     service:  {
       __typename: "Service",
       id: string,
       title: string,
       description: string | null,
       price: number | null,
-      identityKey: string | null,
       image: string | null,
       duration: number | null,
+      identityKey:  {
+        __typename: "MyApp",
+        id: string,
+        appname: string,
+        logoapp: string,
+        splashscreen: string,
+        created_at: string,
+        updated_at: string,
+      } | null,
       appointments:  {
         __typename: "ModelAppointmentConnection",
         nextToken: string | null,
       } | null,
     } | null,
-    start_time: string | null,
-    end_time: string | null,
-    date: string | null,
-    price: number | null,
-    status: boolean | null,
   } | null,
 };
 
@@ -569,26 +934,33 @@ export type OnUpdateAppointmentSubscription = {
     __typename: "Appointment",
     id: string,
     client_id: string,
-    identityKey: string | null,
+    start_time: string | null,
+    end_time: string | null,
+    date: string | null,
+    price: number | null,
+    status: boolean | null,
     service:  {
       __typename: "Service",
       id: string,
       title: string,
       description: string | null,
       price: number | null,
-      identityKey: string | null,
       image: string | null,
       duration: number | null,
+      identityKey:  {
+        __typename: "MyApp",
+        id: string,
+        appname: string,
+        logoapp: string,
+        splashscreen: string,
+        created_at: string,
+        updated_at: string,
+      } | null,
       appointments:  {
         __typename: "ModelAppointmentConnection",
         nextToken: string | null,
       } | null,
     } | null,
-    start_time: string | null,
-    end_time: string | null,
-    date: string | null,
-    price: number | null,
-    status: boolean | null,
   } | null,
 };
 
@@ -597,25 +969,32 @@ export type OnDeleteAppointmentSubscription = {
     __typename: "Appointment",
     id: string,
     client_id: string,
-    identityKey: string | null,
+    start_time: string | null,
+    end_time: string | null,
+    date: string | null,
+    price: number | null,
+    status: boolean | null,
     service:  {
       __typename: "Service",
       id: string,
       title: string,
       description: string | null,
       price: number | null,
-      identityKey: string | null,
       image: string | null,
       duration: number | null,
+      identityKey:  {
+        __typename: "MyApp",
+        id: string,
+        appname: string,
+        logoapp: string,
+        splashscreen: string,
+        created_at: string,
+        updated_at: string,
+      } | null,
       appointments:  {
         __typename: "ModelAppointmentConnection",
         nextToken: string | null,
       } | null,
     } | null,
-    start_time: string | null,
-    end_time: string | null,
-    date: string | null,
-    price: number | null,
-    status: boolean | null,
   } | null,
 };
