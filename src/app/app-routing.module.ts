@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 
-const routes: Routes = [
-<<<<<<< HEAD
+const routes: Routes = [ 
   {
     path: '',
     redirectTo: 'login',
@@ -70,8 +69,6 @@ const routes: Routes = [
       path: 'badge',
       loadChildren: './page/ui-element/badge/badge.module#BadgePageModule' 
     },
-=======
->>>>>>> ee19eaa7a181f9b4d9d71dbe38668a84132e3b59
     {
         path: '',
         redirectTo: 'login',
@@ -130,7 +127,7 @@ const routes: Routes = [
         children: [{
             path: '',
             loadChildren: './page/ui-element/ui-element.module#UiElementPageModule'
-        },
+            },
             {
                 path: 'button',
                 loadChildren: './page/ui-element/button/button.module#ButtonPageModule'
@@ -204,6 +201,7 @@ const routes: Routes = [
                 loadChildren: './page/ui-element/toggle/toggle.module#TogglePageModule'
             }]
     },
+]}, 
 ];
 
 @NgModule({

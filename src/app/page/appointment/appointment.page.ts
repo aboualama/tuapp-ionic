@@ -57,52 +57,7 @@ export class AppointmentPage implements OnInit {
         await API.graphql(graphqlOperation(mutations.createAppointment, {input: appointment}));
         this.router.navigate(['bookedservice']);
     };
-<<<<<<< HEAD
-    await API.graphql(graphqlOperation(mutations.createAppointment , { input: appointment }));
-    this.router.navigate(['bookedservice'])   
-  } 
-  
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> ee19eaa7a181f9b4d9d71dbe38668a84132e3b59
-
-
-}
+    // await API.graphql(graphqlOperation(mutations.createAppointment , { input: appointment }));
+    // this.router.navigate(['bookedservice'])   
+} 
+   

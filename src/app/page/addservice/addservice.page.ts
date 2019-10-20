@@ -47,55 +47,8 @@ export class AddservicePage implements OnInit {
 
         this.router.navigate(['service']);
     };
-<<<<<<< HEAD
-    await API.graphql(graphqlOperation(mutations.createService , { input: service }));  
-    this.router.navigate(['service'])  
-  } 
+    // await API.graphql(graphqlOperation(mutations.createService , { input: service }));  
+    // this.router.navigate(['service'])  
+ 
 }   
   
-=======
-
-    onImagePreviewLoaded($event: string) {
-
-    }
-
-    onImageSelected($event: string) {
-
-    }
-
-    /* webSelectImage(element) {
-         if (element) {
-             console.log(element);
-             const file = element;
-             this.saveImageInAmplify(file.name, file);
-         }
-     }*/
-
-    onImagePicked(result1) {
-        console.log(result1);
-        Storage.list('pics').then((result2: any) => {
-            console.log(result2);
-        });
-    }
-
-    onImageLoaded(event) {
-        console.log('image.loaded:');
-        console.log(event);
-    }
-
-    async onImageUploaded(event) {
-        console.log('image.uploaded:');
-
-        await Storage.get(event.key).then(data => {
-            console.log('promise:', data);
-            this.image = data;
-        });
-
-    }
-
-    onAlbumImageSelected(event) {
-        console.log(event);
-    }
-}
-
->>>>>>> ee19eaa7a181f9b4d9d71dbe38668a84132e3b59

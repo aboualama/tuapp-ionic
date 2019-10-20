@@ -19,7 +19,7 @@ export class BookedservicePage implements OnInit {
         this.moment = moment();
     }
 
-    async ngOnInit() {
+    async ngOnInit() {    
 
         // Get All Services Booked
         const allappointment = await API.graphql(graphqlOperation(Queries.listAppointments));
