@@ -1,16 +1,15 @@
 
 
 
-type MyApp @model {
+type App @model {
   id: ID!
   appname: String!
   logoapp: String!
   splashscreen: String!
   created_at: String!
   updated_at: String! 
-  identityKey: [Service] @connection(name: "AppServices")
+  services: [Service] @connection(name: "AppServices")
 }
-
 
 
 type Service @model {
@@ -20,7 +19,7 @@ type Service @model {
   price: Float
   image: String
   duration: Int 
-  identityKey: MyApp @connection(name: "AppServices")
+  app: App @connection(name: "AppServices")
   appointments: [Appointment] @connection(name: "AppointmentServices")
 }
     

@@ -1,7 +1,7 @@
 /* tslint:disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateMyAppInput = {
+export type CreateAppInput = {
   id?: string | null,
   appname: string,
   logoapp: string,
@@ -10,7 +10,7 @@ export type CreateMyAppInput = {
   updated_at: string,
 };
 
-export type UpdateMyAppInput = {
+export type UpdateAppInput = {
   id: string,
   appname?: string | null,
   logoapp?: string | null,
@@ -19,7 +19,7 @@ export type UpdateMyAppInput = {
   updated_at?: string | null,
 };
 
-export type DeleteMyAppInput = {
+export type DeleteAppInput = {
   id?: string | null,
 };
 
@@ -30,7 +30,7 @@ export type CreateServiceInput = {
   price?: number | null,
   image?: string | null,
   duration?: number | null,
-  serviceIdentityKeyId?: string | null,
+  serviceAppId?: string | null,
 };
 
 export type UpdateServiceInput = {
@@ -40,7 +40,7 @@ export type UpdateServiceInput = {
   price?: number | null,
   image?: string | null,
   duration?: number | null,
-  serviceIdentityKeyId?: string | null,
+  serviceAppId?: string | null,
 };
 
 export type DeleteServiceInput = {
@@ -73,16 +73,16 @@ export type DeleteAppointmentInput = {
   id?: string | null,
 };
 
-export type ModelMyAppFilterInput = {
+export type ModelAppFilterInput = {
   id?: ModelIDFilterInput | null,
   appname?: ModelStringFilterInput | null,
   logoapp?: ModelStringFilterInput | null,
   splashscreen?: ModelStringFilterInput | null,
   created_at?: ModelStringFilterInput | null,
   updated_at?: ModelStringFilterInput | null,
-  and?: Array< ModelMyAppFilterInput | null > | null,
-  or?: Array< ModelMyAppFilterInput | null > | null,
-  not?: ModelMyAppFilterInput | null,
+  and?: Array< ModelAppFilterInput | null > | null,
+  or?: Array< ModelAppFilterInput | null > | null,
+  not?: ModelAppFilterInput | null,
 };
 
 export type ModelIDFilterInput = {
@@ -165,20 +165,20 @@ export type ModelBooleanFilterInput = {
   eq?: boolean | null,
 };
 
-export type CreateMyAppMutationVariables = {
-  input: CreateMyAppInput,
+export type CreateAppMutationVariables = {
+  input: CreateAppInput,
 };
 
-export type CreateMyAppMutation = {
-  createMyApp:  {
-    __typename: "MyApp",
+export type CreateAppMutation = {
+  createApp:  {
+    __typename: "App",
     id: string,
     appname: string,
     logoapp: string,
     splashscreen: string,
     created_at: string,
     updated_at: string,
-    identityKey:  {
+    services:  {
       __typename: "ModelServiceConnection",
       items:  Array< {
         __typename: "Service",
@@ -194,20 +194,20 @@ export type CreateMyAppMutation = {
   } | null,
 };
 
-export type UpdateMyAppMutationVariables = {
-  input: UpdateMyAppInput,
+export type UpdateAppMutationVariables = {
+  input: UpdateAppInput,
 };
 
-export type UpdateMyAppMutation = {
-  updateMyApp:  {
-    __typename: "MyApp",
+export type UpdateAppMutation = {
+  updateApp:  {
+    __typename: "App",
     id: string,
     appname: string,
     logoapp: string,
     splashscreen: string,
     created_at: string,
     updated_at: string,
-    identityKey:  {
+    services:  {
       __typename: "ModelServiceConnection",
       items:  Array< {
         __typename: "Service",
@@ -223,20 +223,20 @@ export type UpdateMyAppMutation = {
   } | null,
 };
 
-export type DeleteMyAppMutationVariables = {
-  input: DeleteMyAppInput,
+export type DeleteAppMutationVariables = {
+  input: DeleteAppInput,
 };
 
-export type DeleteMyAppMutation = {
-  deleteMyApp:  {
-    __typename: "MyApp",
+export type DeleteAppMutation = {
+  deleteApp:  {
+    __typename: "App",
     id: string,
     appname: string,
     logoapp: string,
     splashscreen: string,
     created_at: string,
     updated_at: string,
-    identityKey:  {
+    services:  {
       __typename: "ModelServiceConnection",
       items:  Array< {
         __typename: "Service",
@@ -265,15 +265,15 @@ export type CreateServiceMutation = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    identityKey:  {
-      __typename: "MyApp",
+    app:  {
+      __typename: "App",
       id: string,
       appname: string,
       logoapp: string,
       splashscreen: string,
       created_at: string,
       updated_at: string,
-      identityKey:  {
+      services:  {
         __typename: "ModelServiceConnection",
         nextToken: string | null,
       } | null,
@@ -308,15 +308,15 @@ export type UpdateServiceMutation = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    identityKey:  {
-      __typename: "MyApp",
+    app:  {
+      __typename: "App",
       id: string,
       appname: string,
       logoapp: string,
       splashscreen: string,
       created_at: string,
       updated_at: string,
-      identityKey:  {
+      services:  {
         __typename: "ModelServiceConnection",
         nextToken: string | null,
       } | null,
@@ -351,15 +351,15 @@ export type DeleteServiceMutation = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    identityKey:  {
-      __typename: "MyApp",
+    app:  {
+      __typename: "App",
       id: string,
       appname: string,
       logoapp: string,
       splashscreen: string,
       created_at: string,
       updated_at: string,
-      identityKey:  {
+      services:  {
         __typename: "ModelServiceConnection",
         nextToken: string | null,
       } | null,
@@ -403,8 +403,8 @@ export type CreateAppointmentMutation = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      identityKey:  {
-        __typename: "MyApp",
+      app:  {
+        __typename: "App",
         id: string,
         appname: string,
         logoapp: string,
@@ -442,8 +442,8 @@ export type UpdateAppointmentMutation = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      identityKey:  {
-        __typename: "MyApp",
+      app:  {
+        __typename: "App",
         id: string,
         appname: string,
         logoapp: string,
@@ -481,8 +481,8 @@ export type DeleteAppointmentMutation = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      identityKey:  {
-        __typename: "MyApp",
+      app:  {
+        __typename: "App",
         id: string,
         appname: string,
         logoapp: string,
@@ -498,20 +498,20 @@ export type DeleteAppointmentMutation = {
   } | null,
 };
 
-export type GetMyAppQueryVariables = {
+export type GetAppQueryVariables = {
   id: string,
 };
 
-export type GetMyAppQuery = {
-  getMyApp:  {
-    __typename: "MyApp",
+export type GetAppQuery = {
+  getApp:  {
+    __typename: "App",
     id: string,
     appname: string,
     logoapp: string,
     splashscreen: string,
     created_at: string,
     updated_at: string,
-    identityKey:  {
+    services:  {
       __typename: "ModelServiceConnection",
       items:  Array< {
         __typename: "Service",
@@ -527,24 +527,24 @@ export type GetMyAppQuery = {
   } | null,
 };
 
-export type ListMyAppsQueryVariables = {
-  filter?: ModelMyAppFilterInput | null,
+export type ListAppsQueryVariables = {
+  filter?: ModelAppFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListMyAppsQuery = {
-  listMyApps:  {
-    __typename: "ModelMyAppConnection",
+export type ListAppsQuery = {
+  listApps:  {
+    __typename: "ModelAppConnection",
     items:  Array< {
-      __typename: "MyApp",
+      __typename: "App",
       id: string,
       appname: string,
       logoapp: string,
       splashscreen: string,
       created_at: string,
       updated_at: string,
-      identityKey:  {
+      services:  {
         __typename: "ModelServiceConnection",
         nextToken: string | null,
       } | null,
@@ -566,15 +566,15 @@ export type GetServiceQuery = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    identityKey:  {
-      __typename: "MyApp",
+    app:  {
+      __typename: "App",
       id: string,
       appname: string,
       logoapp: string,
       splashscreen: string,
       created_at: string,
       updated_at: string,
-      identityKey:  {
+      services:  {
         __typename: "ModelServiceConnection",
         nextToken: string | null,
       } | null,
@@ -613,8 +613,8 @@ export type ListServicesQuery = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      identityKey:  {
-        __typename: "MyApp",
+      app:  {
+        __typename: "App",
         id: string,
         appname: string,
         logoapp: string,
@@ -653,8 +653,8 @@ export type GetAppointmentQuery = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      identityKey:  {
-        __typename: "MyApp",
+      app:  {
+        __typename: "App",
         id: string,
         appname: string,
         logoapp: string,
@@ -702,16 +702,16 @@ export type ListAppointmentsQuery = {
   } | null,
 };
 
-export type OnCreateMyAppSubscription = {
-  onCreateMyApp:  {
-    __typename: "MyApp",
+export type OnCreateAppSubscription = {
+  onCreateApp:  {
+    __typename: "App",
     id: string,
     appname: string,
     logoapp: string,
     splashscreen: string,
     created_at: string,
     updated_at: string,
-    identityKey:  {
+    services:  {
       __typename: "ModelServiceConnection",
       items:  Array< {
         __typename: "Service",
@@ -727,16 +727,16 @@ export type OnCreateMyAppSubscription = {
   } | null,
 };
 
-export type OnUpdateMyAppSubscription = {
-  onUpdateMyApp:  {
-    __typename: "MyApp",
+export type OnUpdateAppSubscription = {
+  onUpdateApp:  {
+    __typename: "App",
     id: string,
     appname: string,
     logoapp: string,
     splashscreen: string,
     created_at: string,
     updated_at: string,
-    identityKey:  {
+    services:  {
       __typename: "ModelServiceConnection",
       items:  Array< {
         __typename: "Service",
@@ -752,16 +752,16 @@ export type OnUpdateMyAppSubscription = {
   } | null,
 };
 
-export type OnDeleteMyAppSubscription = {
-  onDeleteMyApp:  {
-    __typename: "MyApp",
+export type OnDeleteAppSubscription = {
+  onDeleteApp:  {
+    __typename: "App",
     id: string,
     appname: string,
     logoapp: string,
     splashscreen: string,
     created_at: string,
     updated_at: string,
-    identityKey:  {
+    services:  {
       __typename: "ModelServiceConnection",
       items:  Array< {
         __typename: "Service",
@@ -786,15 +786,15 @@ export type OnCreateServiceSubscription = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    identityKey:  {
-      __typename: "MyApp",
+    app:  {
+      __typename: "App",
       id: string,
       appname: string,
       logoapp: string,
       splashscreen: string,
       created_at: string,
       updated_at: string,
-      identityKey:  {
+      services:  {
         __typename: "ModelServiceConnection",
         nextToken: string | null,
       } | null,
@@ -825,15 +825,15 @@ export type OnUpdateServiceSubscription = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    identityKey:  {
-      __typename: "MyApp",
+    app:  {
+      __typename: "App",
       id: string,
       appname: string,
       logoapp: string,
       splashscreen: string,
       created_at: string,
       updated_at: string,
-      identityKey:  {
+      services:  {
         __typename: "ModelServiceConnection",
         nextToken: string | null,
       } | null,
@@ -864,15 +864,15 @@ export type OnDeleteServiceSubscription = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    identityKey:  {
-      __typename: "MyApp",
+    app:  {
+      __typename: "App",
       id: string,
       appname: string,
       logoapp: string,
       splashscreen: string,
       created_at: string,
       updated_at: string,
-      identityKey:  {
+      services:  {
         __typename: "ModelServiceConnection",
         nextToken: string | null,
       } | null,
@@ -912,8 +912,8 @@ export type OnCreateAppointmentSubscription = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      identityKey:  {
-        __typename: "MyApp",
+      app:  {
+        __typename: "App",
         id: string,
         appname: string,
         logoapp: string,
@@ -947,8 +947,8 @@ export type OnUpdateAppointmentSubscription = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      identityKey:  {
-        __typename: "MyApp",
+      app:  {
+        __typename: "App",
         id: string,
         appname: string,
         logoapp: string,
@@ -982,8 +982,8 @@ export type OnDeleteAppointmentSubscription = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      identityKey:  {
-        __typename: "MyApp",
+      app:  {
+        __typename: "App",
         id: string,
         appname: string,
         logoapp: string,

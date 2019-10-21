@@ -1,15 +1,15 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
-export const getMyApp = `query GetMyApp($id: ID!) {
-  getMyApp(id: $id) {
+export const getApp = `query GetApp($id: ID!) {
+  getApp(id: $id) {
     id
     appname
     logoapp
     splashscreen
     created_at
     updated_at
-    identityKey {
+    services {
       items {
         id
         title
@@ -23,12 +23,8 @@ export const getMyApp = `query GetMyApp($id: ID!) {
   }
 }
 `;
-export const listMyApps = `query ListMyApps(
-  $filter: ModelMyAppFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listMyApps(filter: $filter, limit: $limit, nextToken: $nextToken) {
+export const listApps = `query ListApps($filter: ModelAppFilterInput, $limit: Int, $nextToken: String) {
+  listApps(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       appname
@@ -36,7 +32,7 @@ export const listMyApps = `query ListMyApps(
       splashscreen
       created_at
       updated_at
-      identityKey {
+      services {
         nextToken
       }
     }
@@ -52,14 +48,14 @@ export const getService = `query GetService($id: ID!) {
     price
     image
     duration
-    identityKey {
+    app {
       id
       appname
       logoapp
       splashscreen
       created_at
       updated_at
-      identityKey {
+      services {
         nextToken
       }
     }
@@ -91,7 +87,7 @@ export const listServices = `query ListServices(
       price
       image
       duration
-      identityKey {
+      app {
         id
         appname
         logoapp
@@ -123,7 +119,7 @@ export const getAppointment = `query GetAppointment($id: ID!) {
       price
       image
       duration
-      identityKey {
+      app {
         id
         appname
         logoapp

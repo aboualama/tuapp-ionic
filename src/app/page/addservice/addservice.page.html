@@ -32,9 +32,12 @@
                                            ngModel required></ion-input>
                             </div>
 
-                            <div class="input-wrapper">
-                                <ion-input class="block round bg-grey" name="duration" type="" placeholder="Durata"
-                                           ngModel required></ion-input>
+                            <div class="input-wrapper"> 
+                                    <ion-label class="block round bg-grey">Durata</ion-label>
+                                    <ion-select class="block round bg-grey" placeholder="Durata" [(ngModel)]="selectedCodeValue" name="duration" required>
+                                        <ion-select-option *ngFor="let duration of durations" value="{{duration}}" >{{ duration }}</ion-select-option> 
+                                    </ion-select> 
+                                <!-- <ion-input class="block round bg-grey" name="duration" type="" placeholder="Durata" ngModel required></ion-input> -->
                             </div>
 
                             <div class="input-wrapper">

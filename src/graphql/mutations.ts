@@ -1,15 +1,15 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
-export const createMyApp = `mutation CreateMyApp($input: CreateMyAppInput!) {
-  createMyApp(input: $input) {
+export const createApp = `mutation CreateApp($input: CreateAppInput!) {
+  createApp(input: $input) {
     id
     appname
     logoapp
     splashscreen
     created_at
     updated_at
-    identityKey {
+    services {
       items {
         id
         title
@@ -23,15 +23,15 @@ export const createMyApp = `mutation CreateMyApp($input: CreateMyAppInput!) {
   }
 }
 `;
-export const updateMyApp = `mutation UpdateMyApp($input: UpdateMyAppInput!) {
-  updateMyApp(input: $input) {
+export const updateApp = `mutation UpdateApp($input: UpdateAppInput!) {
+  updateApp(input: $input) {
     id
     appname
     logoapp
     splashscreen
     created_at
     updated_at
-    identityKey {
+    services {
       items {
         id
         title
@@ -45,15 +45,15 @@ export const updateMyApp = `mutation UpdateMyApp($input: UpdateMyAppInput!) {
   }
 }
 `;
-export const deleteMyApp = `mutation DeleteMyApp($input: DeleteMyAppInput!) {
-  deleteMyApp(input: $input) {
+export const deleteApp = `mutation DeleteApp($input: DeleteAppInput!) {
+  deleteApp(input: $input) {
     id
     appname
     logoapp
     splashscreen
     created_at
     updated_at
-    identityKey {
+    services {
       items {
         id
         title
@@ -75,14 +75,14 @@ export const createService = `mutation CreateService($input: CreateServiceInput!
     price
     image
     duration
-    identityKey {
+    app {
       id
       appname
       logoapp
       splashscreen
       created_at
       updated_at
-      identityKey {
+      services {
         nextToken
       }
     }
@@ -109,14 +109,14 @@ export const updateService = `mutation UpdateService($input: UpdateServiceInput!
     price
     image
     duration
-    identityKey {
+    app {
       id
       appname
       logoapp
       splashscreen
       created_at
       updated_at
-      identityKey {
+      services {
         nextToken
       }
     }
@@ -143,14 +143,14 @@ export const deleteService = `mutation DeleteService($input: DeleteServiceInput!
     price
     image
     duration
-    identityKey {
+    app {
       id
       appname
       logoapp
       splashscreen
       created_at
       updated_at
-      identityKey {
+      services {
         nextToken
       }
     }
@@ -185,7 +185,7 @@ export const createAppointment = `mutation CreateAppointment($input: CreateAppoi
       price
       image
       duration
-      identityKey {
+      app {
         id
         appname
         logoapp
@@ -216,7 +216,7 @@ export const updateAppointment = `mutation UpdateAppointment($input: UpdateAppoi
       price
       image
       duration
-      identityKey {
+      app {
         id
         appname
         logoapp
@@ -247,7 +247,7 @@ export const deleteAppointment = `mutation DeleteAppointment($input: DeleteAppoi
       price
       image
       duration
-      identityKey {
+      app {
         id
         appname
         logoapp

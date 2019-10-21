@@ -17,7 +17,8 @@ import {listServices} from '../../../graphql/queries';
 export class AddservicePage implements OnInit {
 
     image: String | Object;
-
+    durations = [10,20,30,40,50,60];
+    
     constructor(private modalController: ModalController, private router: Router) {
 
         Storage.get('pics/localhost_8100_.png').then((result) => {
@@ -36,6 +37,7 @@ export class AddservicePage implements OnInit {
         console.log(this.image);
         event.preventDefault();
         const service = {
+            serviceAppId: "1" ,
             title: form.value.servicetitle,
             price: form.value.serviceprice,
             duration: form.value.duration,
@@ -46,9 +48,7 @@ export class AddservicePage implements OnInit {
         await API.graphql(graphqlOperation(mutations.createService, {input: service}));
 
         this.router.navigate(['service']);
-    };
-    // await API.graphql(graphqlOperation(mutations.createService , { input: service }));  
-    // this.router.navigate(['service'])  
+    }; 
  
 }   
   

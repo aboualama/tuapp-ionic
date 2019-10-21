@@ -28,10 +28,7 @@
                 </div>
                 <div class="">
                     <div class="card-hd">
-                        <h1>{{ service.title }}</h1>
-                        <button class="clear only-icon" (click)="removeService(service , i)">
-                            <ion-icon name="more"></ion-icon>
-                        </button>
+                        <h1>{{ service.title }}</h1> 
                     </div>
                     <div class="item pdl-0">
                         <!-- <div class="avt-circle-2">
@@ -41,7 +38,12 @@
                             <h6 class="mg-0 fs-14">{{service.price}}€</h6>
                             <small>{{service.description}}</small>
                         </div>
-                        <ion-icon name="gear"></ion-icon>
+                        <ion-icon name="settings"></ion-icon>
+                    </div>
+                    <div class="card-hd" slot="end" >
+                        <button class="round-1 bg-l-opct only-icon" (click)="removeService(service , i)">
+                            <ion-icon name="trash"></ion-icon>
+                        </button>
                     </div>
                 </div>
             </div>

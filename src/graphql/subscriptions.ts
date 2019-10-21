@@ -1,15 +1,15 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
-export const onCreateMyApp = `subscription OnCreateMyApp {
-  onCreateMyApp {
+export const onCreateApp = `subscription OnCreateApp {
+  onCreateApp {
     id
     appname
     logoapp
     splashscreen
     created_at
     updated_at
-    identityKey {
+    services {
       items {
         id
         title
@@ -23,15 +23,15 @@ export const onCreateMyApp = `subscription OnCreateMyApp {
   }
 }
 `;
-export const onUpdateMyApp = `subscription OnUpdateMyApp {
-  onUpdateMyApp {
+export const onUpdateApp = `subscription OnUpdateApp {
+  onUpdateApp {
     id
     appname
     logoapp
     splashscreen
     created_at
     updated_at
-    identityKey {
+    services {
       items {
         id
         title
@@ -45,15 +45,15 @@ export const onUpdateMyApp = `subscription OnUpdateMyApp {
   }
 }
 `;
-export const onDeleteMyApp = `subscription OnDeleteMyApp {
-  onDeleteMyApp {
+export const onDeleteApp = `subscription OnDeleteApp {
+  onDeleteApp {
     id
     appname
     logoapp
     splashscreen
     created_at
     updated_at
-    identityKey {
+    services {
       items {
         id
         title
@@ -75,14 +75,14 @@ export const onCreateService = `subscription OnCreateService {
     price
     image
     duration
-    identityKey {
+    app {
       id
       appname
       logoapp
       splashscreen
       created_at
       updated_at
-      identityKey {
+      services {
         nextToken
       }
     }
@@ -109,14 +109,14 @@ export const onUpdateService = `subscription OnUpdateService {
     price
     image
     duration
-    identityKey {
+    app {
       id
       appname
       logoapp
       splashscreen
       created_at
       updated_at
-      identityKey {
+      services {
         nextToken
       }
     }
@@ -143,14 +143,14 @@ export const onDeleteService = `subscription OnDeleteService {
     price
     image
     duration
-    identityKey {
+    app {
       id
       appname
       logoapp
       splashscreen
       created_at
       updated_at
-      identityKey {
+      services {
         nextToken
       }
     }
@@ -185,7 +185,7 @@ export const onCreateAppointment = `subscription OnCreateAppointment {
       price
       image
       duration
-      identityKey {
+      app {
         id
         appname
         logoapp
@@ -216,7 +216,7 @@ export const onUpdateAppointment = `subscription OnUpdateAppointment {
       price
       image
       duration
-      identityKey {
+      app {
         id
         appname
         logoapp
@@ -247,7 +247,7 @@ export const onDeleteAppointment = `subscription OnDeleteAppointment {
       price
       image
       duration
-      identityKey {
+      app {
         id
         appname
         logoapp
