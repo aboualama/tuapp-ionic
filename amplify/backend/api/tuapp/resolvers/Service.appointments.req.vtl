@@ -2,7 +2,7 @@
 #set( $query = {
   "expression": "#connectionAttribute = :connectionAttribute",
   "expressionNames": {
-      "#connectionAttribute": "serviceBranchId"
+      "#connectionAttribute": "appointmentServiceId"
   },
   "expressionValues": {
       ":connectionAttribute": {
@@ -34,5 +34,5 @@ null
   #else
 null
   #end,
-  "index": "gsi-BranchServices"
+  "index": "gsi-AppointmentServices"
 }

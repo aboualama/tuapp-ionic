@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "tuapp27bd4071_identitypool_27bd4071",
-    "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "tuapp27bd4071",
-    "userPoolName": "tuapp27bd4071_userpool_27bd4071",
+    "identityPoolName": "tuappac084232_identitypool_ac084232",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "tuappaac084232",
+    "userPoolName": "tuappac084232_userpool_ac084232",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,19 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "tuapp227bd4071_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "tuappaac084232_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "tuapp27bd4071",
+    "useDefault": "manual",
     "authSelections": "identityPoolAndUserPool",
+    "resourceName": "tuappac084232ac084232",
+    "thirdPartyAuth": true,
+    "authProviders": [],
+    "triggers": "{}",
+    "hostedUI": true,
+    "hostedUIDomainName": "tuappac084232-ac084232",
+    "authProvidersUserPool": [],
+    "hostedUIProviderMeta": "[]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:8100/service/\"],\"LogoutURLs\":[\"http://localhost:8100/\"]}",
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",
@@ -44,11 +53,9 @@
             "Arn"
         ]
     },
-    "useDefault": "defaultSocial",
-    "dependsOn": [],
-    "hostedUI": true,
-    "hostedUIDomainName": "tuapp3844d7e9-3844d7e9",
-    "authProvidersUserPool": [],
-    "hostedUIProviderMeta": "[]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:8100/service/\"],\"LogoutURLs\":[\"http://localhost:8100/\"]}"
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": [],
+    "dependsOn": []
 }
