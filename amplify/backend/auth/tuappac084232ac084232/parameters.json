@@ -1,6 +1,6 @@
 {
     "identityPoolName": "tuappac084232_identitypool_ac084232",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "tuappaac084232",
     "userPoolName": "tuappac084232_userpool_ac084232",
     "autoVerifiedAttributes": [
@@ -33,14 +33,8 @@
     "useDefault": "manual",
     "authSelections": "identityPoolAndUserPool",
     "resourceName": "tuappac084232ac084232",
-    "thirdPartyAuth": true,
-    "authProviders": [],
     "triggers": "{}",
     "hostedUI": true,
-    "hostedUIDomainName": "tuappac084232-ac084232",
-    "authProvidersUserPool": [],
-    "hostedUIProviderMeta": "[]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:8100/service/\"],\"LogoutURLs\":[\"http://localhost:8100/\"]}",
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",
@@ -57,5 +51,11 @@
         "Ref": "AWS::StackId"
     },
     "permissions": [],
-    "dependsOn": []
+    "dependsOn": [],
+    "thirdPartyAuth": true,
+    "authProviders": [],
+    "hostedUIDomainName": "tuappa6a9f0d4-a6a9f0d4",
+    "authProvidersUserPool": [],
+    "hostedUIProviderMeta": "[]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:8100/service/\"],\"LogoutURLs\":[\"http://localhost:8100/\"]}"
 }

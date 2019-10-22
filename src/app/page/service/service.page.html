@@ -15,7 +15,7 @@
 
         <div class="card card-bg-img" *ngFor="let service of services; let i = index" (click)="selectService(service.id)">
             <div class="thumb-h200">
-                <img  [src]="service.image || 'assets/img/dm1.jpg'" alt="">
+                <img  [src]="'assets/img/' + service.image || 'assets/img/dm1.jpg'" alt="">
             </div>
             <div class="card-ct">
                 <div class="btn-action">

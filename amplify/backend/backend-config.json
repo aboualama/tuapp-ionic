@@ -1,26 +1,32 @@
 {
-	"auth": {
-		"tuappac084232ac084232": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": []
-		}
-	},
-	"api": {
-		"tuapp": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"authConfig": {
-					"additionalAuthenticationProviders": [],
-					"defaultAuthentication": {
-						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
-						"userPoolConfig": {
-							"userPoolId": "authtuappac084232ac084232"
-						}
-					}
-				}
-			}
-		}
-	}
+    "auth": {
+        "tuappac084232ac084232": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": []
+        }
+    },
+    "api": {
+        "tuapp": {
+            "service": "AppSync",
+            "providerPlugin": "awscloudformation",
+            "output": {
+                "authConfig": {
+                    "additionalAuthenticationProviders": [],
+                    "defaultAuthentication": {
+                        "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+                        "userPoolConfig": {
+                            "userPoolId": "authtuappac084232ac084232"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "storage": {
+        "s32e3a10e6": {
+            "service": "S3",
+            "providerPlugin": "awscloudformation"
+        }
+    }
 }

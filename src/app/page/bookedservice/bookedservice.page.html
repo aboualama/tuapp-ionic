@@ -16,7 +16,7 @@
 
 
 
-      <div class="ion-padding" >
+      <!-- <div class="ion-padding" >
         <ion-card *ngFor="let item of items; let i = index">
           <ion-item-sliding  color="light">
             <ion-item>
@@ -29,8 +29,38 @@
              </ion-item>
           </ion-item-sliding>
         </ion-card>
-      </div>
+      </div> -->
 
-
+ 
+       
+ 
+            <div *ngFor="let item of items; let i = index">
+              <div class="card-hd"> 
+                <ion-grid>
+                    <ion-row>
+                      <ion-col class="">
+                        <div>
+                            <ion-radio color="success" value="0"></ion-radio>  
+                        </div>
+                      </ion-col>
+                      <ion-col class="">
+                        <div>
+                          {{ normalizza(item.date) }}
+                        </div>
+                      </ion-col>
+                      <ion-col class="">
+                        <div>
+                          {{ item.service.title }}
+                        </div>
+                      </ion-col>
+                      <ion-col class="">
+                        <div>
+                            {{item.service.price}}€
+                        </div>
+                      </ion-col>
+                    </ion-row> 
+                </ion-grid> 
+              </div>     
+            </div>     
     </div>
   </ion-content>
