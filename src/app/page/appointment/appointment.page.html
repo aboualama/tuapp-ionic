@@ -10,11 +10,11 @@
   <div class="page-ct pd-0">
     <div class="cover">
       <div class="wrapper-cover thumb-h100">
-        <img src="assets/img/{{image}}" alt="">
+        <img src="assets/img/dm9.jpg" alt="">
       </div>
     </div>
 
-    <form #form="ngForm" (ngSubmit)="createAppointment(form)">
+    <!-- <form #form="ngForm" (ngSubmit)="createAppointment(form)">
       <ion-grid>
         <ion-row  justify-content-center>
           <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -37,7 +37,7 @@
               <!--<ion-item>
                 <ion-label position="floating">END Time:</ion-label>
                 <ion-datetime name="end_time" displayFormat="h:mm A" minuteValues="0,15,30,45" ngModel required></ion-datetime>
-              </ion-item>-->
+              </ion-item> 
             </div>
             <div padding>
               <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Add Appointment</ion-button>
@@ -45,7 +45,46 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-    </form>
+    </form> -->
+
+ 
+       
+ 
+<div *ngFor="let time of times; let i = index">
+  <div class="card-hd"> 
+    <ion-grid>
+      <ion-row class="div-row">
+        <ion-col class="div-col">
+          <div>
+            <ion-radio color="success" value="0"></ion-radio>  
+          </div>
+        </ion-col> 
+        <ion-col class="">
+          <div>
+            {{time}} 
+          </div>
+        </ion-col> 
+        <ion-col class="">
+          <div>
+            {{servicetitle}} 
+          </div>
+        </ion-col> 
+        <ion-col class="">
+          <div>
+            <del> {{(serviceprice + 5)}} €</del>
+          </div>
+        </ion-col> 
+        <ion-col class="">
+          <div>
+            {{serviceprice}} €
+          </div>
+        </ion-col> 
+      </ion-row>
+    </ion-grid>
+  </div>  
+</div>    
+
+
 
   </div>
 </ion-content>

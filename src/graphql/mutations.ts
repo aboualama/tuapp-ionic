@@ -17,6 +17,9 @@ export const createApp = `mutation CreateApp($input: CreateAppInput!) {
         price
         image
         duration
+        start_time
+        end_time
+        calender_offset
       }
       nextToken
     }
@@ -39,6 +42,9 @@ export const updateApp = `mutation UpdateApp($input: UpdateAppInput!) {
         price
         image
         duration
+        start_time
+        end_time
+        calender_offset
       }
       nextToken
     }
@@ -61,6 +67,9 @@ export const deleteApp = `mutation DeleteApp($input: DeleteAppInput!) {
         price
         image
         duration
+        start_time
+        end_time
+        calender_offset
       }
       nextToken
     }
@@ -75,6 +84,9 @@ export const createService = `mutation CreateService($input: CreateServiceInput!
     price
     image
     duration
+    start_time
+    end_time
+    calender_offset
     app {
       id
       appname
@@ -109,6 +121,9 @@ export const updateService = `mutation UpdateService($input: UpdateServiceInput!
     price
     image
     duration
+    start_time
+    end_time
+    calender_offset
     app {
       id
       appname
@@ -143,6 +158,9 @@ export const deleteService = `mutation DeleteService($input: DeleteServiceInput!
     price
     image
     duration
+    start_time
+    end_time
+    calender_offset
     app {
       id
       appname
@@ -185,6 +203,9 @@ export const createAppointment = `mutation CreateAppointment($input: CreateAppoi
       price
       image
       duration
+      start_time
+      end_time
+      calender_offset
       app {
         id
         appname
@@ -216,6 +237,9 @@ export const updateAppointment = `mutation UpdateAppointment($input: UpdateAppoi
       price
       image
       duration
+      start_time
+      end_time
+      calender_offset
       app {
         id
         appname
@@ -247,6 +271,9 @@ export const deleteAppointment = `mutation DeleteAppointment($input: DeleteAppoi
       price
       image
       duration
+      start_time
+      end_time
+      calender_offset
       app {
         id
         appname

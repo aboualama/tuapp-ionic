@@ -1,0 +1,46 @@
+
+<ion-header class="parallax-obj parallax-translate-obj">
+    <div class="page-hd">
+      <ion-menu-button class="txt-light" mode="ios"></ion-menu-button>
+      <p class="title-mn txt-light">Setting</p>
+    </div>
+  </ion-header>
+  
+  <ion-content fullscreen common-parallax [scrollEvents]="true">
+    <div class="page-ct pd-0">
+      <div class="cover">
+        <div class="wrapper-cover thumb-h100">
+          <img src="assets/img/a.jpg" alt="">
+        </div>
+      </div>
+  
+      <form #form="ngForm" (ngSubmit)="updateService(form)">
+        <ion-grid>
+          <ion-row  justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div text-center>
+                <h3 class="test-black">{{ servicetitle }}</h3>
+              </div>
+              <div class="div-item">
+                <ion-input name="serviceid" type="hidden" hidden="hidden" value="{{ serviceid }}" ngModel></ion-input>  
+                <div class="div-item">
+                  <ion-label position="floating">Start Time::</ion-label>
+                  <ion-datetime name="start_time" displayFormat="h:mm A" value="{{start_time}}" minuteValues="0,15,30,45" ngModel required></ion-datetime>
+                </div>
+                <div class="div-item">
+                  <ion-label position="floating">End Time:</ion-label>
+                  <ion-datetime name="end_time" displayFormat="h:mm A" value="{{end_time}}" minuteValues="0,15,30,45" ngModel required></ion-datetime>
+                </div>
+                <div class="div-item">
+                  <ion-label position="floating">Calender Offset:</ion-label> 
+                  <ion-input name="calender_offset" value="{{calender_offset}}" ngModel required></ion-input>
+                </div>
+              </div>
+              <div padding>
+                <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Edit Setting</ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+  

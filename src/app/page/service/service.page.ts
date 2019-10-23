@@ -34,6 +34,11 @@ export class ServicePage implements OnInit {
 
     }
 
+    // edit Service
+    editService = async (id: any) => {
+        this.router.navigate(['settings/' + id]);
+    };
+
 
     // remove Service
     removeService = async (service: any, i: any) => {

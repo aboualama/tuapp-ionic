@@ -17,6 +17,9 @@ export const getApp = `query GetApp($id: ID!) {
         price
         image
         duration
+        start_time
+        end_time
+        calender_offset
       }
       nextToken
     }
@@ -48,6 +51,9 @@ export const getService = `query GetService($id: ID!) {
     price
     image
     duration
+    start_time
+    end_time
+    calender_offset
     app {
       id
       appname
@@ -87,6 +93,9 @@ export const listServices = `query ListServices(
       price
       image
       duration
+      start_time
+      end_time
+      calender_offset
       app {
         id
         appname
@@ -119,6 +128,9 @@ export const getAppointment = `query GetAppointment($id: ID!) {
       price
       image
       duration
+      start_time
+      end_time
+      calender_offset
       app {
         id
         appname
@@ -155,6 +167,9 @@ export const listAppointments = `query ListAppointments(
         price
         image
         duration
+        start_time
+        end_time
+        calender_offset
       }
     }
     nextToken

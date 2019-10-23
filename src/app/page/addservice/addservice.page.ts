@@ -43,6 +43,9 @@ export class AddservicePage implements OnInit {
             duration: form.value.duration,
             description: form.value.description,
             image: this.image,
+            start_time: "00:00",
+            end_time: "00:00",
+            calender_offset: "00:00",
 
         };
         await API.graphql(graphqlOperation(mutations.createService, {input: service}));

@@ -17,6 +17,9 @@ export const onCreateApp = `subscription OnCreateApp {
         price
         image
         duration
+        start_time
+        end_time
+        calender_offset
       }
       nextToken
     }
@@ -39,6 +42,9 @@ export const onUpdateApp = `subscription OnUpdateApp {
         price
         image
         duration
+        start_time
+        end_time
+        calender_offset
       }
       nextToken
     }
@@ -61,6 +67,9 @@ export const onDeleteApp = `subscription OnDeleteApp {
         price
         image
         duration
+        start_time
+        end_time
+        calender_offset
       }
       nextToken
     }
@@ -75,6 +84,9 @@ export const onCreateService = `subscription OnCreateService {
     price
     image
     duration
+    start_time
+    end_time
+    calender_offset
     app {
       id
       appname
@@ -109,6 +121,9 @@ export const onUpdateService = `subscription OnUpdateService {
     price
     image
     duration
+    start_time
+    end_time
+    calender_offset
     app {
       id
       appname
@@ -143,6 +158,9 @@ export const onDeleteService = `subscription OnDeleteService {
     price
     image
     duration
+    start_time
+    end_time
+    calender_offset
     app {
       id
       appname
@@ -185,6 +203,9 @@ export const onCreateAppointment = `subscription OnCreateAppointment {
       price
       image
       duration
+      start_time
+      end_time
+      calender_offset
       app {
         id
         appname
@@ -216,6 +237,9 @@ export const onUpdateAppointment = `subscription OnUpdateAppointment {
       price
       image
       duration
+      start_time
+      end_time
+      calender_offset
       app {
         id
         appname
@@ -247,6 +271,9 @@ export const onDeleteAppointment = `subscription OnDeleteAppointment {
       price
       image
       duration
+      start_time
+      end_time
+      calender_offset
       app {
         id
         appname

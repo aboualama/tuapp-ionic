@@ -28,6 +28,10 @@ const routes: Routes = [
   //   loadChildren: './page/worker/worker.module#WorkerPageModule'
   // },
   {
+    path: 'settings/:id',
+    loadChildren: './page/settings/settings.module#SettingsPageModule'
+  },  
+  {
     path: 'appointment/:myid',
     loadChildren: './page/appointment/appointment.module#AppointmentPageModule'
   },
@@ -202,6 +206,7 @@ const routes: Routes = [
     //         }]
     // },
 ]}, 
+
 ];
 
 @NgModule({

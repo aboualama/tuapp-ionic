@@ -17,6 +17,9 @@ type Service @model {
   price: Float
   image: String
   duration: Int 
+  start_time: String
+  end_time: String
+  calender_offset: String
   app: App @connection(name: "AppServices")
   appointments: [Appointment] @connection(name: "AppointmentServices")
 }
