@@ -18,6 +18,12 @@ import { DatePicker } from '@ionic-native/date-picker/ngx';
 })
 export class AppointmentPage implements OnInit {
 
+
+    public myDate:string;
+    public myTime:string;
+    public myDateNTime:string;
+
+    
     public clientid: any;
     public serviceid: any;
     public servicetitle: any;

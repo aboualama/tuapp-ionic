@@ -16,16 +16,12 @@ import * as moment from 'moment/moment';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
-
-  public myDate:string;
-  public myTime:string;
-  public myDateNTime:string;
   
-  public serviceid: any; 
-  public servicetitle: any; 
-  public start_time: any;
-  public end_time: any;
-  public calender_offset: any; 
+  // public serviceid: any; 
+  // public servicetitle: any; 
+  // public start_time: any;
+  // public end_time: any;
+  // public calender_offset: any; 
 
   public days: any[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
