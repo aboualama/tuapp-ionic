@@ -9,6 +9,21 @@ export const getApp = `query GetApp($id: ID!) {
     splashscreen
     created_at
     updated_at
+    settings {
+      items {
+        id
+        calender_offset
+      }
+      nextToken
+    }
+    worktimes {
+      items {
+        id
+        open_time
+        close_time
+      }
+      nextToken
+    }
     services {
       items {
         id
@@ -35,8 +50,114 @@ export const listApps = `query ListApps($filter: ModelAppFilterInput, $limit: In
       splashscreen
       created_at
       updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
       services {
         nextToken
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const getSetting = `query GetSetting($id: ID!) {
+  getSetting(id: $id) {
+    id
+    calender_offset
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const listSettings = `query ListSettings(
+  $filter: ModelSettingFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listSettings(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      calender_offset
+      app {
+        id
+        appname
+        logoapp
+        splashscreen
+        created_at
+        updated_at
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const getWorktime = `query GetWorktime($id: ID!) {
+  getWorktime(id: $id) {
+    id
+    open_time
+    close_time
+    days {
+      days
+    }
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const listWorktimes = `query ListWorktimes(
+  $filter: ModelWorktimeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listWorktimes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      open_time
+      close_time
+      days {
+        days
+      }
+      app {
+        id
+        appname
+        logoapp
+        splashscreen
+        created_at
+        updated_at
       }
     }
     nextToken
@@ -61,6 +182,12 @@ export const getService = `query GetService($id: ID!) {
       splashscreen
       created_at
       updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
       services {
         nextToken
       }

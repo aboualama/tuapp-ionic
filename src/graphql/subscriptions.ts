@@ -9,6 +9,21 @@ export const onCreateApp = `subscription OnCreateApp {
     splashscreen
     created_at
     updated_at
+    settings {
+      items {
+        id
+        calender_offset
+      }
+      nextToken
+    }
+    worktimes {
+      items {
+        id
+        open_time
+        close_time
+      }
+      nextToken
+    }
     services {
       items {
         id
@@ -34,6 +49,21 @@ export const onUpdateApp = `subscription OnUpdateApp {
     splashscreen
     created_at
     updated_at
+    settings {
+      items {
+        id
+        calender_offset
+      }
+      nextToken
+    }
+    worktimes {
+      items {
+        id
+        open_time
+        close_time
+      }
+      nextToken
+    }
     services {
       items {
         id
@@ -59,6 +89,21 @@ export const onDeleteApp = `subscription OnDeleteApp {
     splashscreen
     created_at
     updated_at
+    settings {
+      items {
+        id
+        calender_offset
+      }
+      nextToken
+    }
+    worktimes {
+      items {
+        id
+        open_time
+        close_time
+      }
+      nextToken
+    }
     services {
       items {
         id
@@ -72,6 +117,162 @@ export const onDeleteApp = `subscription OnDeleteApp {
         calender_offset
       }
       nextToken
+    }
+  }
+}
+`;
+export const onCreateSetting = `subscription OnCreateSetting {
+  onCreateSetting {
+    id
+    calender_offset
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const onUpdateSetting = `subscription OnUpdateSetting {
+  onUpdateSetting {
+    id
+    calender_offset
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const onDeleteSetting = `subscription OnDeleteSetting {
+  onDeleteSetting {
+    id
+    calender_offset
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const onCreateWorktime = `subscription OnCreateWorktime {
+  onCreateWorktime {
+    id
+    open_time
+    close_time
+    days {
+      days
+    }
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const onUpdateWorktime = `subscription OnUpdateWorktime {
+  onUpdateWorktime {
+    id
+    open_time
+    close_time
+    days {
+      days
+    }
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const onDeleteWorktime = `subscription OnDeleteWorktime {
+  onDeleteWorktime {
+    id
+    open_time
+    close_time
+    days {
+      days
+    }
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
     }
   }
 }
@@ -94,6 +295,12 @@ export const onCreateService = `subscription OnCreateService {
       splashscreen
       created_at
       updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
       services {
         nextToken
       }
@@ -131,6 +338,12 @@ export const onUpdateService = `subscription OnUpdateService {
       splashscreen
       created_at
       updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
       services {
         nextToken
       }
@@ -168,6 +381,12 @@ export const onDeleteService = `subscription OnDeleteService {
       splashscreen
       created_at
       updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
       services {
         nextToken
       }

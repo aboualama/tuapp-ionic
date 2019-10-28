@@ -9,6 +9,21 @@ export const createApp = `mutation CreateApp($input: CreateAppInput!) {
     splashscreen
     created_at
     updated_at
+    settings {
+      items {
+        id
+        calender_offset
+      }
+      nextToken
+    }
+    worktimes {
+      items {
+        id
+        open_time
+        close_time
+      }
+      nextToken
+    }
     services {
       items {
         id
@@ -34,6 +49,21 @@ export const updateApp = `mutation UpdateApp($input: UpdateAppInput!) {
     splashscreen
     created_at
     updated_at
+    settings {
+      items {
+        id
+        calender_offset
+      }
+      nextToken
+    }
+    worktimes {
+      items {
+        id
+        open_time
+        close_time
+      }
+      nextToken
+    }
     services {
       items {
         id
@@ -59,6 +89,21 @@ export const deleteApp = `mutation DeleteApp($input: DeleteAppInput!) {
     splashscreen
     created_at
     updated_at
+    settings {
+      items {
+        id
+        calender_offset
+      }
+      nextToken
+    }
+    worktimes {
+      items {
+        id
+        open_time
+        close_time
+      }
+      nextToken
+    }
     services {
       items {
         id
@@ -72,6 +117,162 @@ export const deleteApp = `mutation DeleteApp($input: DeleteAppInput!) {
         calender_offset
       }
       nextToken
+    }
+  }
+}
+`;
+export const createSetting = `mutation CreateSetting($input: CreateSettingInput!) {
+  createSetting(input: $input) {
+    id
+    calender_offset
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const updateSetting = `mutation UpdateSetting($input: UpdateSettingInput!) {
+  updateSetting(input: $input) {
+    id
+    calender_offset
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const deleteSetting = `mutation DeleteSetting($input: DeleteSettingInput!) {
+  deleteSetting(input: $input) {
+    id
+    calender_offset
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const createWorktime = `mutation CreateWorktime($input: CreateWorktimeInput!) {
+  createWorktime(input: $input) {
+    id
+    open_time
+    close_time
+    days {
+      days
+    }
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const updateWorktime = `mutation UpdateWorktime($input: UpdateWorktimeInput!) {
+  updateWorktime(input: $input) {
+    id
+    open_time
+    close_time
+    days {
+      days
+    }
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const deleteWorktime = `mutation DeleteWorktime($input: DeleteWorktimeInput!) {
+  deleteWorktime(input: $input) {
+    id
+    open_time
+    close_time
+    days {
+      days
+    }
+    app {
+      id
+      appname
+      logoapp
+      splashscreen
+      created_at
+      updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
+      services {
+        nextToken
+      }
     }
   }
 }
@@ -94,6 +295,12 @@ export const createService = `mutation CreateService($input: CreateServiceInput!
       splashscreen
       created_at
       updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
       services {
         nextToken
       }
@@ -131,6 +338,12 @@ export const updateService = `mutation UpdateService($input: UpdateServiceInput!
       splashscreen
       created_at
       updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
       services {
         nextToken
       }
@@ -168,6 +381,12 @@ export const deleteService = `mutation DeleteService($input: DeleteServiceInput!
       splashscreen
       created_at
       updated_at
+      settings {
+        nextToken
+      }
+      worktimes {
+        nextToken
+      }
       services {
         nextToken
       }

@@ -6,7 +6,7 @@
   </div>
 </ion-header>
 
-<ion-content fullscreen common-parallax [scrollEvents]="true">
+<ion-content fullscreen common-parallax [scrollEvents]="true"> 
   <div class="page-ct pd-0">
     <div class="cover">
       <div class="wrapper-cover thumb-h100">
@@ -47,8 +47,15 @@
       </ion-grid>
     </form> -->
 
+    <div class="div-datepicker">
+        <ion-button class="button-datepicker" (click)="showDatepicker()">
+            Show Date Picker
+        </ion-button>
+          <h4>Date: {{myDate}}</h4>  
+      </div>
  
-       
+
+   
  
 <div *ngFor="let time of times; let i = index">
   <div class="card-hd"> 

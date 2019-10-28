@@ -9,6 +9,8 @@ import * as moment from 'moment/moment';
 
 import {Auth} from 'aws-amplify';
 
+import { DatePicker } from '@ionic-native/date-picker/ngx';
+
 @Component({
     selector: 'app-appointment',
     templateUrl: './appointment.page.html',
@@ -28,7 +30,7 @@ export class AppointmentPage implements OnInit {
     public moment: any;
 
 
-    constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController, private router: Router) {
+    constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController, private router: Router, private datePicker: DatePicker) {
         this.moment = moment();
     }
 
@@ -104,5 +106,24 @@ export class AppointmentPage implements OnInit {
 
 
 
+
+ 
+ 
+    showDatepicker(){
+        this.datePicker.show({
+          date: new Date(),
+          mode: 'date',
+          androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK,
+          okText:"Save Date",
+          todayText:"Set Today"
+        }).then(
+          date => {
+            this.myDate = date.getDate()+"/"+date.toLocaleString('default', { month: 'long' })+"/"+date.getFullYear();
+          },
+          err => console.log('Error occurred while getting date: ', err)
+        );
+      }  
+     
+    
 } 
    

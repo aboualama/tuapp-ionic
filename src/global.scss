@@ -2642,9 +2642,9 @@ button{
 
 .div-item{
 	border: 1px solid #ccc;
-    padding: 10px;
-    margin: 20px;
-    background: whitesmoke;
+    padding: 2px;
+	background: whitesmoke;
+	height: 45px;
 }
 
 
@@ -2659,6 +2659,37 @@ button{
     line-height: 1.2;
     margin: 0 auto;
 }
+
+.th-table{
+	text-align: center;
+    border: 1px solid;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.label-table{
+	line-height: 2.4;
+} 
+
+.div-datepicker{ 
+    width: 300px;
+    margin: 0 auto;
+}
+
+.button-datepicker{ 
+    width: 100%;
+    height: 50px;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -13,7 +13,10 @@
           <img src="assets/img/a.jpg" alt="">
         </div>
       </div>
-  
+
+
+      <h1 class="ion-text-center">Set Working Time</h1>
+<!--   
       <form #form="ngForm" (ngSubmit)="updateService(form)">
         <ion-grid>
           <ion-row  justify-content-center>
@@ -43,4 +46,57 @@
           </ion-row>
         </ion-grid>
       </form>
-  
+   -->
+
+
+
+
+
+
+
+ 
+<div class="div-table"> 
+    <div class="th-table">
+        <ion-row justify-content-center>
+          <ion-col size="4" size-sm>
+            <div class="div-item"> 
+                  <ion-label class="label-table">Day: </ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="4" size-sm>
+              <div class="div-item"> 
+                    <ion-label class="label-table">Start Time</ion-label>
+              </div>
+          </ion-col>
+          <ion-col size="4" size-sm>
+              <div class="div-item"> 
+                    <ion-label class="label-table">End Time</ion-label> 
+              </div>
+          </ion-col>
+        </ion-row>
+    </div>
+
+    <div *ngFor="let day of days; let i = index" class="th-table">
+      <ion-grid>
+        <ion-row justify-content-center>
+          <ion-col size="4" size-sm>
+            <div class="div-item">  
+                <ion-label class="label-table">{{day}}</ion-label>
+                  <ion-input name="day[]" type="hidden" value="{{day}}" ngModel></ion-input>   
+            </div>
+          </ion-col>
+          <ion-col size="4" size-sm>
+              <div class="div-item">  
+                    <ion-datetime name="start_time[]" display-format="HH:mm A" picker-format="h:mm A" value="00:00"></ion-datetime> 
+              </div>
+          </ion-col>
+          <ion-col size="4" size-sm>
+              <div class="div-item">
+                    <ion-datetime name="end_time[]" display-format="HH:mm A" picker-format="h:mm A" value="00:00"></ion-datetime>
+              </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+    </div> 
+</div>
+ 

@@ -6,8 +6,31 @@ type App @model {
   splashscreen: String!
   created_at: String!
   updated_at: String! 
+  settings: [Setting] @connection(name: "AppSetting")
+  worktimes: [Worktime] @connection(name: "AppWorktime")
   services: [Service] @connection(name: "AppServices")
 }
+
+ 
+type Setting @model {
+  id: ID! 
+  calender_offset: String!  
+  app: App @connection(name: "AppSetting")
+}
+ 
+type Worktime @model {
+  id: ID! 
+  open_time: String!
+  close_time: String! 
+  days: MetaDay
+  app: App @connection(name: "AppWorktime")
+}
+type MetaDay {
+  days: Day
+} 
+enum Day {
+  MO TU WE TH FR SA SU 
+} 
 
 
 type Service @model {
@@ -34,5 +57,4 @@ type Appointment @model {
   price: Float 
   status: Boolean  
   service: Service @connection(name: "AppointmentServices")
-}
-  
+} 

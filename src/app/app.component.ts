@@ -62,6 +62,11 @@ export class AppComponent implements OnInit {
             title: 'Add Service',
             url: '/addservice',
             icon: 'add'
+        },
+        {
+            title: 'Setting',
+            url: '/setting',
+            icon: 'add'
         }/*
         {
             title: 'Login & Register',

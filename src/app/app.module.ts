@@ -14,6 +14,9 @@ import {ModalBasicPageModule} from './page/ui-element/modal/modal-basic/modal-ba
 import {ModalBoxPageModule} from './page/ui-element/modal/modal-box/modal-box.module';
 import {AmplifyIonicModule, AmplifyModules, AmplifyService} from 'aws-amplify-angular';
 
+ 
+import { DatePicker } from '@ionic-native/date-picker/ngx';
+
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
@@ -32,6 +35,7 @@ import {AmplifyIonicModule, AmplifyModules, AmplifyService} from 'aws-amplify-an
         SplashScreen,
         AmplifyIonicModule,
         AmplifyService,
+        DatePicker,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
     bootstrap: [AppComponent]
