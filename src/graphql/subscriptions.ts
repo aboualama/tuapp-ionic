@@ -12,15 +12,9 @@ export const onCreateApp = `subscription OnCreateApp {
     settings {
       items {
         id
+        start_time
+        end_time
         calender_offset
-      }
-      nextToken
-    }
-    worktimes {
-      items {
-        id
-        open_time
-        close_time
       }
       nextToken
     }
@@ -32,9 +26,6 @@ export const onCreateApp = `subscription OnCreateApp {
         price
         image
         duration
-        start_time
-        end_time
-        calender_offset
       }
       nextToken
     }
@@ -52,15 +43,9 @@ export const onUpdateApp = `subscription OnUpdateApp {
     settings {
       items {
         id
+        start_time
+        end_time
         calender_offset
-      }
-      nextToken
-    }
-    worktimes {
-      items {
-        id
-        open_time
-        close_time
       }
       nextToken
     }
@@ -72,9 +57,6 @@ export const onUpdateApp = `subscription OnUpdateApp {
         price
         image
         duration
-        start_time
-        end_time
-        calender_offset
       }
       nextToken
     }
@@ -92,15 +74,9 @@ export const onDeleteApp = `subscription OnDeleteApp {
     settings {
       items {
         id
+        start_time
+        end_time
         calender_offset
-      }
-      nextToken
-    }
-    worktimes {
-      items {
-        id
-        open_time
-        close_time
       }
       nextToken
     }
@@ -112,9 +88,6 @@ export const onDeleteApp = `subscription OnDeleteApp {
         price
         image
         duration
-        start_time
-        end_time
-        calender_offset
       }
       nextToken
     }
@@ -124,6 +97,8 @@ export const onDeleteApp = `subscription OnDeleteApp {
 export const onCreateSetting = `subscription OnCreateSetting {
   onCreateSetting {
     id
+    start_time
+    end_time
     calender_offset
     app {
       id
@@ -133,9 +108,6 @@ export const onCreateSetting = `subscription OnCreateSetting {
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -148,6 +120,8 @@ export const onCreateSetting = `subscription OnCreateSetting {
 export const onUpdateSetting = `subscription OnUpdateSetting {
   onUpdateSetting {
     id
+    start_time
+    end_time
     calender_offset
     app {
       id
@@ -157,9 +131,6 @@ export const onUpdateSetting = `subscription OnUpdateSetting {
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -172,6 +143,8 @@ export const onUpdateSetting = `subscription OnUpdateSetting {
 export const onDeleteSetting = `subscription OnDeleteSetting {
   onDeleteSetting {
     id
+    start_time
+    end_time
     calender_offset
     app {
       id
@@ -181,93 +154,6 @@ export const onDeleteSetting = `subscription OnDeleteSetting {
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
-        nextToken
-      }
-      services {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const onCreateWorktime = `subscription OnCreateWorktime {
-  onCreateWorktime {
-    id
-    open_time
-    close_time
-    days {
-      days
-    }
-    app {
-      id
-      appname
-      logoapp
-      splashscreen
-      created_at
-      updated_at
-      settings {
-        nextToken
-      }
-      worktimes {
-        nextToken
-      }
-      services {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const onUpdateWorktime = `subscription OnUpdateWorktime {
-  onUpdateWorktime {
-    id
-    open_time
-    close_time
-    days {
-      days
-    }
-    app {
-      id
-      appname
-      logoapp
-      splashscreen
-      created_at
-      updated_at
-      settings {
-        nextToken
-      }
-      worktimes {
-        nextToken
-      }
-      services {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const onDeleteWorktime = `subscription OnDeleteWorktime {
-  onDeleteWorktime {
-    id
-    open_time
-    close_time
-    days {
-      days
-    }
-    app {
-      id
-      appname
-      logoapp
-      splashscreen
-      created_at
-      updated_at
-      settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -285,9 +171,6 @@ export const onCreateService = `subscription OnCreateService {
     price
     image
     duration
-    start_time
-    end_time
-    calender_offset
     app {
       id
       appname
@@ -296,9 +179,6 @@ export const onCreateService = `subscription OnCreateService {
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -328,9 +208,6 @@ export const onUpdateService = `subscription OnUpdateService {
     price
     image
     duration
-    start_time
-    end_time
-    calender_offset
     app {
       id
       appname
@@ -339,9 +216,6 @@ export const onUpdateService = `subscription OnUpdateService {
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -371,9 +245,6 @@ export const onDeleteService = `subscription OnDeleteService {
     price
     image
     duration
-    start_time
-    end_time
-    calender_offset
     app {
       id
       appname
@@ -382,9 +253,6 @@ export const onDeleteService = `subscription OnDeleteService {
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -422,9 +290,6 @@ export const onCreateAppointment = `subscription OnCreateAppointment {
       price
       image
       duration
-      start_time
-      end_time
-      calender_offset
       app {
         id
         appname
@@ -456,9 +321,6 @@ export const onUpdateAppointment = `subscription OnUpdateAppointment {
       price
       image
       duration
-      start_time
-      end_time
-      calender_offset
       app {
         id
         appname
@@ -490,9 +352,6 @@ export const onDeleteAppointment = `subscription OnDeleteAppointment {
       price
       image
       duration
-      start_time
-      end_time
-      calender_offset
       app {
         id
         appname

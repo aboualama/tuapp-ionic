@@ -12,15 +12,9 @@ export const getApp = `query GetApp($id: ID!) {
     settings {
       items {
         id
+        start_time
+        end_time
         calender_offset
-      }
-      nextToken
-    }
-    worktimes {
-      items {
-        id
-        open_time
-        close_time
       }
       nextToken
     }
@@ -32,9 +26,6 @@ export const getApp = `query GetApp($id: ID!) {
         price
         image
         duration
-        start_time
-        end_time
-        calender_offset
       }
       nextToken
     }
@@ -53,9 +44,6 @@ export const listApps = `query ListApps($filter: ModelAppFilterInput, $limit: In
       settings {
         nextToken
       }
-      worktimes {
-        nextToken
-      }
       services {
         nextToken
       }
@@ -67,6 +55,8 @@ export const listApps = `query ListApps($filter: ModelAppFilterInput, $limit: In
 export const getSetting = `query GetSetting($id: ID!) {
   getSetting(id: $id) {
     id
+    start_time
+    end_time
     calender_offset
     app {
       id
@@ -76,9 +66,6 @@ export const getSetting = `query GetSetting($id: ID!) {
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -96,61 +83,9 @@ export const listSettings = `query ListSettings(
   listSettings(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      start_time
+      end_time
       calender_offset
-      app {
-        id
-        appname
-        logoapp
-        splashscreen
-        created_at
-        updated_at
-      }
-    }
-    nextToken
-  }
-}
-`;
-export const getWorktime = `query GetWorktime($id: ID!) {
-  getWorktime(id: $id) {
-    id
-    open_time
-    close_time
-    days {
-      days
-    }
-    app {
-      id
-      appname
-      logoapp
-      splashscreen
-      created_at
-      updated_at
-      settings {
-        nextToken
-      }
-      worktimes {
-        nextToken
-      }
-      services {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const listWorktimes = `query ListWorktimes(
-  $filter: ModelWorktimeFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listWorktimes(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      open_time
-      close_time
-      days {
-        days
-      }
       app {
         id
         appname
@@ -172,9 +107,6 @@ export const getService = `query GetService($id: ID!) {
     price
     image
     duration
-    start_time
-    end_time
-    calender_offset
     app {
       id
       appname
@@ -183,9 +115,6 @@ export const getService = `query GetService($id: ID!) {
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -220,9 +149,6 @@ export const listServices = `query ListServices(
       price
       image
       duration
-      start_time
-      end_time
-      calender_offset
       app {
         id
         appname
@@ -255,9 +181,6 @@ export const getAppointment = `query GetAppointment($id: ID!) {
       price
       image
       duration
-      start_time
-      end_time
-      calender_offset
       app {
         id
         appname
@@ -294,9 +217,6 @@ export const listAppointments = `query ListAppointments(
         price
         image
         duration
-        start_time
-        end_time
-        calender_offset
       }
     }
     nextToken

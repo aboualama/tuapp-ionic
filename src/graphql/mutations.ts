@@ -12,15 +12,9 @@ export const createApp = `mutation CreateApp($input: CreateAppInput!) {
     settings {
       items {
         id
+        start_time
+        end_time
         calender_offset
-      }
-      nextToken
-    }
-    worktimes {
-      items {
-        id
-        open_time
-        close_time
       }
       nextToken
     }
@@ -32,9 +26,6 @@ export const createApp = `mutation CreateApp($input: CreateAppInput!) {
         price
         image
         duration
-        start_time
-        end_time
-        calender_offset
       }
       nextToken
     }
@@ -52,15 +43,9 @@ export const updateApp = `mutation UpdateApp($input: UpdateAppInput!) {
     settings {
       items {
         id
+        start_time
+        end_time
         calender_offset
-      }
-      nextToken
-    }
-    worktimes {
-      items {
-        id
-        open_time
-        close_time
       }
       nextToken
     }
@@ -72,9 +57,6 @@ export const updateApp = `mutation UpdateApp($input: UpdateAppInput!) {
         price
         image
         duration
-        start_time
-        end_time
-        calender_offset
       }
       nextToken
     }
@@ -92,15 +74,9 @@ export const deleteApp = `mutation DeleteApp($input: DeleteAppInput!) {
     settings {
       items {
         id
+        start_time
+        end_time
         calender_offset
-      }
-      nextToken
-    }
-    worktimes {
-      items {
-        id
-        open_time
-        close_time
       }
       nextToken
     }
@@ -112,9 +88,6 @@ export const deleteApp = `mutation DeleteApp($input: DeleteAppInput!) {
         price
         image
         duration
-        start_time
-        end_time
-        calender_offset
       }
       nextToken
     }
@@ -124,6 +97,8 @@ export const deleteApp = `mutation DeleteApp($input: DeleteAppInput!) {
 export const createSetting = `mutation CreateSetting($input: CreateSettingInput!) {
   createSetting(input: $input) {
     id
+    start_time
+    end_time
     calender_offset
     app {
       id
@@ -133,9 +108,6 @@ export const createSetting = `mutation CreateSetting($input: CreateSettingInput!
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -148,6 +120,8 @@ export const createSetting = `mutation CreateSetting($input: CreateSettingInput!
 export const updateSetting = `mutation UpdateSetting($input: UpdateSettingInput!) {
   updateSetting(input: $input) {
     id
+    start_time
+    end_time
     calender_offset
     app {
       id
@@ -157,9 +131,6 @@ export const updateSetting = `mutation UpdateSetting($input: UpdateSettingInput!
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -172,6 +143,8 @@ export const updateSetting = `mutation UpdateSetting($input: UpdateSettingInput!
 export const deleteSetting = `mutation DeleteSetting($input: DeleteSettingInput!) {
   deleteSetting(input: $input) {
     id
+    start_time
+    end_time
     calender_offset
     app {
       id
@@ -181,93 +154,6 @@ export const deleteSetting = `mutation DeleteSetting($input: DeleteSettingInput!
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
-        nextToken
-      }
-      services {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const createWorktime = `mutation CreateWorktime($input: CreateWorktimeInput!) {
-  createWorktime(input: $input) {
-    id
-    open_time
-    close_time
-    days {
-      days
-    }
-    app {
-      id
-      appname
-      logoapp
-      splashscreen
-      created_at
-      updated_at
-      settings {
-        nextToken
-      }
-      worktimes {
-        nextToken
-      }
-      services {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const updateWorktime = `mutation UpdateWorktime($input: UpdateWorktimeInput!) {
-  updateWorktime(input: $input) {
-    id
-    open_time
-    close_time
-    days {
-      days
-    }
-    app {
-      id
-      appname
-      logoapp
-      splashscreen
-      created_at
-      updated_at
-      settings {
-        nextToken
-      }
-      worktimes {
-        nextToken
-      }
-      services {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const deleteWorktime = `mutation DeleteWorktime($input: DeleteWorktimeInput!) {
-  deleteWorktime(input: $input) {
-    id
-    open_time
-    close_time
-    days {
-      days
-    }
-    app {
-      id
-      appname
-      logoapp
-      splashscreen
-      created_at
-      updated_at
-      settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -285,9 +171,6 @@ export const createService = `mutation CreateService($input: CreateServiceInput!
     price
     image
     duration
-    start_time
-    end_time
-    calender_offset
     app {
       id
       appname
@@ -296,9 +179,6 @@ export const createService = `mutation CreateService($input: CreateServiceInput!
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -328,9 +208,6 @@ export const updateService = `mutation UpdateService($input: UpdateServiceInput!
     price
     image
     duration
-    start_time
-    end_time
-    calender_offset
     app {
       id
       appname
@@ -339,9 +216,6 @@ export const updateService = `mutation UpdateService($input: UpdateServiceInput!
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -371,9 +245,6 @@ export const deleteService = `mutation DeleteService($input: DeleteServiceInput!
     price
     image
     duration
-    start_time
-    end_time
-    calender_offset
     app {
       id
       appname
@@ -382,9 +253,6 @@ export const deleteService = `mutation DeleteService($input: DeleteServiceInput!
       created_at
       updated_at
       settings {
-        nextToken
-      }
-      worktimes {
         nextToken
       }
       services {
@@ -422,9 +290,6 @@ export const createAppointment = `mutation CreateAppointment($input: CreateAppoi
       price
       image
       duration
-      start_time
-      end_time
-      calender_offset
       app {
         id
         appname
@@ -456,9 +321,6 @@ export const updateAppointment = `mutation UpdateAppointment($input: UpdateAppoi
       price
       image
       duration
-      start_time
-      end_time
-      calender_offset
       app {
         id
         appname
@@ -490,9 +352,6 @@ export const deleteAppointment = `mutation DeleteAppointment($input: DeleteAppoi
       price
       image
       duration
-      start_time
-      end_time
-      calender_offset
       app {
         id
         appname

@@ -13,6 +13,8 @@
 
   // add to solved problem ionic serve
   "typeRoots": [
-    "node_modules/@types"
+    "node_modules/@types",
+    "../node_modules/@types",
+    "../@types"
     ] 
 }

@@ -16,8 +16,8 @@
 
 
       <h1 class="ion-text-center">Set Working Time</h1>
-<!--   
-      <form #form="ngForm" (ngSubmit)="updateService(form)">
+  
+      <!-- <form #form="ngForm" (ngSubmit)="updateService(form)">
         <ion-grid>
           <ion-row  justify-content-center>
             <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -45,8 +45,8 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-      </form>
-   -->
+      </form> -->
+  
 
 
 
@@ -55,12 +55,12 @@
 
 
  
-<div class="div-table"> 
+  <div class="div-table"> 
     <div class="th-table">
         <ion-row justify-content-center>
           <ion-col size="4" size-sm>
             <div class="div-item"> 
-                  <ion-label class="label-table">Day: </ion-label>
+                  <ion-label class="label-table">Offset </ion-label>
             </div>
           </ion-col>
           <ion-col size="4" size-sm>
@@ -76,27 +76,31 @@
         </ion-row>
     </div>
 
-    <div *ngFor="let day of days; let i = index" class="th-table">
-      <ion-grid>
-        <ion-row justify-content-center>
-          <ion-col size="4" size-sm>
-            <div class="div-item">  
-                <ion-label class="label-table">{{day}}</ion-label>
-                  <ion-input name="day[]" type="hidden" value="{{day}}" ngModel></ion-input>   
-            </div>
-          </ion-col>
-          <ion-col size="4" size-sm>
-              <div class="div-item">  
-                    <ion-datetime name="start_time[]" display-format="HH:mm A" picker-format="h:mm A" value="00:00"></ion-datetime> 
+    <div class="th-table">
+      <form #form="ngForm" (ngSubmit)="updateSetting(form)">
+        <ion-grid>
+          <ion-row justify-content-center>
+            <ion-col size="4" size-sm>
+              <div class="div-item">   
+                  <ion-input name="calender_offset" type="number" value="{{calender_offset}}" ngModel></ion-input>   
               </div>
-          </ion-col>
-          <ion-col size="4" size-sm>
-              <div class="div-item">
-                    <ion-datetime name="end_time[]" display-format="HH:mm A" picker-format="h:mm A" value="00:00"></ion-datetime>
-              </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid> 
-    </div> 
-</div>
+            </ion-col>
+            <ion-col size="4" size-sm>
+                <div class="div-item">  
+                      <ion-datetime name="start_time" display-format="HH:mm" picker-format="HH:mm" minuteValues="0,15,30,45" ngModel value="{{start_time}}"></ion-datetime> 
+                </div>
+            </ion-col>
+            <ion-col size="4" size-sm>
+                <div class="div-item">
+                      <ion-datetime name="end_time" display-format="HH:mm" picker-format="HH:mm" minuteValues="0,15,30,45" ngModel value="{{end_time}}"></ion-datetime>
+                </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid> 
+        <div padding>
+          <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Edit Setting</ion-button>
+        </div>
+      </form>
+    </div>  
+  </div>
  

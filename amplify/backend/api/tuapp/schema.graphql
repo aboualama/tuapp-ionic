@@ -7,31 +7,17 @@ type App @model {
   created_at: String!
   updated_at: String! 
   settings: [Setting] @connection(name: "AppSetting")
-  worktimes: [Worktime] @connection(name: "AppWorktime")
   services: [Service] @connection(name: "AppServices")
 }
 
  
 type Setting @model {
   id: ID! 
-  calender_offset: String!  
+  start_time: String!
+  end_time: String!  
+  calender_offset: String!
   app: App @connection(name: "AppSetting")
-}
- 
-type Worktime @model {
-  id: ID! 
-  open_time: String!
-  close_time: String! 
-  days: MetaDay
-  app: App @connection(name: "AppWorktime")
-}
-type MetaDay {
-  days: Day
 } 
-enum Day {
-  MO TU WE TH FR SA SU 
-} 
-
 
 type Service @model {
   id: ID!
@@ -40,9 +26,6 @@ type Service @model {
   price: Float
   image: String
   duration: Int 
-  start_time: String
-  end_time: String
-  calender_offset: String
   app: App @connection(name: "AppServices")
   appointments: [Appointment] @connection(name: "AppointmentServices")
 }

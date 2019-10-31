@@ -7,6 +7,7 @@ import * as mutations from '../../../graphql/mutations';
 import {forEach} from '@angular-devkit/schematics';
 import {resolve} from 'dns';
 import {listServices} from '../../../graphql/queries';
+import {AppId} from '../../AppId/Id';
 
 
 @Component({
@@ -17,7 +18,7 @@ import {listServices} from '../../../graphql/queries';
 export class AddservicePage implements OnInit {
 
     image: String | Object;
-    durations = [10,20,30,40,50,60];
+    durations = [5,10,15,20,25,30,35,40,45,50,55,60];
     
     constructor(private modalController: ModalController, private router: Router) {
 
@@ -37,19 +38,14 @@ export class AddservicePage implements OnInit {
         console.log(this.image);
         event.preventDefault();
         const service = {
-            serviceAppId: "1" ,
+            serviceAppId: AppId ,
             title: form.value.servicetitle,
             price: form.value.serviceprice,
             duration: form.value.duration,
             description: form.value.description,
-            image: this.image,
-            start_time: "00:00",
-            end_time: "00:00",
-            calender_offset: "00:00",
-
+            image: this.image, 
         };
-        await API.graphql(graphqlOperation(mutations.createService, {input: service}));
-
+        await API.graphql(graphqlOperation(mutations.createService, {input: service})); 
         this.router.navigate(['service']);
     }; 
  

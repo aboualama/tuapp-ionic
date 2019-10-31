@@ -25,52 +25,21 @@ export type DeleteAppInput = {
 
 export type CreateSettingInput = {
   id?: string | null,
+  start_time: string,
+  end_time: string,
   calender_offset: string,
   settingAppId?: string | null,
 };
 
 export type UpdateSettingInput = {
   id: string,
+  start_time?: string | null,
+  end_time?: string | null,
   calender_offset?: string | null,
   settingAppId?: string | null,
 };
 
 export type DeleteSettingInput = {
-  id?: string | null,
-};
-
-export type CreateWorktimeInput = {
-  id?: string | null,
-  open_time: string,
-  close_time: string,
-  days?: MetaDayInput | null,
-  worktimeAppId?: string | null,
-};
-
-export type MetaDayInput = {
-  days?: Day | null,
-};
-
-export enum Day {
-  MO = "MO",
-  TU = "TU",
-  WE = "WE",
-  TH = "TH",
-  FR = "FR",
-  SA = "SA",
-  SU = "SU",
-}
-
-
-export type UpdateWorktimeInput = {
-  id: string,
-  open_time?: string | null,
-  close_time?: string | null,
-  days?: MetaDayInput | null,
-  worktimeAppId?: string | null,
-};
-
-export type DeleteWorktimeInput = {
   id?: string | null,
 };
 
@@ -81,9 +50,6 @@ export type CreateServiceInput = {
   price?: number | null,
   image?: string | null,
   duration?: number | null,
-  start_time?: string | null,
-  end_time?: string | null,
-  calender_offset?: string | null,
   serviceAppId?: string | null,
 };
 
@@ -94,9 +60,6 @@ export type UpdateServiceInput = {
   price?: number | null,
   image?: string | null,
   duration?: number | null,
-  start_time?: string | null,
-  end_time?: string | null,
-  calender_offset?: string | null,
   serviceAppId?: string | null,
 };
 
@@ -170,19 +133,12 @@ export type ModelStringFilterInput = {
 
 export type ModelSettingFilterInput = {
   id?: ModelIDFilterInput | null,
+  start_time?: ModelStringFilterInput | null,
+  end_time?: ModelStringFilterInput | null,
   calender_offset?: ModelStringFilterInput | null,
   and?: Array< ModelSettingFilterInput | null > | null,
   or?: Array< ModelSettingFilterInput | null > | null,
   not?: ModelSettingFilterInput | null,
-};
-
-export type ModelWorktimeFilterInput = {
-  id?: ModelIDFilterInput | null,
-  open_time?: ModelStringFilterInput | null,
-  close_time?: ModelStringFilterInput | null,
-  and?: Array< ModelWorktimeFilterInput | null > | null,
-  or?: Array< ModelWorktimeFilterInput | null > | null,
-  not?: ModelWorktimeFilterInput | null,
 };
 
 export type ModelServiceFilterInput = {
@@ -192,9 +148,6 @@ export type ModelServiceFilterInput = {
   price?: ModelFloatFilterInput | null,
   image?: ModelStringFilterInput | null,
   duration?: ModelIntFilterInput | null,
-  start_time?: ModelStringFilterInput | null,
-  end_time?: ModelStringFilterInput | null,
-  calender_offset?: ModelStringFilterInput | null,
   and?: Array< ModelServiceFilterInput | null > | null,
   or?: Array< ModelServiceFilterInput | null > | null,
   not?: ModelServiceFilterInput | null,
@@ -260,17 +213,9 @@ export type CreateAppMutation = {
       items:  Array< {
         __typename: "Setting",
         id: string,
+        start_time: string,
+        end_time: string,
         calender_offset: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-    worktimes:  {
-      __typename: "ModelWorktimeConnection",
-      items:  Array< {
-        __typename: "Worktime",
-        id: string,
-        open_time: string,
-        close_time: string,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -284,9 +229,6 @@ export type CreateAppMutation = {
         price: number | null,
         image: string | null,
         duration: number | null,
-        start_time: string | null,
-        end_time: string | null,
-        calender_offset: string | null,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -311,17 +253,9 @@ export type UpdateAppMutation = {
       items:  Array< {
         __typename: "Setting",
         id: string,
+        start_time: string,
+        end_time: string,
         calender_offset: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-    worktimes:  {
-      __typename: "ModelWorktimeConnection",
-      items:  Array< {
-        __typename: "Worktime",
-        id: string,
-        open_time: string,
-        close_time: string,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -335,9 +269,6 @@ export type UpdateAppMutation = {
         price: number | null,
         image: string | null,
         duration: number | null,
-        start_time: string | null,
-        end_time: string | null,
-        calender_offset: string | null,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -362,17 +293,9 @@ export type DeleteAppMutation = {
       items:  Array< {
         __typename: "Setting",
         id: string,
+        start_time: string,
+        end_time: string,
         calender_offset: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-    worktimes:  {
-      __typename: "ModelWorktimeConnection",
-      items:  Array< {
-        __typename: "Worktime",
-        id: string,
-        open_time: string,
-        close_time: string,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -386,9 +309,6 @@ export type DeleteAppMutation = {
         price: number | null,
         image: string | null,
         duration: number | null,
-        start_time: string | null,
-        end_time: string | null,
-        calender_offset: string | null,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -403,6 +323,8 @@ export type CreateSettingMutation = {
   createSetting:  {
     __typename: "Setting",
     id: string,
+    start_time: string,
+    end_time: string,
     calender_offset: string,
     app:  {
       __typename: "App",
@@ -414,10 +336,6 @@ export type CreateSettingMutation = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -436,6 +354,8 @@ export type UpdateSettingMutation = {
   updateSetting:  {
     __typename: "Setting",
     id: string,
+    start_time: string,
+    end_time: string,
     calender_offset: string,
     app:  {
       __typename: "App",
@@ -447,10 +367,6 @@ export type UpdateSettingMutation = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -469,6 +385,8 @@ export type DeleteSettingMutation = {
   deleteSetting:  {
     __typename: "Setting",
     id: string,
+    start_time: string,
+    end_time: string,
     calender_offset: string,
     app:  {
       __typename: "App",
@@ -480,124 +398,6 @@ export type DeleteSettingMutation = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
-        nextToken: string | null,
-      } | null,
-      services:  {
-        __typename: "ModelServiceConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
-  } | null,
-};
-
-export type CreateWorktimeMutationVariables = {
-  input: CreateWorktimeInput,
-};
-
-export type CreateWorktimeMutation = {
-  createWorktime:  {
-    __typename: "Worktime",
-    id: string,
-    open_time: string,
-    close_time: string,
-    days:  {
-      __typename: "MetaDay",
-      days: Day | null,
-    } | null,
-    app:  {
-      __typename: "App",
-      id: string,
-      appname: string,
-      logoapp: string,
-      splashscreen: string,
-      created_at: string,
-      updated_at: string,
-      settings:  {
-        __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
-        nextToken: string | null,
-      } | null,
-      services:  {
-        __typename: "ModelServiceConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
-  } | null,
-};
-
-export type UpdateWorktimeMutationVariables = {
-  input: UpdateWorktimeInput,
-};
-
-export type UpdateWorktimeMutation = {
-  updateWorktime:  {
-    __typename: "Worktime",
-    id: string,
-    open_time: string,
-    close_time: string,
-    days:  {
-      __typename: "MetaDay",
-      days: Day | null,
-    } | null,
-    app:  {
-      __typename: "App",
-      id: string,
-      appname: string,
-      logoapp: string,
-      splashscreen: string,
-      created_at: string,
-      updated_at: string,
-      settings:  {
-        __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
-        nextToken: string | null,
-      } | null,
-      services:  {
-        __typename: "ModelServiceConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
-  } | null,
-};
-
-export type DeleteWorktimeMutationVariables = {
-  input: DeleteWorktimeInput,
-};
-
-export type DeleteWorktimeMutation = {
-  deleteWorktime:  {
-    __typename: "Worktime",
-    id: string,
-    open_time: string,
-    close_time: string,
-    days:  {
-      __typename: "MetaDay",
-      days: Day | null,
-    } | null,
-    app:  {
-      __typename: "App",
-      id: string,
-      appname: string,
-      logoapp: string,
-      splashscreen: string,
-      created_at: string,
-      updated_at: string,
-      settings:  {
-        __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -621,9 +421,6 @@ export type CreateServiceMutation = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    start_time: string | null,
-    end_time: string | null,
-    calender_offset: string | null,
     app:  {
       __typename: "App",
       id: string,
@@ -634,10 +431,6 @@ export type CreateServiceMutation = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -675,9 +468,6 @@ export type UpdateServiceMutation = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    start_time: string | null,
-    end_time: string | null,
-    calender_offset: string | null,
     app:  {
       __typename: "App",
       id: string,
@@ -688,10 +478,6 @@ export type UpdateServiceMutation = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -729,9 +515,6 @@ export type DeleteServiceMutation = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    start_time: string | null,
-    end_time: string | null,
-    calender_offset: string | null,
     app:  {
       __typename: "App",
       id: string,
@@ -742,10 +525,6 @@ export type DeleteServiceMutation = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -792,9 +571,6 @@ export type CreateAppointmentMutation = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      start_time: string | null,
-      end_time: string | null,
-      calender_offset: string | null,
       app:  {
         __typename: "App",
         id: string,
@@ -834,9 +610,6 @@ export type UpdateAppointmentMutation = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      start_time: string | null,
-      end_time: string | null,
-      calender_offset: string | null,
       app:  {
         __typename: "App",
         id: string,
@@ -876,9 +649,6 @@ export type DeleteAppointmentMutation = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      start_time: string | null,
-      end_time: string | null,
-      calender_offset: string | null,
       app:  {
         __typename: "App",
         id: string,
@@ -914,17 +684,9 @@ export type GetAppQuery = {
       items:  Array< {
         __typename: "Setting",
         id: string,
+        start_time: string,
+        end_time: string,
         calender_offset: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-    worktimes:  {
-      __typename: "ModelWorktimeConnection",
-      items:  Array< {
-        __typename: "Worktime",
-        id: string,
-        open_time: string,
-        close_time: string,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -938,9 +700,6 @@ export type GetAppQuery = {
         price: number | null,
         image: string | null,
         duration: number | null,
-        start_time: string | null,
-        end_time: string | null,
-        calender_offset: string | null,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -968,10 +727,6 @@ export type ListAppsQuery = {
         __typename: "ModelSettingConnection",
         nextToken: string | null,
       } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
-        nextToken: string | null,
-      } | null,
       services:  {
         __typename: "ModelServiceConnection",
         nextToken: string | null,
@@ -989,6 +744,8 @@ export type GetSettingQuery = {
   getSetting:  {
     __typename: "Setting",
     id: string,
+    start_time: string,
+    end_time: string,
     calender_offset: string,
     app:  {
       __typename: "App",
@@ -1000,10 +757,6 @@ export type GetSettingQuery = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -1026,77 +779,9 @@ export type ListSettingsQuery = {
     items:  Array< {
       __typename: "Setting",
       id: string,
+      start_time: string,
+      end_time: string,
       calender_offset: string,
-      app:  {
-        __typename: "App",
-        id: string,
-        appname: string,
-        logoapp: string,
-        splashscreen: string,
-        created_at: string,
-        updated_at: string,
-      } | null,
-    } | null > | null,
-    nextToken: string | null,
-  } | null,
-};
-
-export type GetWorktimeQueryVariables = {
-  id: string,
-};
-
-export type GetWorktimeQuery = {
-  getWorktime:  {
-    __typename: "Worktime",
-    id: string,
-    open_time: string,
-    close_time: string,
-    days:  {
-      __typename: "MetaDay",
-      days: Day | null,
-    } | null,
-    app:  {
-      __typename: "App",
-      id: string,
-      appname: string,
-      logoapp: string,
-      splashscreen: string,
-      created_at: string,
-      updated_at: string,
-      settings:  {
-        __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
-        nextToken: string | null,
-      } | null,
-      services:  {
-        __typename: "ModelServiceConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
-  } | null,
-};
-
-export type ListWorktimesQueryVariables = {
-  filter?: ModelWorktimeFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type ListWorktimesQuery = {
-  listWorktimes:  {
-    __typename: "ModelWorktimeConnection",
-    items:  Array< {
-      __typename: "Worktime",
-      id: string,
-      open_time: string,
-      close_time: string,
-      days:  {
-        __typename: "MetaDay",
-        days: Day | null,
-      } | null,
       app:  {
         __typename: "App",
         id: string,
@@ -1124,9 +809,6 @@ export type GetServiceQuery = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    start_time: string | null,
-    end_time: string | null,
-    calender_offset: string | null,
     app:  {
       __typename: "App",
       id: string,
@@ -1137,10 +819,6 @@ export type GetServiceQuery = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -1182,9 +860,6 @@ export type ListServicesQuery = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      start_time: string | null,
-      end_time: string | null,
-      calender_offset: string | null,
       app:  {
         __typename: "App",
         id: string,
@@ -1225,9 +900,6 @@ export type GetAppointmentQuery = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      start_time: string | null,
-      end_time: string | null,
-      calender_offset: string | null,
       app:  {
         __typename: "App",
         id: string,
@@ -1271,9 +943,6 @@ export type ListAppointmentsQuery = {
         price: number | null,
         image: string | null,
         duration: number | null,
-        start_time: string | null,
-        end_time: string | null,
-        calender_offset: string | null,
       } | null,
     } | null > | null,
     nextToken: string | null,
@@ -1294,17 +963,9 @@ export type OnCreateAppSubscription = {
       items:  Array< {
         __typename: "Setting",
         id: string,
+        start_time: string,
+        end_time: string,
         calender_offset: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-    worktimes:  {
-      __typename: "ModelWorktimeConnection",
-      items:  Array< {
-        __typename: "Worktime",
-        id: string,
-        open_time: string,
-        close_time: string,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1318,9 +979,6 @@ export type OnCreateAppSubscription = {
         price: number | null,
         image: string | null,
         duration: number | null,
-        start_time: string | null,
-        end_time: string | null,
-        calender_offset: string | null,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1341,17 +999,9 @@ export type OnUpdateAppSubscription = {
       items:  Array< {
         __typename: "Setting",
         id: string,
+        start_time: string,
+        end_time: string,
         calender_offset: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-    worktimes:  {
-      __typename: "ModelWorktimeConnection",
-      items:  Array< {
-        __typename: "Worktime",
-        id: string,
-        open_time: string,
-        close_time: string,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1365,9 +1015,6 @@ export type OnUpdateAppSubscription = {
         price: number | null,
         image: string | null,
         duration: number | null,
-        start_time: string | null,
-        end_time: string | null,
-        calender_offset: string | null,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1388,17 +1035,9 @@ export type OnDeleteAppSubscription = {
       items:  Array< {
         __typename: "Setting",
         id: string,
+        start_time: string,
+        end_time: string,
         calender_offset: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-    worktimes:  {
-      __typename: "ModelWorktimeConnection",
-      items:  Array< {
-        __typename: "Worktime",
-        id: string,
-        open_time: string,
-        close_time: string,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1412,9 +1051,6 @@ export type OnDeleteAppSubscription = {
         price: number | null,
         image: string | null,
         duration: number | null,
-        start_time: string | null,
-        end_time: string | null,
-        calender_offset: string | null,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1425,6 +1061,8 @@ export type OnCreateSettingSubscription = {
   onCreateSetting:  {
     __typename: "Setting",
     id: string,
+    start_time: string,
+    end_time: string,
     calender_offset: string,
     app:  {
       __typename: "App",
@@ -1436,10 +1074,6 @@ export type OnCreateSettingSubscription = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -1454,6 +1088,8 @@ export type OnUpdateSettingSubscription = {
   onUpdateSetting:  {
     __typename: "Setting",
     id: string,
+    start_time: string,
+    end_time: string,
     calender_offset: string,
     app:  {
       __typename: "App",
@@ -1465,10 +1101,6 @@ export type OnUpdateSettingSubscription = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -1483,6 +1115,8 @@ export type OnDeleteSettingSubscription = {
   onDeleteSetting:  {
     __typename: "Setting",
     id: string,
+    start_time: string,
+    end_time: string,
     calender_offset: string,
     app:  {
       __typename: "App",
@@ -1494,112 +1128,6 @@ export type OnDeleteSettingSubscription = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
-        nextToken: string | null,
-      } | null,
-      services:  {
-        __typename: "ModelServiceConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
-  } | null,
-};
-
-export type OnCreateWorktimeSubscription = {
-  onCreateWorktime:  {
-    __typename: "Worktime",
-    id: string,
-    open_time: string,
-    close_time: string,
-    days:  {
-      __typename: "MetaDay",
-      days: Day | null,
-    } | null,
-    app:  {
-      __typename: "App",
-      id: string,
-      appname: string,
-      logoapp: string,
-      splashscreen: string,
-      created_at: string,
-      updated_at: string,
-      settings:  {
-        __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
-        nextToken: string | null,
-      } | null,
-      services:  {
-        __typename: "ModelServiceConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
-  } | null,
-};
-
-export type OnUpdateWorktimeSubscription = {
-  onUpdateWorktime:  {
-    __typename: "Worktime",
-    id: string,
-    open_time: string,
-    close_time: string,
-    days:  {
-      __typename: "MetaDay",
-      days: Day | null,
-    } | null,
-    app:  {
-      __typename: "App",
-      id: string,
-      appname: string,
-      logoapp: string,
-      splashscreen: string,
-      created_at: string,
-      updated_at: string,
-      settings:  {
-        __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
-        nextToken: string | null,
-      } | null,
-      services:  {
-        __typename: "ModelServiceConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
-  } | null,
-};
-
-export type OnDeleteWorktimeSubscription = {
-  onDeleteWorktime:  {
-    __typename: "Worktime",
-    id: string,
-    open_time: string,
-    close_time: string,
-    days:  {
-      __typename: "MetaDay",
-      days: Day | null,
-    } | null,
-    app:  {
-      __typename: "App",
-      id: string,
-      appname: string,
-      logoapp: string,
-      splashscreen: string,
-      created_at: string,
-      updated_at: string,
-      settings:  {
-        __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -1619,9 +1147,6 @@ export type OnCreateServiceSubscription = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    start_time: string | null,
-    end_time: string | null,
-    calender_offset: string | null,
     app:  {
       __typename: "App",
       id: string,
@@ -1632,10 +1157,6 @@ export type OnCreateServiceSubscription = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -1669,9 +1190,6 @@ export type OnUpdateServiceSubscription = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    start_time: string | null,
-    end_time: string | null,
-    calender_offset: string | null,
     app:  {
       __typename: "App",
       id: string,
@@ -1682,10 +1200,6 @@ export type OnUpdateServiceSubscription = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -1719,9 +1233,6 @@ export type OnDeleteServiceSubscription = {
     price: number | null,
     image: string | null,
     duration: number | null,
-    start_time: string | null,
-    end_time: string | null,
-    calender_offset: string | null,
     app:  {
       __typename: "App",
       id: string,
@@ -1732,10 +1243,6 @@ export type OnDeleteServiceSubscription = {
       updated_at: string,
       settings:  {
         __typename: "ModelSettingConnection",
-        nextToken: string | null,
-      } | null,
-      worktimes:  {
-        __typename: "ModelWorktimeConnection",
         nextToken: string | null,
       } | null,
       services:  {
@@ -1778,9 +1285,6 @@ export type OnCreateAppointmentSubscription = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      start_time: string | null,
-      end_time: string | null,
-      calender_offset: string | null,
       app:  {
         __typename: "App",
         id: string,
@@ -1816,9 +1320,6 @@ export type OnUpdateAppointmentSubscription = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      start_time: string | null,
-      end_time: string | null,
-      calender_offset: string | null,
       app:  {
         __typename: "App",
         id: string,
@@ -1854,9 +1355,6 @@ export type OnDeleteAppointmentSubscription = {
       price: number | null,
       image: string | null,
       duration: number | null,
-      start_time: string | null,
-      end_time: string | null,
-      calender_offset: string | null,
       app:  {
         __typename: "App",
         id: string,
