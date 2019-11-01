@@ -87,12 +87,16 @@
             </ion-col>
             <ion-col size="4" size-sm>
                 <div class="div-item">  
-                      <ion-datetime name="start_time" display-format="HH:mm" picker-format="HH:mm" minuteValues="0,15,30,45" ngModel value="{{start_time}}"></ion-datetime> 
-                </div>
+                      <!-- <ion-datetime name="start_time" display-format="HH:mm" picker-format="HH:mm" minuteValues="0,15,30,45" ngModel value="{{start_time}}"></ion-datetime>  -->
+                      <ion-input type="time" name="start_time" placeholder="start_time" ngModel value="{{start_time}}"></ion-input>
+                    </div>
             </ion-col>
             <ion-col size="4" size-sm>
                 <div class="div-item">
-                      <ion-datetime name="end_time" display-format="HH:mm" picker-format="HH:mm" minuteValues="0,15,30,45" ngModel value="{{end_time}}"></ion-datetime>
+                      <!-- <ion-datetime name="end_time" display-format="HH:mm" picker-format="HH:mm" minuteValues="0,15,30,45" ngModel value="{{end_time}}"></ion-datetime> -->
+                      <ion-input type="time" name="end_time" placeholder="end_time" ngModel value="{{end_time}}"></ion-input>
+
+
                 </div>
             </ion-col>
           </ion-row>

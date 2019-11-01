@@ -58,36 +58,36 @@
    
  
 <div *ngFor="let time of times; let i = index">
-  <div class="card-hd"> 
-    <ion-grid>
-      <ion-row class="div-row">
-        <ion-col class="div-col">
-          <div>
-            <ion-radio color="success" value="0"></ion-radio>  
-          </div>
-        </ion-col> 
-        <ion-col class="">
-          <div>
-            {{time}} 
-          </div>
-        </ion-col> 
-        <ion-col class="">
-          <div>
-            {{servicetitle}} 
-          </div>
-        </ion-col> 
-        <ion-col class="">
-          <div>
-            <del> {{(serviceprice + 5)}} €</del>
-          </div>
-        </ion-col> 
-        <ion-col class="">
-          <div>
-            {{serviceprice}} €
-          </div>
-        </ion-col> 
-      </ion-row>
-    </ion-grid>
+  <div class="card-hd">  
+      <ion-grid>
+        <ion-row class="div-row">
+          <ion-col class="div-col">
+            <div>
+              <ion-radio color="success" value="0" (click)="createAppointment(time)"></ion-radio>  
+            </div>
+          </ion-col> 
+          <ion-col class="">
+            <div>
+              {{time}} 
+            </div>
+          </ion-col> 
+          <ion-col class="">
+            <div>
+              {{servicetitle}} 
+            </div>
+          </ion-col> 
+          <ion-col class="">
+            <div>
+              <del> {{(serviceprice + 5)}} €</del>
+            </div>
+          </ion-col> 
+          <ion-col class="">
+            <div>
+              {{serviceprice}} €
+            </div>
+          </ion-col> 
+        </ion-row>
+      </ion-grid> 
   </div>  
 </div>    
 

@@ -40,10 +40,10 @@ export class SettingsPage implements OnInit {
       event.preventDefault();
       const setting = { 
           id: this.settingid, 
-          start_time: moment(form.value.start_time).format('HH:mm').toString(),
-          end_time: moment(form.value.end_time).format('HH:mm').toString(),
-          // start_time: form.value.start_time,
-          // end_time: form.value.end_time,
+          // start_time: moment(form.value.start_time).format('HH:mm').toString(),
+          // end_time: moment(form.value.end_time).format('HH:mm').toString(),
+          start_time: form.value.start_time,
+          end_time: form.value.end_time,
           // start_time: moment(form.value.start_time).format('LT').toString(),
           // end_time: moment(form.value.end_time).format('LT'),
           calender_offset: form.value.calender_offset,
