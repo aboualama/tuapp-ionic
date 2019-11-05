@@ -46,7 +46,6 @@ export class AppointmentPage implements OnInit {
         this.serviceid = await service.data.getService.id;
         this.servicetitle = service.data.getService.title;
         this.serviceprice = service.data.getService.price; 
-        console.log(this.servicetitle);
 
         let user = await Auth.currentAuthenticatedUser();
         const {attributes} = user;
@@ -60,6 +59,8 @@ export class AppointmentPage implements OnInit {
         this.getAppointment();
     }
 
+      
+    // Get Setting
     async getAppSetting(){ 
         const App_Id = await API.graphql(graphqlOperation(Queries.getApp, {id: AppId}));
         this.start_times = await App_Id.data.getApp.settings.items[0].start_time;
@@ -67,9 +68,10 @@ export class AppointmentPage implements OnInit {
         this.calender_offset = await App_Id.data.getApp.settings.items[0].calender_offset;
         console.log(this.calender_offset);       
     }
-      
+
+    // Get Time
     async getTime() { 
-        function timeToArray(start: string | number | string[], end: string | number | string[]){
+        function timeToArray(start, end){
             start = start.split(":");
             end = end.split(":"); 
             start = parseInt(start[0]) * 60 + parseInt(start[1]);
@@ -95,6 +97,7 @@ export class AppointmentPage implements OnInit {
         this.all_times = timeToArray(start, end); 
     } 
  
+    // Get Appointments
     async getAppointment() {
         const appointment = await API.graphql(graphqlOperation(Queries.listAppointments, {
             filter: {
@@ -114,9 +117,7 @@ export class AppointmentPage implements OnInit {
         this.times = available_time;  
     }
 
-
-
-
+ 
 
     // Create Appointment
     createAppointment = async (time: any) => {
@@ -147,23 +148,14 @@ export class AppointmentPage implements OnInit {
 
    // const App_Id = await API.graphql(graphqlOperation(`query MyQuery {getApp(id: "1") { settings { items {  start_time  } } } }`));
  
-
-
-
-
-
-        // let start = this.start_times; 
-        // let end   = this.end_times;   
-        // let start   = moment(this.start_times).format('HH:mm').toString();
-        // let end   = moment(this.end_times).format('HH:mm').toString();
-        // let start =  moment(this.start_times).format('LT');
-        // let end =  moment(this.end_times).format('LT');
-        // console.log(start);
-        // console.log(end);
-
-
-
-
+    // let start = this.start_times; 
+    // let end   = this.end_times;   
+    // let start   = moment(this.start_times).format('HH:mm').toString();
+    // let end   = moment(this.end_times).format('HH:mm').toString();
+    // let start =  moment(this.start_times).format('LT');
+    // let end =  moment(this.end_times).format('LT');
+    // console.log(start);
+    // console.log(end);
  
     // showDatepicker(){
     //     this.datePicker.show({
