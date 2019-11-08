@@ -27,7 +27,7 @@ export type CreateSettingInput = {
   id?: string | null,
   start_time: string,
   end_time: string,
-  calender_offset: string,
+  calender_offset: number,
   settingAppId?: string | null,
 };
 
@@ -35,7 +35,7 @@ export type UpdateSettingInput = {
   id: string,
   start_time?: string | null,
   end_time?: string | null,
-  calender_offset?: string | null,
+  calender_offset?: number | null,
   settingAppId?: string | null,
 };
 
@@ -135,10 +135,22 @@ export type ModelSettingFilterInput = {
   id?: ModelIDFilterInput | null,
   start_time?: ModelStringFilterInput | null,
   end_time?: ModelStringFilterInput | null,
-  calender_offset?: ModelStringFilterInput | null,
+  calender_offset?: ModelIntFilterInput | null,
   and?: Array< ModelSettingFilterInput | null > | null,
   or?: Array< ModelSettingFilterInput | null > | null,
   not?: ModelSettingFilterInput | null,
+};
+
+export type ModelIntFilterInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  contains?: number | null,
+  notContains?: number | null,
+  between?: Array< number | null > | null,
 };
 
 export type ModelServiceFilterInput = {
@@ -154,18 +166,6 @@ export type ModelServiceFilterInput = {
 };
 
 export type ModelFloatFilterInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  contains?: number | null,
-  notContains?: number | null,
-  between?: Array< number | null > | null,
-};
-
-export type ModelIntFilterInput = {
   ne?: number | null,
   eq?: number | null,
   le?: number | null,
@@ -215,7 +215,7 @@ export type CreateAppMutation = {
         id: string,
         start_time: string,
         end_time: string,
-        calender_offset: string,
+        calender_offset: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -255,7 +255,7 @@ export type UpdateAppMutation = {
         id: string,
         start_time: string,
         end_time: string,
-        calender_offset: string,
+        calender_offset: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -295,7 +295,7 @@ export type DeleteAppMutation = {
         id: string,
         start_time: string,
         end_time: string,
-        calender_offset: string,
+        calender_offset: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -325,7 +325,7 @@ export type CreateSettingMutation = {
     id: string,
     start_time: string,
     end_time: string,
-    calender_offset: string,
+    calender_offset: number,
     app:  {
       __typename: "App",
       id: string,
@@ -356,7 +356,7 @@ export type UpdateSettingMutation = {
     id: string,
     start_time: string,
     end_time: string,
-    calender_offset: string,
+    calender_offset: number,
     app:  {
       __typename: "App",
       id: string,
@@ -387,7 +387,7 @@ export type DeleteSettingMutation = {
     id: string,
     start_time: string,
     end_time: string,
-    calender_offset: string,
+    calender_offset: number,
     app:  {
       __typename: "App",
       id: string,
@@ -686,7 +686,7 @@ export type GetAppQuery = {
         id: string,
         start_time: string,
         end_time: string,
-        calender_offset: string,
+        calender_offset: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -746,7 +746,7 @@ export type GetSettingQuery = {
     id: string,
     start_time: string,
     end_time: string,
-    calender_offset: string,
+    calender_offset: number,
     app:  {
       __typename: "App",
       id: string,
@@ -781,7 +781,7 @@ export type ListSettingsQuery = {
       id: string,
       start_time: string,
       end_time: string,
-      calender_offset: string,
+      calender_offset: number,
       app:  {
         __typename: "App",
         id: string,
@@ -965,7 +965,7 @@ export type OnCreateAppSubscription = {
         id: string,
         start_time: string,
         end_time: string,
-        calender_offset: string,
+        calender_offset: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1001,7 +1001,7 @@ export type OnUpdateAppSubscription = {
         id: string,
         start_time: string,
         end_time: string,
-        calender_offset: string,
+        calender_offset: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1037,7 +1037,7 @@ export type OnDeleteAppSubscription = {
         id: string,
         start_time: string,
         end_time: string,
-        calender_offset: string,
+        calender_offset: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1063,7 +1063,7 @@ export type OnCreateSettingSubscription = {
     id: string,
     start_time: string,
     end_time: string,
-    calender_offset: string,
+    calender_offset: number,
     app:  {
       __typename: "App",
       id: string,
@@ -1090,7 +1090,7 @@ export type OnUpdateSettingSubscription = {
     id: string,
     start_time: string,
     end_time: string,
-    calender_offset: string,
+    calender_offset: number,
     app:  {
       __typename: "App",
       id: string,
@@ -1117,7 +1117,7 @@ export type OnDeleteSettingSubscription = {
     id: string,
     start_time: string,
     end_time: string,
-    calender_offset: string,
+    calender_offset: number,
     app:  {
       __typename: "App",
       id: string,

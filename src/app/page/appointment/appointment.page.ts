@@ -33,6 +33,8 @@ export class AppointmentPage implements OnInit {
     public all_times: any;
     public times: any;
     public status: false;
+    public service_duration: any; 
+    public slot: any; 
     
 
     constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController, private router: Router, private datePicker: DatePicker) {
@@ -41,44 +43,45 @@ export class AppointmentPage implements OnInit {
 
     async ngOnInit() {
 
-        const serviceId = this.activatedRoute.snapshot.paramMap.get('myid');
-        const service = await API.graphql(graphqlOperation(Queries.getService, {id: serviceId}));
+    // Get service 
+        const Id = this.activatedRoute.snapshot.paramMap.get('myid');
+        const service = await API.graphql(graphqlOperation(Queries.getService, {id: Id}));
         this.serviceid = await service.data.getService.id;
         this.servicetitle = service.data.getService.title;
         this.serviceprice = service.data.getService.price; 
+        this.service_duration = service.data.getService.duration; 
 
+    // Get user 
         let user = await Auth.currentAuthenticatedUser();
         const {attributes} = user;
-        this.clientid = await attributes.sub;
-        console.log(attributes.sub); 
-        
- 
-
-        this.getTime();
-        this.getAppSetting();
-        this.getAppointment();
-    }
-
+        this.clientid = await attributes.sub; 
       
-    // Get Setting
-    async getAppSetting(){ 
+    // Get Setting 
         const App_Id = await API.graphql(graphqlOperation(Queries.getApp, {id: AppId}));
         this.start_times = await App_Id.data.getApp.settings.items[0].start_time;
         this.end_times = await App_Id.data.getApp.settings.items[0].end_times;
-        this.calender_offset = await App_Id.data.getApp.settings.items[0].calender_offset;
-        console.log(this.calender_offset);       
+        this.calender_offset = await App_Id.data.getApp.settings.items[0].calender_offset; 
+
+    // Get slot if condition  
+        const slot = this.calender_offset < this.service_duration ? this.calender_offset : this.service_duration;
+       
+        this.getTime(slot);
+        this.getAppointment();
     }
 
+
     // Get Time
-    async getTime() { 
-        function timeToArray(start, end){
+    async getTime(slot) {  
+        console.log(slot + 'eslot'); 
+
+        function timeToArray(start, end, slot){
             start = start.split(":");
             end = end.split(":"); 
             start = parseInt(start[0]) * 60 + parseInt(start[1]);
             end = parseInt(end[0]) * 60 + parseInt(end[1]);
         
             let result = []; 
-            for (let  time = start; time <= end; time+=30){
+            for (let  time = start; time <= end; time+=slot){
                 result.push( timeString(time));
             } 
             return result;
@@ -93,8 +96,9 @@ export class AppointmentPage implements OnInit {
             return hours + ":" + minutes;
         } 
         let start   = "09:00" ;
-        let end   = "18:00" ;
-        this.all_times = timeToArray(start, end); 
+        let end     = "18:00" ; 
+        this.all_times = timeToArray(start, end, slot); 
+ 
     } 
  
     // Get Appointments
@@ -115,9 +119,7 @@ export class AppointmentPage implements OnInit {
     
         const available_time  = this.all_times.filter((item: any) => reserved_time.indexOf(item) < 0);
         this.times = available_time;  
-    }
-
- 
+    } 
 
     // Create Appointment
     createAppointment = async (time: any) => {
@@ -133,7 +135,7 @@ export class AppointmentPage implements OnInit {
         };
         await API.graphql(graphqlOperation(mutations.createAppointment, {input: appointment}));
         this.router.navigate(['service']);
-    };   
+    };    
 } 
    
 
@@ -171,10 +173,6 @@ export class AppointmentPage implements OnInit {
     //       err => console.log('Error occurred while getting date: ', err)
     //     );
     //   }  
-
-
-
-
 
 
 

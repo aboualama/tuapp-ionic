@@ -15,7 +15,7 @@ type Setting @model {
   id: ID! 
   start_time: String!
   end_time: String!  
-  calender_offset: String!
+  calender_offset: Int!
   app: App @connection(name: "AppSetting")
 } 
 
