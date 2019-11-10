@@ -5,7 +5,7 @@
       <p class="title-mn txt-light">Setting</p>
     </div>
   </ion-header>
-  
+
   <ion-content fullscreen common-parallax [scrollEvents]="true">
     <div class="page-ct pd-0">
       <div class="cover">
@@ -16,7 +16,7 @@
 
 
       <h1 class="ion-text-center">Set Working Time</h1>
-  
+
       <!-- <form #form="ngForm" (ngSubmit)="updateService(form)">
         <ion-grid>
           <ion-row  justify-content-center>
@@ -25,7 +25,7 @@
                 <h3 class="test-black">{{ servicetitle }}</h3>
               </div>
               <div class="div-item">
-                <ion-input name="serviceid" type="hidden" hidden="hidden" value="{{ serviceid }}" ngModel></ion-input>  
+                <ion-input name="serviceid" type="hidden" hidden="hidden" value="{{ serviceid }}" ngModel></ion-input>
                 <div class="div-item">
                   <ion-label position="floating">Start Time::</ion-label>
                   <ion-datetime name="start_time" displayFormat="h:mm A" value="{{start_time}}" minuteValues="0,15,30,45" ngModel required></ion-datetime>
@@ -35,7 +35,7 @@
                   <ion-datetime name="end_time" displayFormat="h:mm A" value="{{end_time}}" minuteValues="0,15,30,45" ngModel required></ion-datetime>
                 </div>
                 <div class="div-item">
-                  <ion-label position="floating">Calender Offset:</ion-label> 
+                  <ion-label position="floating">Calender Offset:</ion-label>
                   <ion-input name="calender_offset" value="{{calender_offset}}" ngModel required></ion-input>
                 </div>
               </div>
@@ -46,31 +46,33 @@
           </ion-row>
         </ion-grid>
       </form> -->
-  
 
 
 
 
 
 
+<div *ngFor="let set1 of settings">
+    <app-available-time    [setting1]="set1"></app-available-time>
+</div>
 
- 
-  <div class="div-table"> 
+
+  <div class="div-table">
     <div class="th-table">
         <ion-row justify-content-center>
           <ion-col size="4" size-sm>
-            <div class="div-item"> 
+            <div class="div-item">
                   <ion-label class="label-table">Offset </ion-label>
             </div>
           </ion-col>
           <ion-col size="4" size-sm>
-              <div class="div-item"> 
+              <div class="div-item">
                     <ion-label class="label-table">Start Time</ion-label>
               </div>
           </ion-col>
           <ion-col size="4" size-sm>
-              <div class="div-item"> 
-                    <ion-label class="label-table">End Time</ion-label> 
+              <div class="div-item">
+                    <ion-label class="label-table">End Time</ion-label>
               </div>
           </ion-col>
         </ion-row>
@@ -81,12 +83,12 @@
         <ion-grid>
           <ion-row justify-content-center>
             <ion-col size="4" size-sm>
-              <div class="div-item">   
-                  <ion-input name="calender_offset" type="number" value="{{calender_offset}}" ngModel></ion-input>   
+              <div class="div-item">
+                  <ion-input name="calender_offset" type="number" value="{{calender_offset}}" ngModel></ion-input>
               </div>
             </ion-col>
             <ion-col size="4" size-sm>
-                <div class="div-item">  
+                <div class="div-item">
                       <!-- <ion-datetime name="start_time" display-format="HH:mm" picker-format="HH:mm" minuteValues="0,15,30,45" ngModel value="{{start_time}}"></ion-datetime>  -->
                       <ion-input type="time" name="start_time" placeholder="start_time" ngModel value="{{start_time}}"></ion-input>
                     </div>
@@ -100,11 +102,10 @@
                 </div>
             </ion-col>
           </ion-row>
-        </ion-grid> 
+        </ion-grid>
         <div padding>
           <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Edit Setting</ion-button>
         </div>
       </form>
-    </div>  
+    </div>
   </div>
- 

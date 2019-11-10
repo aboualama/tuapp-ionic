@@ -43,8 +43,11 @@ export class AppointmentPage implements OnInit {
     }
 
     async ngOnInit() {
-        console.log(this.slotService.getTimeSlots([[600, 670]], 540, 1080, true, 'half', false, true));
+        // console.log());
         // Get service
+        //get reservedTimes
+        const reserved_times = this.getAppointment();
+
         const Id = this.activatedRoute.snapshot.paramMap.get('myid');
         const service = await API.graphql(graphqlOperation(Queries.getService, {id: Id}));
         this.serviceid = await service.data.getService.id;
@@ -62,7 +65,7 @@ export class AppointmentPage implements OnInit {
         this.start_times = '09:00'; // await App_Id.data.getApp.settings.items[0].start_time;
         this.end_times = '18:00'; // await App_Id.data.getApp.settings.items[0].end_times;
         this.calender_offset = 30; // await App_Id.data.getApp.settings.items[0].calender_offset;
-
+        console.log(console.log(await App_Id.data.getApp.settings));
         // Get slot if condition
         const slot = this.calender_offset < this.service_duration ? this.calender_offset : this.service_duration;
 
@@ -120,13 +123,12 @@ export class AppointmentPage implements OnInit {
         }));
 
         const appointments = await appointment.data.listAppointments.items;
-        const reserved_time = [];
+        const reservedTime = [];
         for (let $i = 0; $i < appointments.length; $i++) {
-            reserved_time.push(appointments[$i].start_time);
+            reservedTime.push([appointments[$i].start_time, appointments[$i].end_time]);
         }
-
-        const available_time = this.all_times.filter((item: any) => reserved_time.indexOf(item) < 0);
-        this.times = available_time;
+        console.log('reserved', reservedTime);
+        return reservedTime;
     }
 
     // Create Appointment

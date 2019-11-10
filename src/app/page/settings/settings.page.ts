@@ -16,11 +16,7 @@ import * as moment from 'moment/moment';
 })
 export class SettingsPage implements OnInit {
 
-    public settingid: any; // = 1 Temporarily
-    public start_time: any;
-    public end_time: any;
-    public calender_offset: any;
-
+    public settings: any;
     public moment: any;
 
     constructor(private modalController: ModalController, private router: Router) {
@@ -28,18 +24,21 @@ export class SettingsPage implements OnInit {
     }
 
     async ngOnInit() {
-        const setting = await API.graphql(graphqlOperation(Queries.getSetting, {id: 1}));
+        this.settings = (await API.graphql(graphqlOperation(Queries.listSettings))).data.listSettings.items;
+        console.log(this.settings);
+      /*  console.log(setting);
         this.settingid = setting.data.getSetting.id;
         this.start_time = setting.data.getSetting.start_time;
         this.end_time = setting.data.getSetting.end_time;
-        this.calender_offset = setting.data.getSetting.calender_offset;
+        this.calender_offset = setting.data.getSetting.calender_offset;*/
     }
+
 
     // Update Setting
     updateSetting = async (form: { value: { start_time: any; end_time: any; calender_offset: any; }; }) => {
         event.preventDefault();
         const setting = {
-        //   id: this.settingid,
+            //   id: this.settingid,
             // start_time: moment(form.value.start_time).format('HH:mm').toString(),
             // end_time: moment(form.value.end_time).format('HH:mm').toString(),
             start_time: form.value.start_time,

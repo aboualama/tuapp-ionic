@@ -1,0 +1,55 @@
+
+
+<div class="div-table">
+    <div class="th-table">
+        <ion-row justify-content-center>
+            <ion-col size="4" size-sm>
+                <div class="div-item">
+                    <ion-label class="label-table">Offset </ion-label>
+                </div>
+            </ion-col>
+            <ion-col size="4" size-sm>
+                <div class="div-item">
+                    <ion-label class="label-table">Start Time</ion-label>
+                </div>
+            </ion-col>
+            <ion-col size="4" size-sm>
+                <div class="div-item">
+                    <ion-label class="label-table">End Time</ion-label>
+                </div>
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <div class="th-table">
+        <form #form="ngForm" (ngSubmit)="updateSetting(form)">
+            <ion-grid>
+                <ion-row justify-content-center>
+                    <ion-col size="4" size-sm>
+                        <div class="div-item">
+                            <ion-input name="offset" type="number" [(ngModel)]="offset"></ion-input>
+                        </div>
+                    </ion-col>
+                    <ion-col size="4" size-sm>
+                        <div class="div-item">
+                            <!-- <ion-datetime name="start_time" display-format="HH:mm" picker-format="HH:mm" minuteValues="0,15,30,45" ngModel value="{{start_time}}"></ion-datetime>  -->
+                            <ion-input type="time" name="startTime" placeholder="start_time" [(ngModel)]="startTime"></ion-input>
+                        </div>
+                    </ion-col>
+                    <ion-col size="4" size-sm>
+                        <div class="div-item">
+                            <!-- <ion-datetime name="end_time" display-format="HH:mm" picker-format="HH:mm" minuteValues="0,15,30,45" ngModel value="{{end_time}}"></ion-datetime> -->
+                            <ion-input type="time" name="endTime" placeholder="end_time"  [(ngModel)]="endTime"></ion-input>
+
+
+                        </div>
+                    </ion-col>
+                    <ion-input type="hidden" [(ngModel)]="id" name="id"></ion-input>
+                </ion-row>
+            </ion-grid>
+            <div padding>
+                <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Edit Setting</ion-button>
+            </div>
+        </form>
+    </div>
+</div>
