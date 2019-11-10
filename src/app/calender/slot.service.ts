@@ -32,17 +32,22 @@ export class SlotService {
         return availableTimes;
     }
 
-    getTimeSlots(blockTimes, start, end, showTimeAsString = true,
+    toTime(time) {
+        const t = time.split(':');
+        return ((parseInt(t[0]) * 60) + parseInt(t[1]));
+    }
+
+    getTimeSlots(blockTimes, availableTimes, showTimeAsString = true,
                  interval = 30, includeStartBlockedTime = false, includeEndBlockedTime = false) {
         const times = 1;
         const sums = interval;
-        let availableTimes = [[540, 730], [870, 990]];
+
         includeStartBlockedTime = includeStartBlockedTime === true ? true : false;
         includeEndBlockedTime = includeEndBlockedTime === true ? true : false;
         availableTimes = this.reduceBlockedTime(blockTimes, availableTimes);
         let dateTimes = [];
         availableTimes.forEach((value, index, array) => {
-
+            console.log("value",value,times,sums);
             //  console.log(this.getSlotFromTimeArray(value[0], value[1], times, sums));
             const arr = this.getSlotFromTimeArray(value[0], value[1], times, sums);
             dateTimes = dateTimes.concat(arr);

@@ -4,6 +4,7 @@
 export const getApp = `query GetApp($id: ID!) {
   getApp(id: $id) {
     id
+    appId
     appname
     logoapp
     splashscreen
@@ -15,6 +16,7 @@ export const getApp = `query GetApp($id: ID!) {
         start_time
         end_time
         calender_offset
+        appId
       }
       nextToken
     }
@@ -26,6 +28,7 @@ export const getApp = `query GetApp($id: ID!) {
         price
         image
         duration
+        appId
       }
       nextToken
     }
@@ -36,6 +39,7 @@ export const listApps = `query ListApps($filter: ModelAppFilterInput, $limit: In
   listApps(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -58,8 +62,10 @@ export const getSetting = `query GetSetting($id: ID!) {
     start_time
     end_time
     calender_offset
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -86,8 +92,10 @@ export const listSettings = `query ListSettings(
       start_time
       end_time
       calender_offset
+      appId
       app {
         id
+        appId
         appname
         logoapp
         splashscreen
@@ -107,8 +115,10 @@ export const getService = `query GetService($id: ID!) {
     price
     image
     duration
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -124,6 +134,7 @@ export const getService = `query GetService($id: ID!) {
     appointments {
       items {
         id
+        appId
         client_id
         start_time
         end_time
@@ -149,8 +160,10 @@ export const listServices = `query ListServices(
       price
       image
       duration
+      appId
       app {
         id
+        appId
         appname
         logoapp
         splashscreen
@@ -168,6 +181,7 @@ export const listServices = `query ListServices(
 export const getAppointment = `query GetAppointment($id: ID!) {
   getAppointment(id: $id) {
     id
+    appId
     client_id
     start_time
     end_time
@@ -181,8 +195,10 @@ export const getAppointment = `query GetAppointment($id: ID!) {
       price
       image
       duration
+      appId
       app {
         id
+        appId
         appname
         logoapp
         splashscreen
@@ -204,6 +220,7 @@ export const listAppointments = `query ListAppointments(
   listAppointments(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      appId
       client_id
       start_time
       end_time
@@ -217,6 +234,7 @@ export const listAppointments = `query ListAppointments(
         price
         image
         duration
+        appId
       }
     }
     nextToken

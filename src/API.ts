@@ -3,6 +3,7 @@
 
 export type CreateAppInput = {
   id?: string | null,
+  appId: number,
   appname: string,
   logoapp: string,
   splashscreen: string,
@@ -12,6 +13,7 @@ export type CreateAppInput = {
 
 export type UpdateAppInput = {
   id: string,
+  appId?: number | null,
   appname?: string | null,
   logoapp?: string | null,
   splashscreen?: string | null,
@@ -28,6 +30,7 @@ export type CreateSettingInput = {
   start_time: string,
   end_time: string,
   calender_offset: number,
+  appId: number,
   settingAppId?: string | null,
 };
 
@@ -36,6 +39,7 @@ export type UpdateSettingInput = {
   start_time?: string | null,
   end_time?: string | null,
   calender_offset?: number | null,
+  appId?: number | null,
   settingAppId?: string | null,
 };
 
@@ -50,6 +54,7 @@ export type CreateServiceInput = {
   price?: number | null,
   image?: string | null,
   duration?: number | null,
+  appId: number,
   serviceAppId?: string | null,
 };
 
@@ -60,6 +65,7 @@ export type UpdateServiceInput = {
   price?: number | null,
   image?: string | null,
   duration?: number | null,
+  appId?: number | null,
   serviceAppId?: string | null,
 };
 
@@ -69,6 +75,7 @@ export type DeleteServiceInput = {
 
 export type CreateAppointmentInput = {
   id?: string | null,
+  appId: number,
   client_id: string,
   start_time?: string | null,
   end_time?: string | null,
@@ -80,6 +87,7 @@ export type CreateAppointmentInput = {
 
 export type UpdateAppointmentInput = {
   id: string,
+  appId?: number | null,
   client_id?: string | null,
   start_time?: string | null,
   end_time?: string | null,
@@ -95,6 +103,7 @@ export type DeleteAppointmentInput = {
 
 export type ModelAppFilterInput = {
   id?: ModelIDFilterInput | null,
+  appId?: ModelIntFilterInput | null,
   appname?: ModelStringFilterInput | null,
   logoapp?: ModelStringFilterInput | null,
   splashscreen?: ModelStringFilterInput | null,
@@ -118,6 +127,18 @@ export type ModelIDFilterInput = {
   beginsWith?: string | null,
 };
 
+export type ModelIntFilterInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  contains?: number | null,
+  notContains?: number | null,
+  between?: Array< number | null > | null,
+};
+
 export type ModelStringFilterInput = {
   ne?: string | null,
   eq?: string | null,
@@ -136,21 +157,10 @@ export type ModelSettingFilterInput = {
   start_time?: ModelStringFilterInput | null,
   end_time?: ModelStringFilterInput | null,
   calender_offset?: ModelIntFilterInput | null,
+  appId?: ModelIntFilterInput | null,
   and?: Array< ModelSettingFilterInput | null > | null,
   or?: Array< ModelSettingFilterInput | null > | null,
   not?: ModelSettingFilterInput | null,
-};
-
-export type ModelIntFilterInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  contains?: number | null,
-  notContains?: number | null,
-  between?: Array< number | null > | null,
 };
 
 export type ModelServiceFilterInput = {
@@ -160,6 +170,7 @@ export type ModelServiceFilterInput = {
   price?: ModelFloatFilterInput | null,
   image?: ModelStringFilterInput | null,
   duration?: ModelIntFilterInput | null,
+  appId?: ModelIntFilterInput | null,
   and?: Array< ModelServiceFilterInput | null > | null,
   or?: Array< ModelServiceFilterInput | null > | null,
   not?: ModelServiceFilterInput | null,
@@ -179,6 +190,7 @@ export type ModelFloatFilterInput = {
 
 export type ModelAppointmentFilterInput = {
   id?: ModelIDFilterInput | null,
+  appId?: ModelIntFilterInput | null,
   client_id?: ModelStringFilterInput | null,
   start_time?: ModelStringFilterInput | null,
   end_time?: ModelStringFilterInput | null,
@@ -203,6 +215,7 @@ export type CreateAppMutation = {
   createApp:  {
     __typename: "App",
     id: string,
+    appId: number,
     appname: string,
     logoapp: string,
     splashscreen: string,
@@ -216,6 +229,7 @@ export type CreateAppMutation = {
         start_time: string,
         end_time: string,
         calender_offset: number,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -229,6 +243,7 @@ export type CreateAppMutation = {
         price: number | null,
         image: string | null,
         duration: number | null,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -243,6 +258,7 @@ export type UpdateAppMutation = {
   updateApp:  {
     __typename: "App",
     id: string,
+    appId: number,
     appname: string,
     logoapp: string,
     splashscreen: string,
@@ -256,6 +272,7 @@ export type UpdateAppMutation = {
         start_time: string,
         end_time: string,
         calender_offset: number,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -269,6 +286,7 @@ export type UpdateAppMutation = {
         price: number | null,
         image: string | null,
         duration: number | null,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -283,6 +301,7 @@ export type DeleteAppMutation = {
   deleteApp:  {
     __typename: "App",
     id: string,
+    appId: number,
     appname: string,
     logoapp: string,
     splashscreen: string,
@@ -296,6 +315,7 @@ export type DeleteAppMutation = {
         start_time: string,
         end_time: string,
         calender_offset: number,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -309,6 +329,7 @@ export type DeleteAppMutation = {
         price: number | null,
         image: string | null,
         duration: number | null,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -326,9 +347,11 @@ export type CreateSettingMutation = {
     start_time: string,
     end_time: string,
     calender_offset: number,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -357,9 +380,11 @@ export type UpdateSettingMutation = {
     start_time: string,
     end_time: string,
     calender_offset: number,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -388,9 +413,11 @@ export type DeleteSettingMutation = {
     start_time: string,
     end_time: string,
     calender_offset: number,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -421,9 +448,11 @@ export type CreateServiceMutation = {
     price: number | null,
     image: string | null,
     duration: number | null,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -443,6 +472,7 @@ export type CreateServiceMutation = {
       items:  Array< {
         __typename: "Appointment",
         id: string,
+        appId: number,
         client_id: string,
         start_time: string | null,
         end_time: string | null,
@@ -468,9 +498,11 @@ export type UpdateServiceMutation = {
     price: number | null,
     image: string | null,
     duration: number | null,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -490,6 +522,7 @@ export type UpdateServiceMutation = {
       items:  Array< {
         __typename: "Appointment",
         id: string,
+        appId: number,
         client_id: string,
         start_time: string | null,
         end_time: string | null,
@@ -515,9 +548,11 @@ export type DeleteServiceMutation = {
     price: number | null,
     image: string | null,
     duration: number | null,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -537,6 +572,7 @@ export type DeleteServiceMutation = {
       items:  Array< {
         __typename: "Appointment",
         id: string,
+        appId: number,
         client_id: string,
         start_time: string | null,
         end_time: string | null,
@@ -557,6 +593,7 @@ export type CreateAppointmentMutation = {
   createAppointment:  {
     __typename: "Appointment",
     id: string,
+    appId: number,
     client_id: string,
     start_time: string | null,
     end_time: string | null,
@@ -571,9 +608,11 @@ export type CreateAppointmentMutation = {
       price: number | null,
       image: string | null,
       duration: number | null,
+      appId: number,
       app:  {
         __typename: "App",
         id: string,
+        appId: number,
         appname: string,
         logoapp: string,
         splashscreen: string,
@@ -596,6 +635,7 @@ export type UpdateAppointmentMutation = {
   updateAppointment:  {
     __typename: "Appointment",
     id: string,
+    appId: number,
     client_id: string,
     start_time: string | null,
     end_time: string | null,
@@ -610,9 +650,11 @@ export type UpdateAppointmentMutation = {
       price: number | null,
       image: string | null,
       duration: number | null,
+      appId: number,
       app:  {
         __typename: "App",
         id: string,
+        appId: number,
         appname: string,
         logoapp: string,
         splashscreen: string,
@@ -635,6 +677,7 @@ export type DeleteAppointmentMutation = {
   deleteAppointment:  {
     __typename: "Appointment",
     id: string,
+    appId: number,
     client_id: string,
     start_time: string | null,
     end_time: string | null,
@@ -649,9 +692,11 @@ export type DeleteAppointmentMutation = {
       price: number | null,
       image: string | null,
       duration: number | null,
+      appId: number,
       app:  {
         __typename: "App",
         id: string,
+        appId: number,
         appname: string,
         logoapp: string,
         splashscreen: string,
@@ -674,6 +719,7 @@ export type GetAppQuery = {
   getApp:  {
     __typename: "App",
     id: string,
+    appId: number,
     appname: string,
     logoapp: string,
     splashscreen: string,
@@ -687,6 +733,7 @@ export type GetAppQuery = {
         start_time: string,
         end_time: string,
         calender_offset: number,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -700,6 +747,7 @@ export type GetAppQuery = {
         price: number | null,
         image: string | null,
         duration: number | null,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -718,6 +766,7 @@ export type ListAppsQuery = {
     items:  Array< {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -747,9 +796,11 @@ export type GetSettingQuery = {
     start_time: string,
     end_time: string,
     calender_offset: number,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -782,9 +833,11 @@ export type ListSettingsQuery = {
       start_time: string,
       end_time: string,
       calender_offset: number,
+      appId: number,
       app:  {
         __typename: "App",
         id: string,
+        appId: number,
         appname: string,
         logoapp: string,
         splashscreen: string,
@@ -809,9 +862,11 @@ export type GetServiceQuery = {
     price: number | null,
     image: string | null,
     duration: number | null,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -831,6 +886,7 @@ export type GetServiceQuery = {
       items:  Array< {
         __typename: "Appointment",
         id: string,
+        appId: number,
         client_id: string,
         start_time: string | null,
         end_time: string | null,
@@ -860,9 +916,11 @@ export type ListServicesQuery = {
       price: number | null,
       image: string | null,
       duration: number | null,
+      appId: number,
       app:  {
         __typename: "App",
         id: string,
+        appId: number,
         appname: string,
         logoapp: string,
         splashscreen: string,
@@ -886,6 +944,7 @@ export type GetAppointmentQuery = {
   getAppointment:  {
     __typename: "Appointment",
     id: string,
+    appId: number,
     client_id: string,
     start_time: string | null,
     end_time: string | null,
@@ -900,9 +959,11 @@ export type GetAppointmentQuery = {
       price: number | null,
       image: string | null,
       duration: number | null,
+      appId: number,
       app:  {
         __typename: "App",
         id: string,
+        appId: number,
         appname: string,
         logoapp: string,
         splashscreen: string,
@@ -929,6 +990,7 @@ export type ListAppointmentsQuery = {
     items:  Array< {
       __typename: "Appointment",
       id: string,
+      appId: number,
       client_id: string,
       start_time: string | null,
       end_time: string | null,
@@ -943,6 +1005,7 @@ export type ListAppointmentsQuery = {
         price: number | null,
         image: string | null,
         duration: number | null,
+        appId: number,
       } | null,
     } | null > | null,
     nextToken: string | null,
@@ -953,6 +1016,7 @@ export type OnCreateAppSubscription = {
   onCreateApp:  {
     __typename: "App",
     id: string,
+    appId: number,
     appname: string,
     logoapp: string,
     splashscreen: string,
@@ -966,6 +1030,7 @@ export type OnCreateAppSubscription = {
         start_time: string,
         end_time: string,
         calender_offset: number,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -979,6 +1044,7 @@ export type OnCreateAppSubscription = {
         price: number | null,
         image: string | null,
         duration: number | null,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -989,6 +1055,7 @@ export type OnUpdateAppSubscription = {
   onUpdateApp:  {
     __typename: "App",
     id: string,
+    appId: number,
     appname: string,
     logoapp: string,
     splashscreen: string,
@@ -1002,6 +1069,7 @@ export type OnUpdateAppSubscription = {
         start_time: string,
         end_time: string,
         calender_offset: number,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1015,6 +1083,7 @@ export type OnUpdateAppSubscription = {
         price: number | null,
         image: string | null,
         duration: number | null,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1025,6 +1094,7 @@ export type OnDeleteAppSubscription = {
   onDeleteApp:  {
     __typename: "App",
     id: string,
+    appId: number,
     appname: string,
     logoapp: string,
     splashscreen: string,
@@ -1038,6 +1108,7 @@ export type OnDeleteAppSubscription = {
         start_time: string,
         end_time: string,
         calender_offset: number,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1051,6 +1122,7 @@ export type OnDeleteAppSubscription = {
         price: number | null,
         image: string | null,
         duration: number | null,
+        appId: number,
       } | null > | null,
       nextToken: string | null,
     } | null,
@@ -1064,9 +1136,11 @@ export type OnCreateSettingSubscription = {
     start_time: string,
     end_time: string,
     calender_offset: number,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -1091,9 +1165,11 @@ export type OnUpdateSettingSubscription = {
     start_time: string,
     end_time: string,
     calender_offset: number,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -1118,9 +1194,11 @@ export type OnDeleteSettingSubscription = {
     start_time: string,
     end_time: string,
     calender_offset: number,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -1147,9 +1225,11 @@ export type OnCreateServiceSubscription = {
     price: number | null,
     image: string | null,
     duration: number | null,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -1169,6 +1249,7 @@ export type OnCreateServiceSubscription = {
       items:  Array< {
         __typename: "Appointment",
         id: string,
+        appId: number,
         client_id: string,
         start_time: string | null,
         end_time: string | null,
@@ -1190,9 +1271,11 @@ export type OnUpdateServiceSubscription = {
     price: number | null,
     image: string | null,
     duration: number | null,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -1212,6 +1295,7 @@ export type OnUpdateServiceSubscription = {
       items:  Array< {
         __typename: "Appointment",
         id: string,
+        appId: number,
         client_id: string,
         start_time: string | null,
         end_time: string | null,
@@ -1233,9 +1317,11 @@ export type OnDeleteServiceSubscription = {
     price: number | null,
     image: string | null,
     duration: number | null,
+    appId: number,
     app:  {
       __typename: "App",
       id: string,
+      appId: number,
       appname: string,
       logoapp: string,
       splashscreen: string,
@@ -1255,6 +1341,7 @@ export type OnDeleteServiceSubscription = {
       items:  Array< {
         __typename: "Appointment",
         id: string,
+        appId: number,
         client_id: string,
         start_time: string | null,
         end_time: string | null,
@@ -1271,6 +1358,7 @@ export type OnCreateAppointmentSubscription = {
   onCreateAppointment:  {
     __typename: "Appointment",
     id: string,
+    appId: number,
     client_id: string,
     start_time: string | null,
     end_time: string | null,
@@ -1285,9 +1373,11 @@ export type OnCreateAppointmentSubscription = {
       price: number | null,
       image: string | null,
       duration: number | null,
+      appId: number,
       app:  {
         __typename: "App",
         id: string,
+        appId: number,
         appname: string,
         logoapp: string,
         splashscreen: string,
@@ -1306,6 +1396,7 @@ export type OnUpdateAppointmentSubscription = {
   onUpdateAppointment:  {
     __typename: "Appointment",
     id: string,
+    appId: number,
     client_id: string,
     start_time: string | null,
     end_time: string | null,
@@ -1320,9 +1411,11 @@ export type OnUpdateAppointmentSubscription = {
       price: number | null,
       image: string | null,
       duration: number | null,
+      appId: number,
       app:  {
         __typename: "App",
         id: string,
+        appId: number,
         appname: string,
         logoapp: string,
         splashscreen: string,
@@ -1341,6 +1434,7 @@ export type OnDeleteAppointmentSubscription = {
   onDeleteAppointment:  {
     __typename: "Appointment",
     id: string,
+    appId: number,
     client_id: string,
     start_time: string | null,
     end_time: string | null,
@@ -1355,9 +1449,11 @@ export type OnDeleteAppointmentSubscription = {
       price: number | null,
       image: string | null,
       duration: number | null,
+      appId: number,
       app:  {
         __typename: "App",
         id: string,
+        appId: number,
         appname: string,
         logoapp: string,
         splashscreen: string,

@@ -4,6 +4,7 @@
 export const createApp = `mutation CreateApp($input: CreateAppInput!) {
   createApp(input: $input) {
     id
+    appId
     appname
     logoapp
     splashscreen
@@ -15,6 +16,7 @@ export const createApp = `mutation CreateApp($input: CreateAppInput!) {
         start_time
         end_time
         calender_offset
+        appId
       }
       nextToken
     }
@@ -26,6 +28,7 @@ export const createApp = `mutation CreateApp($input: CreateAppInput!) {
         price
         image
         duration
+        appId
       }
       nextToken
     }
@@ -35,6 +38,7 @@ export const createApp = `mutation CreateApp($input: CreateAppInput!) {
 export const updateApp = `mutation UpdateApp($input: UpdateAppInput!) {
   updateApp(input: $input) {
     id
+    appId
     appname
     logoapp
     splashscreen
@@ -46,6 +50,7 @@ export const updateApp = `mutation UpdateApp($input: UpdateAppInput!) {
         start_time
         end_time
         calender_offset
+        appId
       }
       nextToken
     }
@@ -57,6 +62,7 @@ export const updateApp = `mutation UpdateApp($input: UpdateAppInput!) {
         price
         image
         duration
+        appId
       }
       nextToken
     }
@@ -66,6 +72,7 @@ export const updateApp = `mutation UpdateApp($input: UpdateAppInput!) {
 export const deleteApp = `mutation DeleteApp($input: DeleteAppInput!) {
   deleteApp(input: $input) {
     id
+    appId
     appname
     logoapp
     splashscreen
@@ -77,6 +84,7 @@ export const deleteApp = `mutation DeleteApp($input: DeleteAppInput!) {
         start_time
         end_time
         calender_offset
+        appId
       }
       nextToken
     }
@@ -88,6 +96,7 @@ export const deleteApp = `mutation DeleteApp($input: DeleteAppInput!) {
         price
         image
         duration
+        appId
       }
       nextToken
     }
@@ -100,8 +109,10 @@ export const createSetting = `mutation CreateSetting($input: CreateSettingInput!
     start_time
     end_time
     calender_offset
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -123,8 +134,10 @@ export const updateSetting = `mutation UpdateSetting($input: UpdateSettingInput!
     start_time
     end_time
     calender_offset
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -146,8 +159,10 @@ export const deleteSetting = `mutation DeleteSetting($input: DeleteSettingInput!
     start_time
     end_time
     calender_offset
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -171,8 +186,10 @@ export const createService = `mutation CreateService($input: CreateServiceInput!
     price
     image
     duration
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -188,6 +205,7 @@ export const createService = `mutation CreateService($input: CreateServiceInput!
     appointments {
       items {
         id
+        appId
         client_id
         start_time
         end_time
@@ -208,8 +226,10 @@ export const updateService = `mutation UpdateService($input: UpdateServiceInput!
     price
     image
     duration
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -225,6 +245,7 @@ export const updateService = `mutation UpdateService($input: UpdateServiceInput!
     appointments {
       items {
         id
+        appId
         client_id
         start_time
         end_time
@@ -245,8 +266,10 @@ export const deleteService = `mutation DeleteService($input: DeleteServiceInput!
     price
     image
     duration
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -262,6 +285,7 @@ export const deleteService = `mutation DeleteService($input: DeleteServiceInput!
     appointments {
       items {
         id
+        appId
         client_id
         start_time
         end_time
@@ -277,6 +301,7 @@ export const deleteService = `mutation DeleteService($input: DeleteServiceInput!
 export const createAppointment = `mutation CreateAppointment($input: CreateAppointmentInput!) {
   createAppointment(input: $input) {
     id
+    appId
     client_id
     start_time
     end_time
@@ -290,8 +315,10 @@ export const createAppointment = `mutation CreateAppointment($input: CreateAppoi
       price
       image
       duration
+      appId
       app {
         id
+        appId
         appname
         logoapp
         splashscreen
@@ -308,6 +335,7 @@ export const createAppointment = `mutation CreateAppointment($input: CreateAppoi
 export const updateAppointment = `mutation UpdateAppointment($input: UpdateAppointmentInput!) {
   updateAppointment(input: $input) {
     id
+    appId
     client_id
     start_time
     end_time
@@ -321,8 +349,10 @@ export const updateAppointment = `mutation UpdateAppointment($input: UpdateAppoi
       price
       image
       duration
+      appId
       app {
         id
+        appId
         appname
         logoapp
         splashscreen
@@ -339,6 +369,7 @@ export const updateAppointment = `mutation UpdateAppointment($input: UpdateAppoi
 export const deleteAppointment = `mutation DeleteAppointment($input: DeleteAppointmentInput!) {
   deleteAppointment(input: $input) {
     id
+    appId
     client_id
     start_time
     end_time
@@ -352,8 +383,10 @@ export const deleteAppointment = `mutation DeleteAppointment($input: DeleteAppoi
       price
       image
       duration
+      appId
       app {
         id
+        appId
         appname
         logoapp
         splashscreen

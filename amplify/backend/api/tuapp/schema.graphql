@@ -1,43 +1,46 @@
-
 type App @model {
-  id: ID!
-  appname: String!
-  logoapp: String!
-  splashscreen: String!
-  created_at: String!
-  updated_at: String! 
-  settings: [Setting] @connection(name: "AppSetting")
-  services: [Service] @connection(name: "AppServices")
+    id: ID!
+    appId:Int!
+    appname: String!
+    logoapp: String!
+    splashscreen: String!
+    created_at: String!
+    updated_at: String!
+    settings: [Setting] @connection(name: "AppSetting")
+    services: [Service] @connection(name: "AppServices")
 }
 
- 
+
 type Setting @model {
-  id: ID! 
-  start_time: String!
-  end_time: String!  
-  calender_offset: Int!
-  app: App @connection(name: "AppSetting")
-} 
+    id: ID!
+    start_time: String!
+    end_time: String!
+    calender_offset: Int!
+    appId:Int!
+    app: App @connection(name: "AppSetting")
+}
 
 type Service @model {
-  id: ID!
-  title: String!
-  description: String
-  price: Float
-  image: String
-  duration: Int 
-  app: App @connection(name: "AppServices")
-  appointments: [Appointment] @connection(name: "AppointmentServices")
+    id: ID!
+    title: String!
+    description: String
+    price: Float
+    image: String
+    duration: Int
+    appId:Int!
+    app: App @connection(name: "AppServices")
+    appointments: [Appointment] @connection(name: "AppointmentServices")
 }
-    
- 
+
+
 type Appointment @model {
-  id: ID! 
-  client_id: String! 
-  start_time: String
-  end_time: String
-  date: String
-  price: Float 
-  status: Boolean  
-  service: Service @connection(name: "AppointmentServices")
-} 
+    id: ID!
+    appId:Int!
+    client_id: String!
+    start_time: String
+    end_time: String
+    date: String
+    price: Float
+    status: Boolean
+    service: Service @connection(name: "AppointmentServices")
+}

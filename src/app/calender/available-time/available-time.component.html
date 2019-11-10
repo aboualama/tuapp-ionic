@@ -21,8 +21,8 @@
         </ion-row>
     </div>
 
-    <div class="th-table">
-        <form #form="ngForm" (ngSubmit)="updateSetting(form)">
+    <div class="">
+        <form #form="ngForm" >
             <ion-grid>
                 <ion-row justify-content-center>
                     <ion-col size="4" size-sm>
@@ -40,16 +40,14 @@
                         <div class="div-item">
                             <!-- <ion-datetime name="end_time" display-format="HH:mm" picker-format="HH:mm" minuteValues="0,15,30,45" ngModel value="{{end_time}}"></ion-datetime> -->
                             <ion-input type="time" name="endTime" placeholder="end_time"  [(ngModel)]="endTime"></ion-input>
-
-
                         </div>
                     </ion-col>
                     <ion-input type="hidden" [(ngModel)]="id" name="id"></ion-input>
                 </ion-row>
             </ion-grid>
-            <div padding>
-                <ion-button size="small" type="update" [disabled]="form.invalid" expand="block">Edit Setting</ion-button>
-                <ion-button size="small" type="update" [disabled]="form.invalid" expand="block">remove</ion-button>
+            <div>
+                <ion-button size="small" type="submit" [disabled]="form.invalid" (click)="updateSetting(form)" expand="block">Edit Setting</ion-button>
+                <ion-button size="small" type="delete" (click)="delete()" expand="block">remove</ion-button>
             </div>
         </form>
     </div>

@@ -4,6 +4,7 @@
 export const onCreateApp = `subscription OnCreateApp {
   onCreateApp {
     id
+    appId
     appname
     logoapp
     splashscreen
@@ -15,6 +16,7 @@ export const onCreateApp = `subscription OnCreateApp {
         start_time
         end_time
         calender_offset
+        appId
       }
       nextToken
     }
@@ -26,6 +28,7 @@ export const onCreateApp = `subscription OnCreateApp {
         price
         image
         duration
+        appId
       }
       nextToken
     }
@@ -35,6 +38,7 @@ export const onCreateApp = `subscription OnCreateApp {
 export const onUpdateApp = `subscription OnUpdateApp {
   onUpdateApp {
     id
+    appId
     appname
     logoapp
     splashscreen
@@ -46,6 +50,7 @@ export const onUpdateApp = `subscription OnUpdateApp {
         start_time
         end_time
         calender_offset
+        appId
       }
       nextToken
     }
@@ -57,6 +62,7 @@ export const onUpdateApp = `subscription OnUpdateApp {
         price
         image
         duration
+        appId
       }
       nextToken
     }
@@ -66,6 +72,7 @@ export const onUpdateApp = `subscription OnUpdateApp {
 export const onDeleteApp = `subscription OnDeleteApp {
   onDeleteApp {
     id
+    appId
     appname
     logoapp
     splashscreen
@@ -77,6 +84,7 @@ export const onDeleteApp = `subscription OnDeleteApp {
         start_time
         end_time
         calender_offset
+        appId
       }
       nextToken
     }
@@ -88,6 +96,7 @@ export const onDeleteApp = `subscription OnDeleteApp {
         price
         image
         duration
+        appId
       }
       nextToken
     }
@@ -100,8 +109,10 @@ export const onCreateSetting = `subscription OnCreateSetting {
     start_time
     end_time
     calender_offset
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -123,8 +134,10 @@ export const onUpdateSetting = `subscription OnUpdateSetting {
     start_time
     end_time
     calender_offset
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -146,8 +159,10 @@ export const onDeleteSetting = `subscription OnDeleteSetting {
     start_time
     end_time
     calender_offset
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -171,8 +186,10 @@ export const onCreateService = `subscription OnCreateService {
     price
     image
     duration
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -188,6 +205,7 @@ export const onCreateService = `subscription OnCreateService {
     appointments {
       items {
         id
+        appId
         client_id
         start_time
         end_time
@@ -208,8 +226,10 @@ export const onUpdateService = `subscription OnUpdateService {
     price
     image
     duration
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -225,6 +245,7 @@ export const onUpdateService = `subscription OnUpdateService {
     appointments {
       items {
         id
+        appId
         client_id
         start_time
         end_time
@@ -245,8 +266,10 @@ export const onDeleteService = `subscription OnDeleteService {
     price
     image
     duration
+    appId
     app {
       id
+      appId
       appname
       logoapp
       splashscreen
@@ -262,6 +285,7 @@ export const onDeleteService = `subscription OnDeleteService {
     appointments {
       items {
         id
+        appId
         client_id
         start_time
         end_time
@@ -277,6 +301,7 @@ export const onDeleteService = `subscription OnDeleteService {
 export const onCreateAppointment = `subscription OnCreateAppointment {
   onCreateAppointment {
     id
+    appId
     client_id
     start_time
     end_time
@@ -290,8 +315,10 @@ export const onCreateAppointment = `subscription OnCreateAppointment {
       price
       image
       duration
+      appId
       app {
         id
+        appId
         appname
         logoapp
         splashscreen
@@ -308,6 +335,7 @@ export const onCreateAppointment = `subscription OnCreateAppointment {
 export const onUpdateAppointment = `subscription OnUpdateAppointment {
   onUpdateAppointment {
     id
+    appId
     client_id
     start_time
     end_time
@@ -321,8 +349,10 @@ export const onUpdateAppointment = `subscription OnUpdateAppointment {
       price
       image
       duration
+      appId
       app {
         id
+        appId
         appname
         logoapp
         splashscreen
@@ -339,6 +369,7 @@ export const onUpdateAppointment = `subscription OnUpdateAppointment {
 export const onDeleteAppointment = `subscription OnDeleteAppointment {
   onDeleteAppointment {
     id
+    appId
     client_id
     start_time
     end_time
@@ -352,8 +383,10 @@ export const onDeleteAppointment = `subscription OnDeleteAppointment {
       price
       image
       duration
+      appId
       app {
         id
+        appId
         appname
         logoapp
         splashscreen

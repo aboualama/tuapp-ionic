@@ -12,6 +12,7 @@ import {Auth} from 'aws-amplify';
 
 import {DatePicker} from '@ionic-native/date-picker/ngx';
 import {SlotService} from '../../calender/slot.service';
+import {listApps} from '../../../graphql/queries';
 
 @Component({
     selector: 'app-appointment',
@@ -45,9 +46,19 @@ export class AppointmentPage implements OnInit {
     async ngOnInit() {
         // console.log());
         // Get service
-        //get reservedTimes
-        const reserved_times = this.getAppointment();
+        // get reservedTimes
+        const reserved_times = await this.getAppointment();
+        console.log('reserved_times', reserved_times);
+        // get availableTimes
 
+        //  const App_Id = await API.graphql(graphqlOperation(Queries.getApp, {id: AppId}));
+        const availableTimes = await this.getAvailableTime();
+
+
+        console.log('availableTimes', availableTimes);
+        const timeslots = this.slotService.getTimeSlots(reserved_times, availableTimes, true, 30, false, true);
+        console.log(timeslots);
+        //  const timeslots = this.slotService.getTimeSlots(reserved_times,)
         const Id = this.activatedRoute.snapshot.paramMap.get('myid');
         const service = await API.graphql(graphqlOperation(Queries.getService, {id: Id}));
         this.serviceid = await service.data.getService.id;
@@ -60,17 +71,11 @@ export class AppointmentPage implements OnInit {
         const {attributes} = user;
         this.clientid = await attributes.sub;
 
-        // Get Setting
-        const App_Id = await API.graphql(graphqlOperation(Queries.getApp, {id: AppId}));
-        this.start_times = '09:00'; // await App_Id.data.getApp.settings.items[0].start_time;
-        this.end_times = '18:00'; // await App_Id.data.getApp.settings.items[0].end_times;
-        this.calender_offset = 30; // await App_Id.data.getApp.settings.items[0].calender_offset;
-        console.log(console.log(await App_Id.data.getApp.settings));
+        //     console.log(console.log(await App_Id.data.getApp.settings));
         // Get slot if condition
         const slot = this.calender_offset < this.service_duration ? this.calender_offset : this.service_duration;
 
-        this.getTime(slot);
-        this.getAppointment();
+
     }
 
 
@@ -130,6 +135,21 @@ export class AppointmentPage implements OnInit {
         console.log('reserved', reservedTime);
         return reservedTime;
     }
+
+    async getAvailableTime() {
+        const appointment = await API.graphql(graphqlOperation(Queries.listSettings, {appId: AppId}));
+
+        const appointments = await appointment.data.listSettings.items;
+        const availbleTime = [];
+        for (let $i = 0; $i < appointments.length; $i++) {
+
+            availbleTime.push([this.slotService.toTime(appointments[$i].start_time), this.slotService.toTime(appointments[$i].end_time)]);
+        }
+        console.log('availabletime', availbleTime);
+        return availbleTime;
+    }
+
+
 
     // Create Appointment
     createAppointment = async (time: any) => {
