@@ -28,11 +28,12 @@ export class AvailableTimeComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        console.log('settings1');
+        console.log(this.setting1);
         this.id = this.setting1.id;
-        this.startTime = this.setting1.startTime;
-        this.endTime = this.setting1.endTime;
-        this.offset = this.setting1.offset;
+        this.startTime = this.setting1.start_time;
+        this.endTime = this.setting1.end_time;
+        this.offset = this.setting1.calender_offset;
     }
 
 }
