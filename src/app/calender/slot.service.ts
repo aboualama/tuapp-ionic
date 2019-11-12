@@ -37,13 +37,13 @@ export class SlotService {
         return ((parseInt(t[0]) * 60) + parseInt(t[1]));
     }
 
-    getTimeSlots(blockTimes, availableTimes, showTimeAsString = true,
-                 interval = 30, includeStartBlockedTime = false, includeEndBlockedTime = false) {
+    getTimeSlots(blockTimes: any[], availableTimes: any[], showTimeAsString = true, interval = 30, includeStartBlockedTime = false, includeEndBlockedTime = false) {
         const times = 1;
         const sums = interval;
 
         includeStartBlockedTime = includeStartBlockedTime === true ? true : false;
         includeEndBlockedTime = includeEndBlockedTime === true ? true : false;
+        
         availableTimes = this.reduceBlockedTime(blockTimes, availableTimes);
         let dateTimes = [];
         availableTimes.forEach((value, index, array) => {
@@ -72,6 +72,13 @@ export class SlotService {
         const hour = tempHour.length === 1 ? '0' + tempHour : tempHour;
         const min = num % 60 === 0 ? '00' : num % 60;
         return {num, time: hour + ':' + min};
+    }
+
+    getTime2(num) {
+        const tempHour = String(Math.trunc(num / 60));
+        const hour = tempHour.length === 1 ? '0' + tempHour : tempHour;
+        const min = num % 60 === 0 ? '00' : num % 60; 
+        return hour + ':' + min ;
     }
 
     getSlotFromTimeArray(start: number, end: number, times: number, sums: number) {
