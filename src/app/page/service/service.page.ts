@@ -5,6 +5,7 @@ import {graphqlOperation, API} from 'aws-amplify';
 import {Storage} from 'aws-amplify';
 import * as Queries from '../../../graphql/queries';
 import * as mutations from '../../../graphql/mutations';
+import {AppId} from '../../AppId/Id';
 
 @Component({
     selector: 'app-service',
@@ -23,18 +24,17 @@ export class ServicePage implements OnInit {
 
     async ngOnInit() {
         this.getdata();
-      //  this.getdata()
+        //  this.getdata()
     }
 
     async getdata() {
 
         // Get All Services
-        const allservices = await API.graphql(graphqlOperation(Queries.listServices));
+        const allservices = await API.graphql(graphqlOperation(Queries.listServices, {input:{appId: AppId}}));
         this.services = await allservices.data.listServices.items;
         console.log(allservices);
 
     }
-
 
 
     // remove Service
@@ -53,15 +53,15 @@ export class ServicePage implements OnInit {
         this.router.navigate(['appointment/' + myid]);
     };
 
- /*   async img2(image: any) {
-      //  return '';
-        let resolve;
-        await Storage.get(image).then(data => {
-            resolve = data;
-        });
-        //  console.log(resolve);
-        return resolve;
-    }*/
+    /*   async img2(image: any) {
+         //  return '';
+           let resolve;
+           await Storage.get(image).then(data => {
+               resolve = data;
+           });
+           //  console.log(resolve);
+           return resolve;
+       }*/
 
     /*  const img = async (img: any) => {
            console.log(img);

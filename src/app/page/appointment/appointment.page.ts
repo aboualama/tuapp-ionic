@@ -88,7 +88,8 @@ export class AppointmentPage implements OnInit {
         const appointment = await API.graphql(graphqlOperation(Queries.listAppointments, {
             filter: {
                 date: {
-                    contains: '2019-10-22'
+
+                    contains: '2019-10-10'
                 }
             }
         }));
@@ -100,6 +101,23 @@ export class AppointmentPage implements OnInit {
         }
         return reservedTime;
     }
+    createAppointment = async (time: any) => {
+        event.preventDefault();
+        const appointment = {
+            appointmentServiceId: this.service.id,
+            client_id: this.clientid,
+            price: this.serviceprice,
+            status: false,
+            date: '2019-10-10',
+            start_time: this.slotService.toTime(time),
+            end_time: (this.slotService.toTime(time) + this.service_duration),
+            appId: AppId
+        };
+        await API.graphql(graphqlOperation(mutations.createAppointment, {input: appointment}));
+        console.log('prenotato');
+        this.router.navigate(['service']);
+    };
+
 
     // Get Settings To Get Available Time
     async getAvailableTime() {
