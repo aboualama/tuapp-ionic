@@ -23,6 +23,7 @@ export class ServicePage implements OnInit {
 
     async ngOnInit() {
         this.getdata();
+      //  this.getdata()
     }
 
     async getdata() {

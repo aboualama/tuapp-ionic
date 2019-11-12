@@ -1,0 +1,28 @@
+
+    <div class="card-hd">
+        <ion-grid>
+            <ion-row class="div-row">
+                <ion-col class="div-col">
+                    <div>
+                        <ion-radio color="success" value="0" (click)="createAppointment(slot)"></ion-radio>
+                    </div>
+                </ion-col>
+                <ion-col class="">
+                    <div>
+                        {{slot}}
+                    </div>
+                </ion-col>
+                <ion-col class="">
+                    <div>
+                        {{this.serviceName}}
+                    </div>
+                </ion-col>
+                <ion-col class="">
+                    <div>
+                        {{this.price}} €
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+

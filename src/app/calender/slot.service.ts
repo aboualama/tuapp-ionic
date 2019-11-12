@@ -14,11 +14,11 @@ export class SlotService {
 
 
     reduceBlockedTime(blockTimes, availableTimes) {
-        //   console.log(blockTimes);
+
         blockTimes.forEach((blocked) => {
             availableTimes.forEach((available, availableIndex, avTimes) => {
                     //     console.log('availble index', availableIndex);
-                    if (available[0] < blocked[0] && (available[1] > blocked[0])) {
+                    if (available[0] <= blocked[0] && (available[1] >= blocked[0])) {
 
                         //     console.log('if', avTimes[availableIndex][1], blocked[0]);
 
@@ -29,6 +29,7 @@ export class SlotService {
                 }
             );
         });
+             console.log('availble index', availableTimes);
         return availableTimes;
     }
 
@@ -43,13 +44,14 @@ export class SlotService {
 
         includeStartBlockedTime = includeStartBlockedTime === true ? true : false;
         includeEndBlockedTime = includeEndBlockedTime === true ? true : false;
-        
+
         availableTimes = this.reduceBlockedTime(blockTimes, availableTimes);
+
         let dateTimes = [];
         availableTimes.forEach((value, index, array) => {
-            console.log("value",value,times,sums);
+            //   console.log("value",value,times,sums);
             //  console.log(this.getSlotFromTimeArray(value[0], value[1], times, sums));
-            const arr = this.getSlotFromTimeArray(value[0], value[1], times, sums);
+            let arr = this.getSlotFromTimeArray(value[0], value[1], times, sums);
             dateTimes = dateTimes.concat(arr);
         });
 
@@ -77,8 +79,8 @@ export class SlotService {
     getTime2(num) {
         const tempHour = String(Math.trunc(num / 60));
         const hour = tempHour.length === 1 ? '0' + tempHour : tempHour;
-        const min = num % 60 === 0 ? '00' : num % 60; 
-        return hour + ':' + min ;
+        const min = num % 60 === 0 ? '00' : num % 60;
+        return hour + ':' + min;
     }
 
     getSlotFromTimeArray(start: number, end: number, times: number, sums: number) {
@@ -87,8 +89,11 @@ export class SlotService {
         return Array(Math.round(slotNumbers))
             .fill(0)
             .map((x) => {
-                //  console.log(i);
-                start = start + (sums * i);
+                if (i === 0) {
+                    i = i + 1;
+                    return start;
+                }
+                start = start + (sums * 1);
                 i = 1 + i;
                 return start;
             });

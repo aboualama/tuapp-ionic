@@ -36,6 +36,7 @@ export class AppointmentPage implements OnInit {
     public status: false;
     public service_duration: any;
     public slot: any;
+    public service: any;
 
 
     constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController
@@ -52,42 +53,37 @@ export class AppointmentPage implements OnInit {
 
         // Get Service
         const Id = this.activatedRoute.snapshot.paramMap.get('myid');
-        const service = await API.graphql(graphqlOperation(Queries.getService, {id: Id}));
-        this.serviceid = await service.data.getService.id;
-        this.servicetitle = service.data.getService.title;
-        this.serviceprice = service.data.getService.price;
-        this.service_duration = service.data.getService.duration;
-         
+        this.service = await API.graphql(graphqlOperation(Queries.getService, {id: Id}));
+        this.serviceid = await this.service.data.getService.id;
+        this.servicetitle = this.service.data.getService.title;
+        this.serviceprice = this.service.data.getService.price;
+        this.service_duration = this.service.data.getService.duration;
 
 
-
-
-        const calender_setting = await API.graphql(graphqlOperation(Queries.listSettings, {appId: AppId}));  
-        const calender_settings = await calender_setting.data.listSettings.items; 
+        const calender_setting = await API.graphql(graphqlOperation(Queries.listSettings, {appId: AppId}));
+        const calender_settings = await calender_setting.data.listSettings.items;
         this.calender_offset = await calender_settings[0].calender_offset;
- 
 
-        const reserved_times = await this.getReservedTime();  
-        console.log('reserved_times', reserved_times); 
-        const available_times = await this.getAvailableTime(); 
-        console.log('available_times', available_times); 
-  
-        
- 
+
+        const reserved_times = await this.getReservedTime();
+        console.log('reserved_times', reserved_times);
+        const available_times = await this.getAvailableTime();
+        console.log('available_times', available_times);
+
+
         // Get slot with if condition
-        const slot = this.calender_offset < this.service_duration ? this.calender_offset : this.service_duration; 
+        const slot = this.calender_offset;
         this.slot = slot;
-        console.log('slot', slot); 
+        console.log('slot', slot);
 
         const timeslots = this.slotService.getTimeSlots(reserved_times, available_times, true, slot, false, false);
-        console.log('timeslots', timeslots); 
+        console.log('timeslots', timeslots);
         this.times = Object.values(timeslots);
 
     }
- 
 
 
-    // Get Appointments To get reserved_times 
+    // Get Appointments To get reserved_times
     async getReservedTime() {
         const appointment = await API.graphql(graphqlOperation(Queries.listAppointments, {
             filter: {
@@ -95,47 +91,31 @@ export class AppointmentPage implements OnInit {
                     contains: '2019-10-22'
                 }
             }
-        })); 
+        }));
         const appointments = await appointment.data.listAppointments.items;
         const reservedTime = [];
         for (let $i = 0; $i < appointments.length; $i++) {
 
             reservedTime.push([parseInt(appointments[$i].start_time), parseInt(appointments[$i].end_time)]);
-        } 
+        }
         return reservedTime;
-    } 
+    }
 
-    // Get Settings To Get Available Time 
+    // Get Settings To Get Available Time
     async getAvailableTime() {
-        const listsettings = await API.graphql(graphqlOperation(Queries.listSettings, {appId: AppId})); 
+        const listsettings = await API.graphql(graphqlOperation(Queries.listSettings, {appId: AppId}));
         const settings = await listsettings.data.listSettings.items;
         const availbleTime = [];
-        for (let $i = 0; $i < settings.length; $i++) { 
+        for (let $i = 0; $i < settings.length; $i++) {
             availbleTime.push([this.slotService.toTime(settings[$i].start_time), this.slotService.toTime(settings[$i].end_time)]);
-        } 
+        }
         return availbleTime;
     }
- 
 
-    // Create Appointment
-    createAppointment = async (time: any) => {
-        event.preventDefault();
-        const appointment = {
-            appointmentServiceId: this.serviceid,
-            client_id: this.clientid,
-            price: this.serviceprice,
-            status: this.status,
-            date: '2019-10-22',
-            start_time: this.slotService.toTime(time),
-            end_time: (this.slotService.toTime(time) + this.slot),
-            appId: AppId
-        };
-        await API.graphql(graphqlOperation(mutations.createAppointment, {input: appointment}));
-        this.router.navigate(['service']);
-    };
+    async LoadNewDate() {
+    }
 
- 
- 
+
 }
 
 
