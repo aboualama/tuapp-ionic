@@ -23,7 +23,7 @@
               <ion-label>
                 <h3 text-capitalize>{{ item.service.title }}</h3>
                 <h6 text-capitalize>{{ normalizza(item.date) }}</h6>
-                <h6 text-capitalize>{{ normalizzaTime(item.start_time )}}</h6>
+                <h6 text-capitalize>{{ normalizzaTime(item.start_time)}}</h6>
               </ion-label>
               <ion-button slot="end" (click)="removeAppointment(item , i)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
              </ion-item>

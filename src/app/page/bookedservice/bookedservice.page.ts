@@ -5,6 +5,7 @@ import {graphqlOperation, API} from 'aws-amplify';
 
 import * as Queries from '../../../graphql/queries';
 import * as mutations from '../../../graphql/mutations';
+import {SlotService} from '../../calender/slot.service';
 import * as moment from 'moment/moment';
 @Component({
     selector: 'app-bookedservice',
@@ -15,7 +16,7 @@ export class BookedservicePage implements OnInit {
 
     public items: any;
     public moment: any;
-    constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController, private router: Router) {
+    constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController, private router: Router, public slotService: SlotService) {
         this.moment = moment();
     }
 
@@ -25,7 +26,7 @@ export class BookedservicePage implements OnInit {
         const allappointment = await API.graphql(graphqlOperation(Queries.listAppointments));
         // const allappointment = await API.graphql(graphqlOperation(`{listAppointments{items{id date start_time service{title}}}}`));
         this.items = await allappointment.data.listAppointments.items;
-        console.log(this.items);
+        console.log('this.items' , this.items);
     }
 
 
@@ -46,7 +47,12 @@ export class BookedservicePage implements OnInit {
 
     }
 
+    // normalizzaTime(data) {
+    //     return moment(data).format('HH:mm').toString();
+    // }
+
     normalizzaTime(data) {
-        return moment(data).format('HH:mm').toString();
+        return this.slotService.getTime2(data);
     }
+    
 }
