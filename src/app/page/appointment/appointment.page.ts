@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ModalController} from '@ionic/angular';
+import {AlertController, ModalController} from '@ionic/angular';
 import {AppId} from '../../AppId/Id';
 
 import {graphqlOperation, API} from 'aws-amplify';
 import * as Queries from '../../../graphql/queries';
 import * as mutations from '../../../graphql/mutations';
-import * as moment from 'moment/moment';
+import * as moment from 'moment';
+import 'moment-timezone';
+
 
 import {Auth} from 'aws-amplify';
 
@@ -21,7 +23,7 @@ import {listApps} from '../../../graphql/queries';
 })
 export class AppointmentPage implements OnInit {
 
-
+    private days = [];
     public clientid: any;
     public serviceid: any;
     public servicetitle: any;
@@ -37,11 +39,13 @@ export class AppointmentPage implements OnInit {
     public service_duration: any;
     public slot: any;
     public service: any;
+    private dayActive: any;
 
 
-    constructor(private activatedRoute: ActivatedRoute, private modalController: ModalController
+    constructor(private activatedRoute: ActivatedRoute, private alertCtrl: AlertController, private modalController: ModalController
         , private router: Router, private datePicker: DatePicker, public slotService: SlotService) {
-        this.moment = moment();
+        this.moment = moment().locale('it-IT');
+        this.generateDays();
     }
 
     async ngOnInit() {
@@ -59,13 +63,21 @@ export class AppointmentPage implements OnInit {
         this.serviceprice = this.service.data.getService.price;
         this.service_duration = this.service.data.getService.duration;
 
-
+        console.log('service', this.service);
         const calender_setting = await API.graphql(graphqlOperation(Queries.listSettings, {appId: AppId}));
         const calender_settings = await calender_setting.data.listSettings.items;
+
         this.calender_offset = await calender_settings[0].calender_offset;
 
 
-        const reserved_times = await this.getReservedTime();
+        await this.loadSlots(this.moment);
+
+    }
+
+    async loadSlots(dateString) {
+
+
+        const reserved_times = await this.getReservedTime(dateString.format('YYYY-MM-DD'));
         console.log('reserved_times', reserved_times);
         const available_times = await this.getAvailableTime();
         console.log('available_times', available_times);
@@ -79,21 +91,67 @@ export class AppointmentPage implements OnInit {
         const timeslots = this.slotService.getTimeSlots(reserved_times, available_times, true, slot, false, false);
         console.log('timeslots', timeslots);
         this.times = Object.values(timeslots);
+    }
+
+    generateDays(from = null) {
+        console.log(from);
+        let now = moment();
+        if (from != null) {
+            now = moment(from, 'MMM-DD-ddd').locale('it-IT');
+        }
+        const legnt = this.days.length;
+        this.days.push({
+            month: now.tz('Europe/Rome').format('MMM'),
+            day: now.tz('Europe/Rome').format('DD'),
+            dayname: now.tz('Europe/Rome').format('ddd')
+        });
+        for (let i = 0; i < 6; i++) {
+            now.add(1, 'd');
+
+            this.days.push({
+                month: now.tz('Europe/Rome').format('MMM'),
+                day: now.tz('Europe/Rome').format('DD'),
+                dayname: now.tz('Europe/Rome').format('ddd')
+            });
+        }
+
+        this.dayActive = this.getStrDay(this.days[legnt]);
+    }
+
+    checkDay(day: any) {
+        this.times = [];
+        this.dayActive = this.getStrDay(day);
+        console.log('day-active', this.dayActive);
+        if (this.days[this.days.length - 1] == day) {
+            this.generateDays(this.dayActive);
+        }
+        this.reload(this.dayActive);
 
     }
 
+    async reload(date) {
+        const now = moment(date, 'MMM-DD-ddd').locale('it-IT');
+        this.loadSlots(now);
+    }
+
+    getStrDay(day: any) {
+        return `${day.month}-${day.day}-${day.dayname}`;
+    }
 
     // Get Appointments To get reserved_times
-    async getReservedTime() {
+    async getReservedTime(date = null) {
+
         const appointment = await API.graphql(graphqlOperation(Queries.listAppointments, {
             filter: {
+                appId: {eq: AppId},
                 date: {
 
-                    contains: '2019-10-10'
+                    contains: date
                 }
             }
         }));
         const appointments = await appointment.data.listAppointments.items;
+
         const reservedTime = [];
         for (let $i = 0; $i < appointments.length; $i++) {
 
@@ -101,32 +159,48 @@ export class AppointmentPage implements OnInit {
         }
         return reservedTime;
     }
+
+    getDateFromActiveDay() {
+        return moment(this.dayActive, 'MMM-DD-ddd').format('YYYY-MM-DD');
+    }
+
     createAppointment = async (time: any) => {
+        console.log(time);
         event.preventDefault();
         const appointment = {
-            appointmentServiceId: this.service.id,
+            appointmentServiceId: this.serviceid,
             client_id: this.clientid,
             price: this.serviceprice,
             status: false,
-            date: '2019-10-10',
+            date: this.getDateFromActiveDay(),
             start_time: this.slotService.toTime(time),
             end_time: (this.slotService.toTime(time) + this.service_duration),
-            appId: AppId
+            appId: AppId,
         };
         await API.graphql(graphqlOperation(mutations.createAppointment, {input: appointment}));
         console.log('prenotato');
+        let alert = await this.alertCtrl.create({message: 'Appointment confirmed', buttons: ['Ok']});
+        alert.present();
         this.router.navigate(['service']);
     };
 
 
     // Get Settings To Get Available Time
     async getAvailableTime() {
-        const listsettings = await API.graphql(graphqlOperation(Queries.listSettings, {appId: AppId}));
+        const listsettings = await API.graphql(graphqlOperation(Queries.listSettings, {
+                filter: {
+                    appId: {eq: AppId}
+                }
+            }))
+        ;
         const settings = await listsettings.data.listSettings.items;
+        console.log('funcAvailsettings', settings);
         const availbleTime = [];
-        for (let $i = 0; $i < settings.length; $i++) {
-            availbleTime.push([this.slotService.toTime(settings[$i].start_time), this.slotService.toTime(settings[$i].end_time)]);
+        for (let i = 0; i < settings.length; i++) {
+            console.log(settings[i].calender_offset);
+            availbleTime.push([this.slotService.toTime(settings[i].start_time), this.slotService.toTime(settings[i].end_time), parseInt(settings[i].calender_offset)]);
         }
+        console.log('funcAvail', availbleTime);
         return availbleTime;
     }
 

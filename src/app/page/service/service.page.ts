@@ -30,7 +30,11 @@ export class ServicePage implements OnInit {
     async getdata() {
 
         // Get All Services
-        const allservices = await API.graphql(graphqlOperation(Queries.listServices, {input:{appId: AppId}}));
+        const allservices = await API.graphql(graphqlOperation(Queries.listServices, {
+            filter: {
+                appId: {eq: AppId}
+            }
+        }));
         this.services = await allservices.data.listServices.items;
         console.log(allservices);
 

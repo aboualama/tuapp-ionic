@@ -6,7 +6,7 @@
     </div>
   </ion-header>
 
-  <ion-content fullscreen common-parallax [scrollEvents]="true">
+  <ion-content  fullscreen common-parallax [scrollEvents]="true">
       <div class="page-ct pd-0">
           <div class="cover">
               <div class="wrapper-cover thumb-h100">
@@ -17,19 +17,29 @@
 
 
        <div class="ion-padding" >
-        <ion-card *ngFor="let item of items; let i = index">
-          <ion-item-sliding  color="light">
-            <ion-item>
-              <ion-label>
-                <h3 text-capitalize>{{ item.service.title }}</h3>
+        <ion-card  mode="ios" class="appointment-list ion-no-margin"  *ngFor="let item of items; let i = index">
+
+            <ion-card-content>
+              <div class="col-date ion-text-center ">
+                  <span class="small month">{{getMonth(item.date)}} </span> <br>
+                  <span class="day">{{getDayNumber(item.date)}}</span> <br>
+                  <span class="small">{{getDay(item.date)}}</span>
+
+              <!--  <h3 text-capitalize>{{ item.service.title }}</h3>
                 <h6 text-capitalize>{{ normalizza(item.date) }}</h6>
-                <h6 text-capitalize>{{ normalizzaTime(item.start_time )}}</h6>
-              </ion-label>
+                <h6 text-capitalize>{{ normalizzaTime(item.start_time )}}</h6>-->
+              </div>
+                <div class="col-details">
+                    <h2>Timing: {{ getTimeStr(item.start_time) }}</h2>
+                    <h1> {{ item.service.title }}</h1>
+                </div>
+                <div class="pull-right col-details">
               <ion-button slot="end" (click)="removeAppointment(item , i)" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
-             </ion-item>
-          </ion-item-sliding>
+                </div>
+             </ion-card-content>
+
         </ion-card>
-      </div> 
-    
+      </div>
+
     </div>
   </ion-content>

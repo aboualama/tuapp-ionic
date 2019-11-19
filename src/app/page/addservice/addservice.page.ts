@@ -10,7 +10,6 @@ import {listServices} from '../../../graphql/queries';
 import {AppId} from '../../AppId/Id';
 
 
-
 @Component({
     selector: 'app-addservice',
     templateUrl: './addservice.page.html',
@@ -34,6 +33,10 @@ export class AddservicePage implements OnInit {
     async ngOnInit() {
     }
 
+    onImagePicked(event) {
+        console.log(event);
+    }
+
     // create Service
     createService = async (form: { value: { servicetitle: any; serviceprice: any; duration: any; description: any; }; }) => {
         console.log(this.image);
@@ -51,5 +54,18 @@ export class AddservicePage implements OnInit {
         this.router.navigate(['service']);
     };
 
+    async onImageUploaded(event) {
+        console.log('image.uploaded:');
+
+        await Storage.get(event.key).then(data => {
+            console.log('promise:', data);
+            this.image = data;
+        });
+
+    }
+
+    onImageLoaded($event: string) {
+        console.log('ok');
+    }
 }
 

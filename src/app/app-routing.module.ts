@@ -18,6 +18,9 @@ const routes: Routes = [
     {
         path: 'setting',
         loadChildren: './page/settings/settings.module#SettingsPageModule'
+    }, {
+        path: 'about',
+        loadChildren: './page/about/about.module#AboutPageModule'
     },
     {
         path: 'appointment/:myid',

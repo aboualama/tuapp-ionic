@@ -32,22 +32,22 @@
                                            ngModel required></ion-input>
                             </div>
 
-                            <div class="input-wrapper"> 
+                            <div class="input-wrapper">
                                     <ion-label class="block round bg-grey">Durata</ion-label>
                                     <ion-select class="block round bg-grey" placeholder="Durata" [(ngModel)]="selectedCodeValue" name="duration" required>
-                                        <ion-select-option *ngFor="let duration of durations" value="{{duration}}" >{{ duration }}</ion-select-option> 
-                                    </ion-select> 
+                                        <ion-select-option *ngFor="let duration of durations" value="{{duration}}" >{{ duration }}</ion-select-option>
+                                    </ion-select>
                                 <!-- <ion-input class="block round bg-grey" name="duration" type="" placeholder="Durata" ngModel required></ion-input> -->
                             </div>
 
                             <div class="input-wrapper">
                                 <ion-label>Imagine</ion-label>
-                                <amplify-photo-picker
+                                <amplify-photo-picker-ionic
                                         path="pics"
                                         (picked)="onImagePicked($event)"
                                         (loaded)="onImageLoaded($event)" (uploaded)="onImageUploaded($event)"
                                         class="block round bg-grey"
-                                ></amplify-photo-picker>
+                                ></amplify-photo-picker-ionic>
 
                             </div>
 

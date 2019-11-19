@@ -24,7 +24,11 @@ export class SettingsPage implements OnInit {
     }
 
     async ngOnInit() {
-        this.settings = (await API.graphql(graphqlOperation(Queries.listSettings))).data.listSettings.items;
+        this.settings = (await API.graphql(graphqlOperation(Queries.listSettings, {
+            filter: {
+                appId: {eq: AppId}
+            }
+        }))).data.listSettings.items;
     }
 
     normalizzaTime(data) {

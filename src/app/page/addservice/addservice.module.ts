@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { AddservicePage } from './addservice.page';
-import {AmplifyAngularModule} from 'aws-amplify-angular';
+import {AmplifyAngularModule, AmplifyIonicModule} from 'aws-amplify-angular';
 
 const routes: Routes = [
   {
@@ -21,7 +21,8 @@ const routes: Routes = [
         FormsModule,
         IonicModule,
         RouterModule.forChild(routes),
-        AmplifyAngularModule
+        AmplifyAngularModule,
+        AmplifyIonicModule
     ],
   declarations: [AddservicePage]
 })

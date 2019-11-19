@@ -6,13 +6,16 @@ import { environment } from '../../../environments/environment';
 
 const defaults = environment.themes[1];
 
+defaults['primary'] = '#0bb8cc';
+defaults['secondary'] = '#32db64';
+defaults['tertiary'] = '#f4a942';
 defaults['info'] = '#0bb8cc';
-defaults['success'] = '#C0E89D';
-defaults['warning'] = '#F9EE72';
-defaults['danger'] = '#F97070';
-defaults['dark'] = '#222428';
+defaults['success'] = '#10dc60';
+defaults['warning'] = '#ffce00';
+defaults['danger'] = '#f53d3d';
+defaults['dark'] = '#222';
 defaults['medium'] = '#989aa2';
-defaults['light'] = '#f4f5f8';
+defaults['light'] = '#f4f4f4';
 
 function CSSTextGenerator(colors) {
   colors = { ...defaults, ...colors };
@@ -42,7 +45,6 @@ function CSSTextGenerator(colors) {
     --ion-text-color-lv5: ${Color(primary).darken(2)};
 
     --background: ${Color(light).lighten(0.1)};
-    --ion-background-color: linear-gradient(-45deg, ${primary}, ${secondary}, ${tertiary});
 
     --ion-shadow-primary-color: ${Color(primary).lighten(1.7)};
     --ion-shadow-secondary-color: ${Color(secondary).lighten(1.7)};

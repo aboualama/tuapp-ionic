@@ -22,14 +22,14 @@ export class SlotService {
 
                         //     console.log('if', avTimes[availableIndex][1], blocked[0]);
 
-                        const newAvailbleTime = [blocked[1], available[1]];
+                        const newAvailbleTime = [blocked[1], available[1], available[2]];
                         availableTimes[availableIndex][1] = blocked[0];
                         availableTimes.splice(availableIndex + 1, 0, newAvailbleTime);
                     }
                 }
             );
         });
-             console.log('availble index', availableTimes);
+        console.log('availble index', availableTimes);
         return availableTimes;
     }
 
@@ -51,7 +51,7 @@ export class SlotService {
         availableTimes.forEach((value, index, array) => {
             //   console.log("value",value,times,sums);
             //  console.log(this.getSlotFromTimeArray(value[0], value[1], times, sums));
-            let arr = this.getSlotFromTimeArray(value[0], value[1], times, sums);
+            let arr = this.getSlotFromTimeArray(value[0], value[1], times, value[2]);
             dateTimes = dateTimes.concat(arr);
         });
 
