@@ -74,8 +74,17 @@ export class BookedservicePage implements OnInit {
         return ( this.toMomentDate(date)).format('DD');
     }
 
-     getTimeStr(start_time: any) {
-        const hh = parseInt((start_time / 60).toString());
-        return hh.toString() + ':' + (start_time - (hh * 60)).toString();
+     getTimeStr(num: any) {
+         const tempHour = String(Math.trunc(num / 60));
+         const hour = tempHour.length === 1 ? '0' + tempHour : tempHour;
+         const min = num % 60 === 0 ? '00' : num % 60;
+         return  hour + ':' + min;
+    }
+    getTime(num) {
+        const tempHour = String(Math.trunc(num / 60));
+        const hour = tempHour.length === 1 ? '0' + tempHour : tempHour;
+        const min = num % 60 === 0 ? '00' : num % 60;
+        return {num, time: hour + ':' + min};
     }
 }
+

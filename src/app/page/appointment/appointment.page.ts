@@ -166,6 +166,7 @@ export class AppointmentPage implements OnInit {
 
     createAppointment = async (time: any) => {
         console.log(time);
+        console.log(this.serviceid);
         event.preventDefault();
         const appointment = {
             appointmentServiceId: this.serviceid,
