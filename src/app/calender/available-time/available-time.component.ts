@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AppId} from '../../AppId/Id';
 import {API, graphqlOperation} from 'aws-amplify';
 import * as mutations from '../../../graphql/mutations';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-available-time',
@@ -11,13 +12,15 @@ import * as mutations from '../../../graphql/mutations';
 export class AvailableTimeComponent implements OnInit {
 
     @Input() setting1: any;
-    id: any;
+    @Input() i: any;
+    @Input() settings: any;
+    id: any; 
     startTime: any;
     endTime: any;
     offset: any;
 
 
-    constructor() {
+    constructor(private router: Router) {
         /*    this.setting1 = setting1;
             this.id = this.setting1.id;
             this.startTime = this.setting1.startTime;
@@ -40,15 +43,11 @@ export class AvailableTimeComponent implements OnInit {
     }
 
     updateSetting = async (form: { value: { startTime: any; endTime: any; offset: any; }; }) => {
-        event.preventDefault();
+        
         const setting = {
             id: this.id,
-            // start_time: moment(form.value.start_time).format('HH:mm').toString(),
-            // end_time: moment(form.value.end_time).format('HH:mm').toString(),
             start_time: form.value.startTime,
             end_time: form.value.endTime,
-            // start_time: moment(form.value.start_time).format('LT').toString(),
-            // end_time: moment(form.value.end_time).format('LT'),
             calender_offset: form.value.offset,
             settingAppId: AppId,
             appId: AppId
@@ -56,13 +55,20 @@ export class AvailableTimeComponent implements OnInit {
         if (this.id == null || this.id == '') {
             delete setting.id;
             await API.graphql(graphqlOperation(mutations.createSetting, {input: setting}));
-            return;
+            this.router.navigate(['service']);
         }
         console.log(setting);
         await API.graphql(graphqlOperation(mutations.updateSetting, {input: setting}));
+
+        
+        this.router.navigate(['service']);
     };
 
     delete = async () => {
+        console.log(this.settings);
+        if (this.i > -1) { 
+            this.settings.splice(this.i, 1);
+        }
         await API.graphql(graphqlOperation(mutations.deleteSetting, {input: {id: this.id}}));
 
     };

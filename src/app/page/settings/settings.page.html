@@ -17,8 +17,8 @@
         <h1 class="ion-text-center">Set Working Time</h1>
 
 
-        <div *ngFor="let set1 of settings">
-            <app-available-time [setting1]="set1"></app-available-time>
+        <div *ngFor="let set1 of settings; let i = index">
+            <app-available-time [setting1]="set1" [i]="i" [settings]="settings"></app-available-time>
         </div>
 
         <ion-button (click)="updateSeAddAvailabilitySlot()">Add Time</ion-button>
