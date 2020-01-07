@@ -39,6 +39,7 @@ const routes: Routes = [
         loadChildren: './page/bookedservice/bookedservice.module#BookedservicePageModule'
     },
 
+    { path: 'usermanagment', loadChildren: './page/usermanagment/usermanagment.module#UsermanagmentPageModule' },
 
     {
         path: 'ui-element',
@@ -64,6 +65,7 @@ const routes: Routes = [
             },
         ]
     },
+
 
 ];
 

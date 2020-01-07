@@ -39,6 +39,11 @@ export class HomePage {
       icon: 'checkbox-outline'
     } ,    
     {
+      title: 'User Management',
+      url: '/usermanagment',
+      icon: 'users'
+    },   
+    {
       title: 'Login & Register',
       url: '/login',
       icon: 'log-in'
